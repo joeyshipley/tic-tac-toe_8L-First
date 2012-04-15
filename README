@@ -3,3 +3,5 @@ The nothingy fancy, yet entirely unbeatable, Tic-Tac-Toe game.
 
 - ASP.net MVC C#
 - StructureMap
+- MSpec (Machine Specification)
+- Moq, AutoMoq

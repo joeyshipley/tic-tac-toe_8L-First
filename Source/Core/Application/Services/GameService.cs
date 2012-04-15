@@ -2,9 +2,5 @@
 {
 	public class GameService : IGameService
 	{
-		public bool Test()
-		{
-			return true;
-		}
 	}
 }

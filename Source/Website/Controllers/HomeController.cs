@@ -14,7 +14,6 @@ namespace TTT.Website.Controllers
 
 		public ActionResult Index()
 		{
-			var response = _gameService.Test();
 			return View();
 		}
 	}

@@ -58,12 +58,14 @@
   <ItemGroup>
     <Compile Include="Helpers\Builders\GameBuilder.cs" />
     <Compile Include="Helpers\Builders\GameModelBuilder.cs" />
+    <Compile Include="Helpers\Builders\GameMoveBuilder.cs" />
     <Compile Include="Infrastructure\BaseIntegrationTest.cs" />
     <Compile Include="Infrastructure\BaseIsolationTest.cs" />
     <Compile Include="Integration\Data\Repositories\GameRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unit\Core\Application\Factories\ModelFactoryTests.cs" />
     <Compile Include="Unit\Core\Application\Services\GameServiceTests.cs" />
+    <Compile Include="Unit\Domain\Entities\GameTests.cs" />
     <Compile Include="Unit\Domain\Factories\GameFactoryTests.cs" />
   </ItemGroup>
   <ItemGroup />

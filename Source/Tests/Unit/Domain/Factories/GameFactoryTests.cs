@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Machine.Specifications;
+using TTT.Core.Domain;
 using TTT.Core.Domain.Entities;
 using TTT.Core.Domain.Factories;
 using TTT.Tests.Infrastructure;
@@ -28,5 +29,34 @@ namespace TTT.Tests.Unit.Domain.Factories.GameFactoryTests
 			_result.Moves.ShouldNotBeNull(); 
 			_result.Moves.Any().ShouldBeFalse();
 		};
+	}
+
+	[Subject("Domain, Factories, GameFactory, Game creation")]
+	public class When_asking_for_a_game_move
+		: BaseIsolationTest<GameFactory>
+	{
+		private static GameMove _result;
+		private static Enums.PlayerType _owner;
+		private static Enums.BoardPosition _position;
+
+		Establish context = () => 
+		{
+			_owner = Enums.PlayerType.Human;
+			_position = Enums.BoardPosition.MiddleCenter;
+		};
+
+		Because of = () => _result = ClassUnderTest.CreateFrom(_owner, _position);
+
+		It should_create_a_game_move = () =>
+			_result.ShouldNotBeNull();
+
+		It should_assign_the_game_an_id = () =>
+			_result.Id.ShouldNotEqual(Guid.Empty);
+
+		It should_assign_the_owner = () =>
+			_result.Owner.ShouldEqual(_owner);
+
+		It should_assign_the_position = () =>
+			_result.Position.ShouldEqual(_position);
 	}
 }

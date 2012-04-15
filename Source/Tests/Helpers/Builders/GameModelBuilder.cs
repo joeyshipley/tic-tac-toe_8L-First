@@ -8,6 +8,7 @@ namespace TTT.Tests.Helpers.Builders
 	{
 		private Guid _id;
 		private IList<GameMoveModel> _moves;
+		private bool _isGameOver;
 
 		public GameModelBuilder WithId(Guid id)
 		{
@@ -21,12 +22,19 @@ namespace TTT.Tests.Helpers.Builders
 			return this;
 		}
 
+		public GameModelBuilder WithIsGameOver(bool isGameOver)
+		{
+			_isGameOver = isGameOver;
+			return this;
+		}
+
 		public GameModel Build()
 		{
 			var model = new GameModel
 			{
 				GameId = _id,
-				GameMoves = _moves
+				GameMoves = _moves,
+				IsGameOver = _isGameOver
 			};
 			return model;
 		}

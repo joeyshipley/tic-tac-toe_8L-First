@@ -9,11 +9,18 @@ namespace TTT.Core.Application.Factories
 	{
 		public GameModel CreateFrom(Game game)
 		{
+			return CreateFrom(game, new List<ValidationError>());
+		}
+
+		public GameModel CreateFrom(Game game, IList<ValidationError> moveWarnings)
+		{
 			var moves = createMoveModelsFromGame(game);
 			var model = new GameModel
 			{
 				GameId = game.Id,
-				GameMoves = moves
+				GameMoves = moves,
+				IsGameOver = game.IsGameOver,
+				MoveWarnings = moveWarnings
 			};
 			return model;
 		}

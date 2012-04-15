@@ -15,5 +15,16 @@ namespace TTT.Core.Domain.Factories
 			};
 			return game;
 		}
+
+		public GameMove CreateFrom(Enums.PlayerType owner, Enums.BoardPosition position)
+		{
+			var move = new GameMove
+			{
+				Id = Guid.NewGuid(),
+				Owner = owner,
+				Position = position
+			};
+			return move;
+		}
 	}
 }

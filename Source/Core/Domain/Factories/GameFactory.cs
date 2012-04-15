@@ -1,4 +1,6 @@
-﻿using TTT.Core.Domain.Entities;
+﻿using System;
+using System.Collections.Generic;
+using TTT.Core.Domain.Entities;
 
 namespace TTT.Core.Domain.Factories
 {
@@ -6,7 +8,12 @@ namespace TTT.Core.Domain.Factories
 	{
 		public Game CreateNew()
 		{
-			throw new System.NotImplementedException();
+			var game = new Game
+			{
+				Id = Guid.NewGuid(),
+				Moves = new List<GameMove>()
+			};
+			return game;
 		}
 	}
 }

@@ -1,0 +1,340 @@
+﻿/*
+YUI 3.4.1 (build 4118)
+Copyright 2011 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+http://yuilibrary.com/license/
+*/
+/*
+	TODO will need to remove settings on HTML since we can't namespace it.
+	TODO with the prefix, should I group by selector or property for weight savings?
+*/
+html {
+  color: #000;
+  background: #FFF;
+}
+/*
+	TODO remove settings on BODY since we can't namespace it.
+*/
+/*
+	TODO test putting a class on HEAD.
+		- Fails on FF. 
+*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+fieldset, img {
+  border: 0;
+}
+/*
+	TODO think about hanlding inheritence differently, maybe letting IE6 fail a bit...
+*/
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+ol, ul {
+  list-style: none;
+}
+caption, th {
+  text-align: left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+q:before, q:after {
+  content: '';
+}
+abbr, acronym {
+  border: 0;
+  font-variant: normal;
+}
+/* to preserve line-height and selector appearance */
+sup {
+  vertical-align: text-top;
+}
+sub {
+  vertical-align: text-bottom;
+}
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+/*to enable resizing for IE*/
+input, textarea, select {
+  *font-size: 100%;
+}
+/*because legend doesn't inherit in IE */
+legend {
+  color: #000;
+}
+/* --------------------------------------------------------- *\
+	Site Core
+\* --------------------------------------------------------- */
+/* Positioning */
+.relativeblock {
+  position: relative;
+  display: block;
+}
+.relativeinlineblock {
+  position: relative;
+  display: inline-block;
+}
+.absoluteblock {
+  position: absolute;
+  display: block;
+}
+.leftblock {
+  float: left;
+  display: block;
+}
+.rightblock {
+  float: right;
+  display: block;
+}
+/* Effects */
+/* --------------------------------------------------------- *\
+	Dimensions
+\* --------------------------------------------------------- */
+/* --------------------------------------------------------- *\
+	Color
+\* --------------------------------------------------------- */
+/* --------------------------------------------------------- *\
+	Typography
+\* --------------------------------------------------------- */
+/* Fonts */
+/* 12px */
+/* 16px */
+/* 21px */
+/* 28px */
+HTML, BODY {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  line-height: 1.5em;
+  color: #666666;
+  background-color: #eeeeee;
+  background-image: url('../images/pattern_noise.png');
+  background-repeat: repeat;
+  background-position: center center;
+}
+.antialias {
+  text-shadow: rgba(0, 0, 0, 0.75) 0 0 1px;
+  /* Anti-alias hack for some browsers to make the font look better. */
+
+}
+.antialias-white {
+  text-shadow: rgba(255, 255, 255, 0.75) 0 0 1px;
+  /* Anti-alias hack for some browsers to make the font look better. */
+
+}
+.textleft {
+  text-align: left;
+}
+.textcenter {
+  text-align: center;
+}
+.textright {
+  text-align: right;
+}
+/* --------------------------------------------------------- *\
+	Elements
+\* --------------------------------------------------------- */
+H1 {
+  position: relative;
+  display: block;
+  padding: 0px;
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: 3.5em;
+  font-weight: bold;
+  line-height: 0.75em;
+  color: #333333;
+}
+H2 {
+  position: relative;
+  display: block;
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #4A4A4A;
+  margin-bottom: 1em;
+  color: #333333;
+}
+H3 {
+  position: relative;
+  display: block;
+  font-size: 100%;
+  font-weight: bold;
+  color: #4A4A4A;
+}
+.pageHeadline {
+  position: relative;
+  display: block;
+  margin: 0px 0px 0px 1px;
+  padding: 0px;
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: 1.75em;
+  font-weight: bold;
+  line-height: 0.9em;
+  color: #333333;
+}
+.pageHeadline.reallylarge {
+  margin: 0px;
+  font-size: 2.5em;
+}
+.pageHeadline.superlarge {
+  margin: 0px;
+  font-size: 3.5em;
+}
+P {
+  position: relative;
+  display: block;
+  margin: 0 0 1em;
+}
+A {
+  font-weight: bold;
+  text-decoration: none;
+}
+A:hover {
+  text-decoration: underline;
+}
+/* --------------------------------------------------------- *\
+	Layout
+\* --------------------------------------------------------- */
+.noDisplay {
+  display: none;
+}
+#pageContainer {
+  position: relative;
+  display: block;
+  margin: 0px;
+  padding: 0px;
+}
+#pageContainer HEADER {
+  position: relative;
+  display: block;
+  margin: 0px;
+  padding: 0px;
+  background-color: #eeeeee;
+}
+#pageContainer HEADER P {
+  margin: 0px;
+  padding: 10px;
+  font-size: 1.75em;
+  color: #333333;
+  line-height: 1.5em;
+}
+#pageContainer #pageContent {
+  position: relative;
+  display: block;
+  margin: 0px;
+  padding: 0px;
+}
+#pageContainer #pageContent #mainHeader {
+  position: relative;
+  display: block;
+  margin: 0px;
+  padding: 0px;
+}
+#pageContainer #pageContent #mainContent {
+  position: relative;
+  display: block;
+  margin: 0px;
+  padding: 0px;
+}
+#pageContainer #pageContent #mainFooter {
+  position: relative;
+  display: block;
+  margin: 0px;
+  padding: 0px;
+}
+#pageContainer FOOTER {
+  position: relative;
+  display: block;
+  padding: 0 0px;
+}
+.codeblock {
+  position: relative;
+  display: block;
+  overflow-x: scroll;
+  padding: 10px 10px 10px 20px;
+  color: #666666;
+  text-align: left;
+  background: #DDDDDD;
+  border: 1px dashed #333333;
+}
+LABEL {
+  font-weight: bold;
+}
+LABEL.forceful {
+  position: relative;
+  display: block;
+  margin: 2px 0px 4px;
+}
+LABEL.lefty {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  margin-right: 10px;
+}
+INPUT.full, SELECT.full {
+  width: 75%;
+}
+INPUT.medium, SELECT.medium {
+  width: 150px;
+}
+SECTION {
+  position: relative;
+  display: block;
+  margin: 20px 0px;
+}
+SECTION.spaced {
+  margin: 50px 0px;
+}
+/* --------------------------------------------------------- *\
+	Page Specific Styles
+\* --------------------------------------------------------- */
+/* --------------------------------------------------------- *\
+	Legacy Style Support
+\* --------------------------------------------------------- */

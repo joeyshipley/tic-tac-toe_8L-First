@@ -1,0 +1,435 @@
+﻿/*
+YUI 3.4.1 (build 4118)
+Copyright 2011 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+http://yuilibrary.com/license/
+*/
+/*
+	TODO will need to remove settings on HTML since we can't namespace it.
+	TODO with the prefix, should I group by selector or property for weight savings?
+*/
+html{
+	color:#000;
+	background:#FFF;
+}
+/*
+	TODO remove settings on BODY since we can't namespace it.
+*/
+/*
+	TODO test putting a class on HEAD.
+		- Fails on FF. 
+*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+	margin:0;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,
+img {
+	border:0;
+}
+/*
+	TODO think about hanlding inheritence differently, maybe letting IE6 fail a bit...
+*/
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+	font-style:normal;
+	font-weight:normal;
+}
+
+ol,
+ul {
+	list-style:none;
+}
+
+caption,
+th {
+	text-align:left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,
+q:after {
+	content:'';
+}
+abbr,
+acronym {
+	border:0;
+	font-variant:normal;
+}
+/* to preserve line-height and selector appearance */
+sup {
+	vertical-align:text-top;
+}
+sub {
+	vertical-align:text-bottom;
+}
+input,
+textarea,
+select {
+	font-family:inherit;
+	font-size:inherit;
+	font-weight:inherit;
+}
+/*to enable resizing for IE*/
+input,
+textarea,
+select {
+	*font-size:100%;
+}
+/*because legend doesn't inherit in IE */
+legend {
+	color:#000;
+}
+
+
+/* --------------------------------------------------------- *\
+	Site Core
+\* --------------------------------------------------------- */
+/* Positioning */
+.relativeblock
+{
+	position: relative;
+	display: block;
+}
+.relativeinlineblock
+{
+	position: relative;
+	display: inline-block;
+}
+.absoluteblock
+{
+	position: absolute;
+	display: block;
+}
+.leftblock
+{
+	float: left;
+	display: block;
+}
+.rightblock
+{
+	float: right;
+	display: block;
+}
+
+/* Effects */
+.boxshadow (@spread: 3px, @color: RGBA(0, 0, 0, 0.5))
+{
+	-moz-box-shadow: 0 0 @spread @spread @color;
+	-webkit-box-shadow: 0 0 @spread @spread @color;
+	box-shadow: 0 0 @spread @spread @color;
+}
+.insetboxshadow (@spread: 3px)
+{
+	-moz-box-shadow: inset 0 0 @spread @spread RGBA(0, 0, 0, 0.3);
+	-webkit-box-shadow: inset 0 0 @spread @spread RGBA(0, 0, 0, 0.3);
+	box-shadow: inset 0 0 @spread @spread RGBA(0, 0, 0, 0.3);
+}
+.borderradius (@TL: 3px, @TR: 3px, @BR: 3px, @BL: 3px)
+{
+	border-radius: @TL @TR @BR @BL;
+	-moz-border-radius: @TL @TR @BR @BL;
+}
+.textshadow (@spread: 3px)
+{
+	text-shadow: 0px 0px @spread RGBA(0, 0, 0, 0.75);
+}
+
+
+/* --------------------------------------------------------- *\
+	Dimensions
+\* --------------------------------------------------------- */
+@site_width: 480px;
+
+
+/* --------------------------------------------------------- *\
+	Color
+\* --------------------------------------------------------- */
+@color_bg-base: #EEEEEE;
+@color_font-text: #666666;
+@color_font-header: #333333;
+
+
+/* --------------------------------------------------------- *\
+	Typography
+\* --------------------------------------------------------- */
+/* Fonts */
+@site_fontfamily: Helvetica, Arial, sans-serif;
+@site_fontfamily-black: "Arial Black", Arial, sans-serif;
+@site_fontsize-small: 0.75em; /* 12px */
+@site_fontsize: 100%; /* 16px */
+@site_fontsize-large: 1.3em; /* 21px */
+@site_fontsize-xlarge: 1.75em; /* 28px */
+@site_fontsize-reallylarge: 2.5em;
+@site_fontsize-superlarge: 3.5em;
+@site_fontsize-superxlarge: 4.5em;
+@site_lineheight: 1.5em;
+
+HTML, BODY
+{
+	font-family: @site_fontfamily;
+	font-size: @site_fontsize;
+	line-height: @site_lineheight;
+	color: @color_font-text;
+	background-color: @color_bg-base;
+	background-image: url('../images/pattern_noise.png');
+	background-repeat: repeat;
+	background-position: center center;
+}
+
+.antialias
+{
+	text-shadow: RGBA(0, 0, 0, 0.75) 0 0 1px; /* Anti-alias hack for some browsers to make the font look better. */
+}
+.antialias-white
+{
+	text-shadow: RGBA(255, 255, 255, 0.75) 0 0 1px; /* Anti-alias hack for some browsers to make the font look better. */
+}
+.textleft
+{
+	text-align: left;
+}
+.textcenter
+{
+	text-align: center;
+}
+.textright
+{
+	text-align: right;
+}
+
+
+/* --------------------------------------------------------- *\
+	Elements
+\* --------------------------------------------------------- */
+H1
+{
+	.relativeblock;
+	padding: 0px;
+	font-family: @site_fontfamily-black;
+	font-size: @site_fontsize-superlarge;
+	font-weight: bold;
+	line-height: 0.75em;
+	color: @color_font-header;
+}
+H2
+{
+	.relativeblock;
+	font-size: @site_fontsize-large;
+	font-weight: bold;
+	color: #4A4A4A;
+	margin-bottom: 1em;
+	color: @color_font-header;
+}
+H3
+{
+	.relativeblock;
+	font-size: @site_fontsize;
+	font-weight: bold;
+	color: #4A4A4A;
+}
+.pageHeadline
+{
+	.relativeblock;
+	margin: 0px 0px 0px 1px;
+	padding: 0px;
+	font-family: @site_fontfamily-black;
+	font-size: @site_fontsize-xlarge;
+	font-weight: bold;
+	line-height: 0.9em;
+	color: @color_font-header;
+}
+.pageHeadline.reallylarge
+{
+	margin: 0px;
+	font-size: @site_fontsize-reallylarge;
+}
+.pageHeadline.superlarge
+{
+	margin: 0px;
+	font-size: @site_fontsize-superlarge;
+}
+P
+{
+	.relativeblock;
+	margin: 0 0 1em;
+}
+A
+{
+	font-weight: bold;
+	text-decoration: none;
+}
+A:hover
+{
+	text-decoration: underline;
+}
+
+
+/* --------------------------------------------------------- *\
+	Layout
+\* --------------------------------------------------------- */
+
+.noDisplay
+{
+	display: none;
+}
+
+#pageContainer
+{
+	.relativeblock;
+	margin: 0px;
+	padding: 0px;
+
+	HEADER
+	{
+		.relativeblock;
+		margin: 0px;
+		padding: 0px;
+		background-color: @color_bg-base;
+
+		P 
+		{
+			margin: 0px;
+			padding: 10px;
+			font-size: @site_fontsize-xlarge;
+			color: #333333;
+			line-height: 1.5em;
+		}
+	}
+
+	#pageContent
+	{
+		.relativeblock;
+		margin: 0px;
+		padding: 0px;
+
+		#mainHeader
+		{
+			.relativeblock;
+			margin: 0px;
+			padding: 0px;
+		}
+
+		#mainContent
+		{
+			.relativeblock;
+			margin: 0px;
+			padding: 0px;
+		}
+
+		#mainFooter
+		{
+			.relativeblock;
+			margin: 0px;
+			padding: 0px;
+		}
+	}
+
+	FOOTER
+	{
+		.relativeblock;
+		padding: 0 0px;
+	}
+}
+
+.codeblock
+{
+	.relativeblock;
+	overflow-x: scroll;
+	padding: 10px 10px 10px 20px;
+	color: #666666;
+	text-align: left;
+	background: #DDDDDD;
+	border: 1px dashed #333333;
+}
+
+LABEL
+{
+	font-weight: bold;
+}
+
+LABEL.forceful
+{
+	.relativeblock;
+	margin: 2px 0px 4px; 
+}
+
+LABEL.lefty
+{
+	.relativeinlineblock;
+	width: 50%;
+	margin-right: 10px;
+}
+
+INPUT.full, SELECT.full
+{
+	width: 75%;
+}
+
+INPUT.medium, SELECT.medium
+{
+	width: 150px;
+}
+
+SECTION
+{
+	.relativeblock;
+	margin: 20px 0px;
+}
+
+SECTION.spaced
+{
+	margin: 50px 0px;
+}
+
+
+/* --------------------------------------------------------- *\
+	Page Specific Styles
+\* --------------------------------------------------------- */
+
+
+/* --------------------------------------------------------- *\
+	Legacy Style Support
+\* --------------------------------------------------------- */

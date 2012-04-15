@@ -43,6 +43,10 @@
     <Reference Include="Moq">
       <HintPath>..\..\Components\Testing\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Components\Structuremap\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,17 +56,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\Builders\GameBuilder.cs" />
+    <Compile Include="Helpers\Builders\GameModelBuilder.cs" />
+    <Compile Include="Infrastructure\BaseIntegrationTest.cs" />
     <Compile Include="Infrastructure\BaseIsolationTest.cs" />
+    <Compile Include="Integration\Data\Repositories\GameRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unit\Core\Application\Factories\ModelFactoryTests.cs" />
     <Compile Include="Unit\Core\Application\Services\GameServiceTests.cs" />
+    <Compile Include="Unit\Domain\Factories\GameFactoryTests.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helpers\Builders\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{4CD392B4-4764-40A6-8BCE-D1CD3F0249F8}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Website\Website.csproj">
+      <Project>{C7F0941C-3AE3-4C87-A392-2F4EBF7BF2A1}</Project>
+      <Name>Website</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

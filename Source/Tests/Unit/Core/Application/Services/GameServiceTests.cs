@@ -1,5 +1,13 @@
-﻿using Machine.Specifications;
+﻿using System;
+using System.Linq;
+using Machine.Specifications;
+using TTT.Core.Application.Factories;
+using TTT.Core.Application.Repositories;
 using TTT.Core.Application.Services;
+using TTT.Core.Domain.Entities;
+using TTT.Core.Domain.Factories;
+using TTT.Core.Domain.Models;
+using TTT.Tests.Helpers.Builders;
 using TTT.Tests.Infrastructure;
 
 namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
@@ -8,15 +16,31 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 	public class When_loading_a_new_game_up_for_a_player
 		: BaseIsolationTest<GameService>
 	{
-		Establish context;
+		private static GameModel _result;
 
-		Because of;
+		Establish context = () =>
+		{
+			var game = new GameBuilder().Build();
+			Mocks.GetMock<IGameFactory>()
+				.Setup(f => f.CreateNew())
+				.Returns(game);
+			var gameModel = new GameModelBuilder().BuildNewGame();
+			Mocks.GetMock<IModelFactory>()
+				.Setup(f => f.CreateFrom(Moq.It.IsAny<Game>()))
+				.Returns(gameModel);
+		};
 
-		It should_create_the_game_in_storage;
+		Because of = () => _result = ClassUnderTest.New();
 
-		It should_return_the_current_games_id;
+		It should_create_the_game_in_storage = () => 
+			Mocks.GetMock<IGameRepository>()
+				.Verify(r => r.Save(Moq.It.IsAny<Game>()));
 
-		It should_return_an_empty_set_of_moves_performed;
+		It should_return_the_current_games_id = () =>
+			_result.GameId.ShouldNotEqual(Guid.Empty);
+
+		It should_return_an_empty_set_of_moves_performed = () =>
+			_result.GameMoves.Any().ShouldBeFalse();
 	}
 
 	[Subject("Application, Services, GameService, Existing game")]

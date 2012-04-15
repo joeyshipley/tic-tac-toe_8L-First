@@ -44,16 +44,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Factories\IModelFactory.cs" />
+    <Compile Include="Application\Factories\ModelFactory.cs" />
+    <Compile Include="Application\Repositories\IGameRepository.cs" />
     <Compile Include="Application\Services\GameService.cs" />
     <Compile Include="Application\Services\IGameService.cs" />
+    <Compile Include="Data\Repositories\GameRepository.cs" />
+    <Compile Include="Domain\Entities\Game.cs" />
+    <Compile Include="Domain\Entities\GameMove.cs" />
+    <Compile Include="Domain\Enums.cs" />
+    <Compile Include="Domain\Factories\GameFactory.cs" />
+    <Compile Include="Domain\Factories\IGameFactory.cs" />
+    <Compile Include="Domain\Models\GameModel.cs" />
+    <Compile Include="Domain\Models\GameMoveModel.cs" />
     <Compile Include="Infrastructure\IoC\IoCConfiguration.cs" />
     <Compile Include="Infrastructure\IoC\StructureMapDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Domain\Entities\" />
-    <Folder Include="Domain\Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

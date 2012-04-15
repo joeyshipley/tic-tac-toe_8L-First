@@ -1,39 +1,46 @@
-﻿using Machine.Specifications;
+﻿using System;
+using Machine.Specifications;
 using TTT.Core.Data.Repositories;
+using TTT.Core.Domain.Entities;
+using TTT.Tests.Helpers.Builders;
 using TTT.Tests.Infrastructure;
 
 namespace TTT.Tests.Integration.Data.Repositories
 {
 	[Subject("Data, Repositories, Game")]
-	public class When_asking_for_a_game
-		: BaseIntegrationTest<GameRepository>
+	public class When_using_the_game_repository
+		: BaseIntegrationTest<CacheGameRepository>
 	{
-		Establish context;
+		private static Game _fromStorageResult;
+		private static Game _shouldntExistResult;
+		private static Guid _id;
+		private static Game _game;
 
-		Because of;
+		Establish context = () =>
+		{
+			_id = Guid.NewGuid();
+			_game = new GameBuilder().WithId(_id).Build();
+		};
 
-		It should_be_able_to_return_an_existing_game;
-	}
+		Because of = () => 
+		{
+			// add the game to storage
+			ClassUnderTest.Save(_game);
 
-	[Subject("Data, Repositories, Game")]
-	public class When_saving_a_game
-		: BaseIntegrationTest<GameRepository>
-	{
-		Establish context;
+			// fetch the game from storage
+			_fromStorageResult = ClassUnderTest.Get(_id);
 
-		Because of;
+			// remove the game from storage
+			ClassUnderTest.Remove(_game);
 
-		It should_be_able_to_store_a_game;
-	}
+			// attempt to retrieve the removed game from storage
+			_shouldntExistResult = ClassUnderTest.Get(_id);
+		};
 
-	[Subject("Data, Repositories, Game")]
-	public class When_removing_a_game
-		: BaseIntegrationTest<GameRepository>
-	{
-		Establish context;
+		It should_be_able_save_and_return_a_game_from_storage = () =>
+			_fromStorageResult.Id.ShouldEqual(_id);
 
-		Because of;
-
-		It should_be_able_remove_a_game_from_the_storage;
+		It should_be_able_to_remove_a_game_from_storage = () =>
+			_shouldntExistResult.ShouldBeNull();
 	}
 }

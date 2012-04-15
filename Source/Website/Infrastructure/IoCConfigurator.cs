@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using StructureMap;
+using TTT.Core.Application.Repositories;
+using TTT.Core.Data.Repositories;
 using TTT.Core.Infrastructure.IoC;
 
 namespace TTT.Website.Infrastructure
@@ -23,7 +25,7 @@ namespace TTT.Website.Infrastructure
 			{
 				// NOTE: adding an expression, needs to be added in 
 				// both CreateContainer() and InitializeObjectFactory().
-				//c.For<IErrorRepository>().Use<DbErrorRepository>();
+				c.For<IGameRepository>().Use<CacheGameRepository>();
 			}));
 			return container;
 		}
@@ -34,7 +36,7 @@ namespace TTT.Website.Infrastructure
 			{
 				// NOTE: adding an expression, needs to be added in 
 				// both CreateContainer() and InitializeObjectFactory().
-				//c.For<IErrorRepository>().Use<DbErrorRepository>();
+				c.For<IGameRepository>().Use<CacheGameRepository>();
 			}));
 		}
 	}

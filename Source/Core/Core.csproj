@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,10 +47,12 @@
   <ItemGroup>
     <Compile Include="Application\Factories\IModelFactory.cs" />
     <Compile Include="Application\Factories\ModelFactory.cs" />
+    <Compile Include="Application\Infrastructure\ICacheDataStorage.cs" />
     <Compile Include="Application\Repositories\IGameRepository.cs" />
     <Compile Include="Application\Services\GameService.cs" />
     <Compile Include="Application\Services\IGameService.cs" />
-    <Compile Include="Data\Repositories\GameRepository.cs" />
+    <Compile Include="Data\Infrastructure\CacheDataStorage.cs" />
+    <Compile Include="Data\Repositories\CacheGameRepository.cs" />
     <Compile Include="Domain\Entities\Game.cs" />
     <Compile Include="Domain\Entities\GameMove.cs" />
     <Compile Include="Domain\Enums.cs" />

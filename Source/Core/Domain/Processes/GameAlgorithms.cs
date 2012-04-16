@@ -17,13 +17,8 @@ namespace TTT.Core.Domain.Processes
 
 		private GameMove getFirstMove(Game game)
 		{
-			// if center position is available, take it.
-			var move = getCenterPositionIfAvailable(game);
-
-			// if the center position has been taken, take one of the corners.
-			if(move == null)
-				move = firstMoveCornerFallBackWhenCenterHasBeenTaken();
-
+			var move = getCenterPositionIfAvailable(game) 
+				?? firstMoveCornerFallBackWhenCenterHasBeenTaken();
 			return move;
 		}
 

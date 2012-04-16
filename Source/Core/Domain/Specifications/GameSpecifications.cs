@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using TTT.Core.Domain.Entities;
+using TTT.Core.Domain.Helpers;
 
 namespace TTT.Core.Domain.Specifications
 {
@@ -44,7 +45,7 @@ namespace TTT.Core.Domain.Specifications
 
 			for(var columnValue = 1; columnValue <= Constants.BoardPositionRowLength; columnValue++)
 			{
-				var column = numericValueToAlphabetValue(columnValue);
+				var column = columnValue.ToAlphabet();
 				for(var rowValue = 1; rowValue <= Constants.BoardPositionRowLength; rowValue++)
 				{
 					var row = rowValue;
@@ -72,7 +73,7 @@ namespace TTT.Core.Domain.Specifications
 				var isDiagonalMatch = true;
 				for(var i = 1; i < Constants.BoardPositionRowLength; i++)
 				{
-					var column = numericValueToAlphabetValue(i);
+					var column = i.ToAlphabet();
 					var currentDiagonalPosition = BoardPosition.CreateFrom(column, i);
 
 					// has a move been set for this column/row
@@ -89,7 +90,7 @@ namespace TTT.Core.Domain.Specifications
 				var isDiagonalMatch = true;
 				for(var i = Constants.BoardPositionRowLength; i > 0; i--)
 				{
-					var column = numericValueToAlphabetValue(i);
+					var column = i.ToAlphabet();
 					var currentDiagonalPosition = BoardPosition.CreateFrom(column, Constants.BoardPositionRowLength - i + 1);
 
 					// has a move been set for this column/row
@@ -108,11 +109,6 @@ namespace TTT.Core.Domain.Specifications
 			var move = game.Moves.FirstOrDefault(m => m.Position.Equals(position));
 			return move != null 
 				&& move.Owner == owner;
-		}
-
-		private string numericValueToAlphabetValue(int numeric)
-		{
-			return ((char)(65 + (numeric - 1))).ToString();
 		}
 	}
 }

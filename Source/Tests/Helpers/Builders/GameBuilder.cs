@@ -58,5 +58,43 @@ namespace TTT.Tests.Helpers.Builders
 			};
 			return game;
 		}
+
+		public Game BuildWithPossibleWinningMove()
+		{
+			var moves = new List<GameMove>
+			{
+				new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 1) },
+				new GameMove { Owner = Enums.PlayerType.Computer, Position = BoardPosition.CreateFrom("B", 1) },
+				new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 2) }
+			};
+
+			var game = new Game
+			{
+				Id = _id,
+				Moves =  moves,
+				IsGameOver = _isGameOver
+			};
+			return game;
+		}
+
+		public Game BuildWithMultiplePossibleWinningMove()
+		{
+			var moves = new List<GameMove>
+			{
+				new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 1) },
+				new GameMove { Owner = Enums.PlayerType.Computer, Position = BoardPosition.CreateFrom("B", 2) },
+				new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("C", 3) },
+				new GameMove { Owner = Enums.PlayerType.Computer, Position = BoardPosition.CreateFrom("A", 3) },
+				new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("C", 1) }
+			};
+
+			var game = new Game
+			{
+				Id = _id,
+				Moves =  moves,
+				IsGameOver = _isGameOver
+			};
+			return game;
+		}
 	}
 }

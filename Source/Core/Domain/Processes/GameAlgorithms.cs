@@ -19,6 +19,13 @@ namespace TTT.Core.Domain.Processes
 		{
 			var move = getCenterPositionIfAvailable(game) 
 				?? firstMoveCornerFallBackWhenCenterHasBeenTaken();
+
+			// TODO: check to see if there are any player winning positions that should be taken
+
+			// TODO: check to see if there are any computer winning positions that should be taken
+
+			// TODO: if none have been found, randomly select from the available positions.
+
 			return move;
 		}
 

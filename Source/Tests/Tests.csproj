@@ -69,6 +69,8 @@
     <Compile Include="Unit\Domain\Entities\GameTests.cs" />
     <Compile Include="Unit\Domain\Factories\GameFactoryTests.cs" />
     <Compile Include="Unit\Domain\Processes\GameAlgorithmsTests.cs" />
+    <Compile Include="Unit\Domain\Providers\AvailableWinningPositionsProviderTests.cs" />
+    <Compile Include="Unit\Domain\Providers\WinningSetsProviderTests.cs" />
     <Compile Include="Unit\Domain\Specifications\GameSpecificationsTests.cs" />
   </ItemGroup>
   <ItemGroup />

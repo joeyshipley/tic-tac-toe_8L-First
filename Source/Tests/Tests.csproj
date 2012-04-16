@@ -67,6 +67,8 @@
     <Compile Include="Unit\Core\Application\Services\GameServiceTests.cs" />
     <Compile Include="Unit\Domain\Entities\GameTests.cs" />
     <Compile Include="Unit\Domain\Factories\GameFactoryTests.cs" />
+    <Compile Include="Unit\Domain\Processes\GameAlgorithmsTests.cs" />
+    <Compile Include="Unit\Domain\Specifications\GameSpecificationsTests.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

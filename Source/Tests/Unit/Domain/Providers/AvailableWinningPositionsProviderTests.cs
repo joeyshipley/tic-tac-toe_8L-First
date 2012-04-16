@@ -11,7 +11,7 @@ namespace TTT.Tests.Unit.Domain.Providers.WinningPositionProviderTests
 {
 	[Subject("Domain, Providers, WinningPositionProvider")]
 	public class When_asking_for_the_possible_winning_moves_and_there_are_none
-		: BaseIsolationTest<AvailableWinningPositionsProvider>
+		: BaseIntegrationTest<AvailableWinningPositionsProvider>
 	{
 		private static IList<BoardPosition> _result;
 		private static Game _game;
@@ -29,7 +29,7 @@ namespace TTT.Tests.Unit.Domain.Providers.WinningPositionProviderTests
 
 	[Subject("Domain, Providers, WinningPositionProvider")]
 	public class When_asking_for_the_possible_winning_moves_and_there_are_none_because_they_have_been_blocked_by_the_other_player
-		: BaseIsolationTest<AvailableWinningPositionsProvider>
+		: BaseIntegrationTest<AvailableWinningPositionsProvider>
 	{
 		private static IList<BoardPosition> _result;
 		private static Game _game;
@@ -55,7 +55,7 @@ namespace TTT.Tests.Unit.Domain.Providers.WinningPositionProviderTests
 
 	[Subject("Domain, Providers, WinningPositionProvider")]
 	public class When_asking_for_the_possible_winning_moves_and_there_is_one
-		: BaseIsolationTest<AvailableWinningPositionsProvider>
+		: BaseIntegrationTest<AvailableWinningPositionsProvider>
 	{
 		private static IList<BoardPosition> _result;
 		private static Game _game;
@@ -73,7 +73,7 @@ namespace TTT.Tests.Unit.Domain.Providers.WinningPositionProviderTests
 
 	[Subject("Domain, Providers, WinningPositionProvider")]
 	public class When_asking_for_the_possible_winning_moves_and_there_is_more_than_one
-		: BaseIsolationTest<AvailableWinningPositionsProvider>
+		: BaseIntegrationTest<AvailableWinningPositionsProvider>
 	{
 		private static IList<BoardPosition> _result;
 		private static Game _game;

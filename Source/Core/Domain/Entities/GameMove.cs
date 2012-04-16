@@ -6,6 +6,6 @@ namespace TTT.Core.Domain.Entities
 	{
 		public Guid Id { get; set; }
 		public Enums.PlayerType Owner { get; set; }
-		public Enums.BoardPosition Position { get; set; }
+		public BoardPosition Position { get; set; }
 	}
 }

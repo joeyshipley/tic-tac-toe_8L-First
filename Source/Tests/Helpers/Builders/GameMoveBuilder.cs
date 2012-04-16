@@ -14,7 +14,7 @@ namespace TTT.Tests.Helpers.Builders
 			return this;
 		}
 
-		public GameMove Build(Enums.PlayerType owner, Enums.BoardPosition position)
+		public GameMove Build(Enums.PlayerType owner, BoardPosition position)
 		{
 			var move = new GameMove
 			{

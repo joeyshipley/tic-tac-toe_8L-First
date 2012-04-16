@@ -20,7 +20,7 @@ namespace TTT.Tests.Unit.Domain.Entities.GameTests
 		{
 			_gameMoveId = Guid.NewGuid();
 			_game = new GameBuilder().Build();
-			_move = new GameMoveBuilder().WithId(_gameMoveId).Build(Enums.PlayerType.Human, Enums.BoardPosition.MiddleCenter);
+			_move = new GameMoveBuilder().WithId(_gameMoveId).Build(Enums.PlayerType.Human, BoardPosition.CreateFrom("B", 2));
 		};
 
 		Because of = () => _game.AddMove(_move);

@@ -3,6 +3,6 @@
 	public class GameMoveModel
 	{
 		public Enums.PlayerType Owner { get; set; }
-		public Enums.BoardPosition Position { get; set; }
+		public BoardPositionModel Position { get; set; }
 	}
 }

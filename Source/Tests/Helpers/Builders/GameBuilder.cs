@@ -44,10 +44,10 @@ namespace TTT.Tests.Helpers.Builders
 		{
 			var moves = new List<GameMove>
 			{
-				new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.TopLeft },
-				new GameMove { Owner = Enums.PlayerType.Computer, Position = Enums.BoardPosition.TopCenter },
-				new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.MiddleLeft },
-				new GameMove { Owner = Enums.PlayerType.Computer, Position = Enums.BoardPosition.MiddleCenter }
+				new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 1) },
+				new GameMove { Owner = Enums.PlayerType.Computer, Position = BoardPosition.CreateFrom("B", 1) },
+				new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 2) },
+				new GameMove { Owner = Enums.PlayerType.Computer, Position = BoardPosition.CreateFrom("B", 2) }
 			};
 
 			var game = new Game

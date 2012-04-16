@@ -2,7 +2,6 @@
 {
 	public class Constants
 	{
-		public const int MaxNumberOfPositionsAvailable = 9;
-		public const int NumberInSetToWin = 3;
+		public const int BoardPositionRowLength = 3;
 	}
 }

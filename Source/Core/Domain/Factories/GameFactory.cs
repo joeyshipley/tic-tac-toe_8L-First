@@ -16,7 +16,7 @@ namespace TTT.Core.Domain.Factories
 			return game;
 		}
 
-		public GameMove CreateFrom(Enums.PlayerType owner, Enums.BoardPosition position)
+		public GameMove CreateFrom(Enums.PlayerType owner, BoardPosition position)
 		{
 			var move = new GameMove
 			{

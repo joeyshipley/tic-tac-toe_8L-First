@@ -55,11 +55,13 @@
     <Compile Include="Data\Infrastructure\CacheDataStorage.cs" />
     <Compile Include="Data\Repositories\CacheGameRepository.cs" />
     <Compile Include="Domain\Constants.cs" />
+    <Compile Include="Domain\Entities\BoardPosition.cs" />
     <Compile Include="Domain\Entities\Game.cs" />
     <Compile Include="Domain\Entities\GameMove.cs" />
     <Compile Include="Domain\Enums.cs" />
     <Compile Include="Domain\Factories\GameFactory.cs" />
     <Compile Include="Domain\Factories\IGameFactory.cs" />
+    <Compile Include="Domain\Models\BoardPositionModel.cs" />
     <Compile Include="Domain\Models\GameModel.cs" />
     <Compile Include="Domain\Models\GameMoveModel.cs" />
     <Compile Include="Domain\Models\ValidationError.cs" />

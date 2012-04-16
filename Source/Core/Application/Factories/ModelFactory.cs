@@ -29,10 +29,11 @@ namespace TTT.Core.Application.Factories
 		{
 			var moves = game.Moves.Select(move => 
 			{
+				var position = BoardPositionModel.CreateFrom(move.Position);;
 				var moveModel = new GameMoveModel
 				{
 					Owner = move.Owner,
-					Position = move.Position
+					Position = position
 				};
 				return moveModel;
 			}).ToList();

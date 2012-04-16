@@ -27,7 +27,7 @@ namespace TTT.Tests.Unit.Core.Application.Factories.ModelFactoryTests
 				{
 					Id = Guid.NewGuid(),
 					Owner = Enums.PlayerType.Human,
-					Position = Enums.BoardPosition.MiddleCenter
+					Position = BoardPosition.CreateFrom("B", 2)
 				}
 			};
 			_game = new GameBuilder()
@@ -69,7 +69,7 @@ namespace TTT.Tests.Unit.Core.Application.Factories.ModelFactoryTests
 				{
 					Id = Guid.NewGuid(),
 					Owner = Enums.PlayerType.Human,
-					Position = Enums.BoardPosition.MiddleCenter
+					Position = BoardPosition.CreateFrom("B", 2)
 				}
 			};
 			_game = new GameBuilder()

@@ -20,7 +20,7 @@ namespace TTT.Tests.Unit.Domain.Specifications.GameSpecificationsTests
 			_game = new GameBuilder().Build();
 		};
 
-		Because of = () => _result = ClassUnderTest.IsMoveLegitimate(_game, Enums.PlayerType.Human, Enums.BoardPosition.MiddleCenter);
+		Because of = () => _result = ClassUnderTest.IsMoveLegitimate(_game, Enums.PlayerType.Human, BoardPosition.CreateFrom("B", 2));
 
 		It should_let_us_know_that_it_is_valid = () =>
 			_result.ShouldBeTrue();
@@ -37,12 +37,12 @@ namespace TTT.Tests.Unit.Domain.Specifications.GameSpecificationsTests
 		{
 			_game = new GameBuilder().WithMoves(new List<GameMove>
 			{
-				new GameMove { Position = Enums.BoardPosition.MiddleCenter }
+				new GameMove { Position = BoardPosition.CreateFrom("B", 2) }
 			})
 			.Build();
 		};
 
-		Because of = () => _result = ClassUnderTest.IsMoveLegitimate(_game, Enums.PlayerType.Human, Enums.BoardPosition.MiddleCenter);
+		Because of = () => _result = ClassUnderTest.IsMoveLegitimate(_game, Enums.PlayerType.Human, BoardPosition.CreateFrom("B", 2));
 
 		It should_let_us_know_that_it_is_not_valid = () =>
 			_result.ShouldBeFalse();
@@ -79,15 +79,15 @@ namespace TTT.Tests.Unit.Domain.Specifications.GameSpecificationsTests
 			_game = new GameBuilder().WithMoves(
 				new List<GameMove> 
 				{
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.TopLeft },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.TopCenter },
-					new GameMove { Owner = Enums.PlayerType.Computer, Position = Enums.BoardPosition.TopRight },
-					new GameMove { Owner = Enums.PlayerType.Computer, Position = Enums.BoardPosition.MiddleLeft },
-					new GameMove { Owner = Enums.PlayerType.Computer, Position = Enums.BoardPosition.MiddleCenter },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.MiddleRight },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.BottomLeft },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.BottomCenter },
-					new GameMove { Owner = Enums.PlayerType.Computer, Position = Enums.BoardPosition.BottomRight },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 1) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 2) },
+					new GameMove { Owner = Enums.PlayerType.Computer, Position = BoardPosition.CreateFrom("A", 3) },
+					new GameMove { Owner = Enums.PlayerType.Computer, Position = BoardPosition.CreateFrom("B", 1) },
+					new GameMove { Owner = Enums.PlayerType.Computer, Position = BoardPosition.CreateFrom("B", 2) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("B", 3) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("C", 1) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("C", 2) },
+					new GameMove { Owner = Enums.PlayerType.Computer, Position = BoardPosition.CreateFrom("C", 3) },
 				})
 				.Build();
 		};
@@ -110,9 +110,9 @@ namespace TTT.Tests.Unit.Domain.Specifications.GameSpecificationsTests
 			_game = new GameBuilder().WithMoves(
 				new List<GameMove> 
 				{
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.TopLeft },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.TopCenter },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.TopRight }
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 1) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 2) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 3) }
 				})
 				.Build();
 		};
@@ -135,9 +135,9 @@ namespace TTT.Tests.Unit.Domain.Specifications.GameSpecificationsTests
 			_game = new GameBuilder().WithMoves(
 				new List<GameMove> 
 				{
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.MiddleLeft },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.MiddleCenter },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.MiddleRight }
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("B", 1) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("B", 2) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("B", 3) }
 				})
 				.Build();
 		};
@@ -160,9 +160,9 @@ namespace TTT.Tests.Unit.Domain.Specifications.GameSpecificationsTests
 			_game = new GameBuilder().WithMoves(
 				new List<GameMove> 
 				{
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.BottomLeft },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.BottomCenter },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.BottomRight }
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("C", 1) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("C", 2) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("C", 3) }
 				})
 				.Build();
 		};
@@ -185,9 +185,9 @@ namespace TTT.Tests.Unit.Domain.Specifications.GameSpecificationsTests
 			_game = new GameBuilder().WithMoves(
 				new List<GameMove> 
 				{
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.TopLeft },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.MiddleLeft },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.BottomLeft }
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 1) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("B", 1) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("C", 1) }
 				})
 				.Build();
 		};
@@ -210,9 +210,9 @@ namespace TTT.Tests.Unit.Domain.Specifications.GameSpecificationsTests
 			_game = new GameBuilder().WithMoves(
 				new List<GameMove> 
 				{
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.TopCenter },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.MiddleCenter },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.BottomCenter }
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 2) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("B", 2) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("C", 2) }
 				})
 				.Build();
 		};
@@ -235,9 +235,9 @@ namespace TTT.Tests.Unit.Domain.Specifications.GameSpecificationsTests
 			_game = new GameBuilder().WithMoves(
 				new List<GameMove> 
 				{
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.TopRight },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.MiddleRight },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.BottomRight }
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 3) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("B", 3) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("C", 3) }
 				})
 				.Build();
 		};
@@ -260,9 +260,9 @@ namespace TTT.Tests.Unit.Domain.Specifications.GameSpecificationsTests
 			_game = new GameBuilder().WithMoves(
 				new List<GameMove> 
 				{
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.TopLeft },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.MiddleCenter },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.BottomRight }
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 1) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("B", 2) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("C", 3) }
 				})
 				.Build();
 		};
@@ -285,9 +285,9 @@ namespace TTT.Tests.Unit.Domain.Specifications.GameSpecificationsTests
 			_game = new GameBuilder().WithMoves(
 				new List<GameMove> 
 				{
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.BottomLeft },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.MiddleCenter },
-					new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.TopRight }
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("C", 1) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("B", 2) },
+					new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 3) }
 				})
 				.Build();
 		};

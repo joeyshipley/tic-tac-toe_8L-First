@@ -56,6 +56,7 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 		private static PerformMoveRequest _request;
 		private static Guid _gameId;
 		private static Game _game;
+		private static BoardPosition _position;
 
 		Establish context = () =>
 		{
@@ -64,7 +65,8 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 			{
 				GameId = _gameId,
 				Owner = Enums.PlayerType.Human,
-				Position = Enums.BoardPosition.MiddleCenter
+				SelectedColumn = "B",
+				SelectedRow = 2
 			};
 
 			_game = new GameBuilder().WithId(_gameId).Build();
@@ -72,14 +74,15 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 				.Setup(f => f.Get(Moq.It.IsAny<Guid>()))
 				.Returns(_game);
 			Mocks.GetMock<IGameSpecifications>()
-				.Setup(s => s.IsMoveLegitimate(_game, Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<Enums.BoardPosition>()))
+				.Setup(s => s.IsMoveLegitimate(_game, Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
 				.Returns(true);
+			_position = BoardPosition.CreateFrom(_request.SelectedColumn, _request.SelectedRow);
 			Mocks.GetMock<IGameFactory>()
-				.Setup(f => f.CreateFrom(_request.Owner, _request.Position))
-				.Returns(new GameMoveBuilder().Build(_request.Owner, _request.Position));
+				.Setup(f => f.CreateFrom(_request.Owner, _position))
+				.Returns(new GameMoveBuilder().Build(_request.Owner, _position));
 			Mocks.GetMock<IGameAlgorithms>()
 				.Setup(ga => ga.DetermineNextMove(_game))
-				.Returns(new GameMoveBuilder().Build(Enums.PlayerType.Computer, Enums.BoardPosition.TopLeft));
+				.Returns(new GameMoveBuilder().Build(Enums.PlayerType.Computer, _position));
 			Mocks.GetMock<IGameSpecifications>()
 				.Setup(s => s.IsGameOver(_game))
 				.Returns(false);
@@ -87,7 +90,7 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 				.Setup(f => f.CreateFrom(_game))
 				.Returns(new GameModelBuilder().WithMoves(new List<GameMoveModel>
 				{
-					new GameMoveModel { Owner = _request.Owner, Position = _request.Position }
+					new GameMoveModel { Owner = _request.Owner, Position = BoardPositionModel.CreateFrom(_position) }
 				}).Build());
 		};
 
@@ -95,11 +98,11 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 
 		It should_validate_the_legitimacy_of_the_move = () =>
 			Mocks.GetMock<IGameSpecifications>()
-				.Verify(s => s.IsMoveLegitimate(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<Enums.BoardPosition>()));
+				.Verify(s => s.IsMoveLegitimate(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()));
 
 		It should_apply_the_players_move = () =>
 			_game.Moves.Any(g => g.Owner == _request.Owner 
-				&& g.Position == _request.Position)
+				&& g.Position.Equals(_position))
 				.ShouldBeTrue();
 
 		It should_calculate_the_computers_next_move = () =>
@@ -111,9 +114,7 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 				.Verify(s => s.IsGameOver(Moq.It.IsAny<Game>()));
 
 		It should_return_the_current_set_of_moves_performed = () =>
-			_result.GameMoves.Any(g => g.Owner == _request.Owner 
-				&& g.Position == _request.Position)
-			.ShouldBeTrue();
+			_result.GameMoves.Any().ShouldBeTrue();
 	}
 	
 	[Subject("Application, Services, GameService, Existing game")]
@@ -124,6 +125,7 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 		private static PerformMoveRequest _request;
 		private static Guid _gameId;
 		private static Game _game;
+		private static BoardPosition _position;
 
 		Establish context = () =>
 		{
@@ -132,7 +134,8 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 			{
 				GameId = _gameId,
 				Owner = Enums.PlayerType.Human,
-				Position = Enums.BoardPosition.MiddleCenter
+				SelectedColumn = "B",
+				SelectedRow = 1
 			};
 
 			_game = new GameBuilder().WithId(_gameId).Build();
@@ -140,14 +143,15 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 				.Setup(f => f.Get(Moq.It.IsAny<Guid>()))
 				.Returns(_game);
 			Mocks.GetMock<IGameSpecifications>()
-				.Setup(s => s.IsMoveLegitimate(_game, Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<Enums.BoardPosition>()))
+				.Setup(s => s.IsMoveLegitimate(_game, Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
 				.Returns(true);
+			_position = BoardPosition.CreateFrom(_request.SelectedColumn, _request.SelectedRow);
 			Mocks.GetMock<IGameFactory>()
-				.Setup(f => f.CreateFrom(_request.Owner, _request.Position))
-				.Returns(new GameMoveBuilder().Build(_request.Owner, _request.Position));
+				.Setup(f => f.CreateFrom(_request.Owner, _position))
+				.Returns(new GameMoveBuilder().Build(_request.Owner, _position));
 			Mocks.GetMock<IGameAlgorithms>()
 				.Setup(ga => ga.DetermineNextMove(_game))
-				.Returns(new GameMoveBuilder().Build(Enums.PlayerType.Computer, Enums.BoardPosition.TopLeft));
+				.Returns(new GameMoveBuilder().Build(Enums.PlayerType.Computer, BoardPosition.CreateFrom("A", 1)));
 			Mocks.GetMock<IGameSpecifications>()
 				.Setup(s => s.IsGameOver(_game))
 				.Returns(false);
@@ -155,7 +159,7 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 				.Setup(f => f.CreateFrom(_game))
 				.Returns(new GameModelBuilder().WithMoves(new List<GameMoveModel>
 				{
-					new GameMoveModel { Owner = _request.Owner, Position = _request.Position }
+					new GameMoveModel { Owner = _request.Owner, Position = BoardPositionModel.CreateFrom(_position) }
 				}).Build());
 		};
 
@@ -173,6 +177,7 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 		private static PerformMoveRequest _request;
 		private static Guid _gameId;
 		private static Game _game;
+		private static BoardPosition _position;
 
 		Establish context = () =>
 		{
@@ -181,7 +186,8 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 			{
 				GameId = _gameId,
 				Owner = Enums.PlayerType.Human,
-				Position = Enums.BoardPosition.BottomLeft
+				SelectedColumn = "A",
+				SelectedRow = 3
 			};
 
 			_game = new GameBuilder().WithId(_gameId).BuildGameWithValidMoves();
@@ -189,14 +195,15 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 				.Setup(f => f.Get(Moq.It.IsAny<Guid>()))
 				.Returns(_game);
 			Mocks.GetMock<IGameSpecifications>()
-				.Setup(s => s.IsMoveLegitimate(_game, Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<Enums.BoardPosition>()))
+				.Setup(s => s.IsMoveLegitimate(_game, Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
 				.Returns(true);
+			_position = BoardPosition.CreateFrom(_request.SelectedColumn, _request.SelectedRow);
 			Mocks.GetMock<IGameFactory>()
-				.Setup(f => f.CreateFrom(_request.Owner, _request.Position))
-				.Returns(new GameMoveBuilder().Build(_request.Owner, _request.Position));
+				.Setup(f => f.CreateFrom(_request.Owner, _position))
+				.Returns(new GameMoveBuilder().Build(_request.Owner, _position));
 			Mocks.GetMock<IGameAlgorithms>()
 				.Setup(ga => ga.DetermineNextMove(_game))
-				.Returns(new GameMoveBuilder().Build(Enums.PlayerType.Computer, Enums.BoardPosition.TopLeft));
+				.Returns(new GameMoveBuilder().Build(Enums.PlayerType.Computer, BoardPosition.CreateFrom("A", 1)));
 			Mocks.GetMock<IGameSpecifications>()
 				.Setup(s => s.IsGameOver(_game))
 				.Returns(true);
@@ -204,7 +211,7 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 				.Setup(f => f.CreateFrom(_game))
 				.Returns(new GameModelBuilder().WithMoves(new List<GameMoveModel>
 				{
-					new GameMoveModel { Owner = _request.Owner, Position = _request.Position }
+					new GameMoveModel { Owner = _request.Owner, Position = BoardPositionModel.CreateFrom(_position) }
 				})
 				.WithIsGameOver(true)
 				.Build());
@@ -224,31 +231,31 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 		private static PerformMoveRequest _request;
 		private static Guid _gameId;
 		private static Game _game;
+		private static BoardPosition _position;
 
 		Establish context = () =>
 		{
 			_gameId = Guid.NewGuid();
+			_request = new PerformMoveRequest
+			{
+				GameId = _gameId,
+				Owner = Enums.PlayerType.Human,
+				SelectedColumn = "B",
+				SelectedRow = 1
+			};
 
 			var moves = new List<GameMove>
 			{
-				new GameMove { Owner = Enums.PlayerType.Human, Position = Enums.BoardPosition.TopLeft },
-				new GameMove { Owner = Enums.PlayerType.Computer, Position = Enums.BoardPosition.MiddleCenter }
+				new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 1) },
+				new GameMove { Owner = Enums.PlayerType.Computer, Position = BoardPosition.CreateFrom("B", 2) }
 			};
 			var game = new GameBuilder().WithId(_gameId).WithMoves(moves).Build();
 			Mocks.GetMock<IGameRepository>()
 				.Setup(f => f.Get(Moq.It.IsAny<Guid>()))
 				.Returns(game);
 			Mocks.GetMock<IGameSpecifications>()
-				.Setup(s => s.IsMoveLegitimate(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<Enums.BoardPosition>()))
+				.Setup(s => s.IsMoveLegitimate(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
 				.Returns(false);
-
-			_request = new PerformMoveRequest
-			{
-				GameId = _gameId,
-				Owner = Enums.PlayerType.Human,
-				Position = Enums.BoardPosition.MiddleCenter
-			};
-
 		};
 
 		Because of;

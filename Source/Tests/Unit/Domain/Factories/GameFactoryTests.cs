@@ -37,12 +37,12 @@ namespace TTT.Tests.Unit.Domain.Factories.GameFactoryTests
 	{
 		private static GameMove _result;
 		private static Enums.PlayerType _owner;
-		private static Enums.BoardPosition _position;
+		private static BoardPosition _position;
 
 		Establish context = () => 
 		{
 			_owner = Enums.PlayerType.Human;
-			_position = Enums.BoardPosition.MiddleCenter;
+			_position = BoardPosition.CreateFrom("B", 2);
 		};
 
 		Because of = () => _result = ClassUnderTest.CreateFrom(_owner, _position);

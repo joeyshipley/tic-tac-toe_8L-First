@@ -5,15 +5,15 @@ namespace TTT.Core.Domain.Specifications
 {
 	public class GameSpecifications : IGameSpecifications
 	{
-		public bool IsMoveLegitimate(Game game, Enums.PlayerType owner, Enums.BoardPosition position)
+		public bool IsMoveLegitimate(Game game, Enums.PlayerType owner, BoardPosition position)
 		{
-			return game.Moves.All(m => m.Position != position);
+			return game.Moves.All(m => !m.Position.Equals(position));
 		}
 
 		public bool IsGameOver(Game game)
 		{
 			// If the game is a draw, the game is over.
-			if(game.Moves.Count == Constants.MaxNumberOfPositionsAvailable)
+			if(game.Moves.Count == Constants.BoardPositionRowLength * Constants.BoardPositionRowLength)
 				return true;
 
 			// If the player won, the game is over.
@@ -40,102 +40,79 @@ namespace TTT.Core.Domain.Specifications
 
 		private bool isOwnerWinner(Game game, Enums.PlayerType owner)
 		{
-			return hasTopRowMatch(game, owner)
-				|| hasMiddleRowMatch(game, owner)
-				|| hasBottomRowMatch(game, owner)
-				|| hasLeftColumnMatch(game, owner)
-				|| hasCenterColumnMatch(game, owner)
-				|| hasRightColumnMatch(game, owner)
-				|| hasTopLeftDiagonalMatch(game, owner)
-				|| hasBottomLeftDiagonalMatch(game, owner);
+			var foundCompleteMatch = false;
+
+			for(var columnValue = 1; columnValue <= Constants.BoardPositionRowLength; columnValue++)
+			{
+				var column = numericValueToAlphabetValue(columnValue);
+				for(var rowValue = 1; rowValue <= Constants.BoardPositionRowLength; rowValue++)
+				{
+					var row = rowValue;
+					var currentPosition = BoardPosition.CreateFrom(column, row);
+
+					var isInMoveListForOwner = checkCurrentBoardPositionForMoveAndOwner(game, currentPosition, owner);
+					if(!isInMoveListForOwner)
+						continue;
+
+					// check to see if this column has a matching set for the owner
+					var numberOfMovesInThisColumnBelongingToOwner = game.Moves.Count(m => m.Owner == owner && m.Position.Column == column);
+					if(numberOfMovesInThisColumnBelongingToOwner == Constants.BoardPositionRowLength)
+						foundCompleteMatch = true;
+
+					// check to see if this row has a matching set for the owner
+					var numberOfMovesInThisRowBelongingToOwner = game.Moves.Count(m => m.Owner == owner && m.Position.Row == row);
+					if(numberOfMovesInThisRowBelongingToOwner == Constants.BoardPositionRowLength)
+						foundCompleteMatch = true;
+				}
+			}
+
+			// check top left to bottom right diagonal
+			if(!foundCompleteMatch)
+			{
+				var isDiagonalMatch = true;
+				for(var i = 1; i < Constants.BoardPositionRowLength; i++)
+				{
+					var column = numericValueToAlphabetValue(i);
+					var currentDiagonalPosition = BoardPosition.CreateFrom(column, i);
+
+					// has a move been set for this column/row
+					var isInDiagonal = checkCurrentBoardPositionForMoveAndOwner(game, currentDiagonalPosition, owner);
+					if(!isInDiagonal)
+						isDiagonalMatch = false;
+				}
+				foundCompleteMatch = isDiagonalMatch;
+			}
+
+			// check bottom left to top right diagonal
+			if(!foundCompleteMatch)
+			{
+				var isDiagonalMatch = true;
+				for(var i = Constants.BoardPositionRowLength; i > 0; i--)
+				{
+					var column = numericValueToAlphabetValue(i);
+					var currentDiagonalPosition = BoardPosition.CreateFrom(column, Constants.BoardPositionRowLength - i + 1);
+
+					// has a move been set for this column/row
+					var isInDiagonal = checkCurrentBoardPositionForMoveAndOwner(game, currentDiagonalPosition, owner);
+					if(!isInDiagonal)
+						isDiagonalMatch = false;
+				}
+				foundCompleteMatch = isDiagonalMatch;
+			}
+
+			return foundCompleteMatch;
 		}
 
-		private bool hasTopRowMatch(Game game, Enums.PlayerType owner)
+		private bool checkCurrentBoardPositionForMoveAndOwner(Game game, BoardPosition position, Enums.PlayerType owner)
 		{
-			var ownersSelections = game.Moves.Where(m => m.Owner == owner);
-			var numberInSet = ownersSelections.Count(m => 
-				m.Position == Enums.BoardPosition.TopLeft
-				|| m.Position == Enums.BoardPosition.TopCenter
-				|| m.Position == Enums.BoardPosition.TopRight
-			);
-			return numberInSet == Constants.NumberInSetToWin;
-		}
-		
-		private bool hasMiddleRowMatch(Game game, Enums.PlayerType owner)
-		{
-			var ownersSelections = game.Moves.Where(m => m.Owner == owner);
-			var numberInSet = ownersSelections.Count(m => 
-				m.Position == Enums.BoardPosition.MiddleLeft
-				|| m.Position == Enums.BoardPosition.MiddleCenter
-				|| m.Position == Enums.BoardPosition.MiddleRight
-			);
-			return numberInSet == Constants.NumberInSetToWin;
-		}
-		
-		private bool hasBottomRowMatch(Game game, Enums.PlayerType owner)
-		{
-			var ownersSelections = game.Moves.Where(m => m.Owner == owner);
-			var numberInSet = ownersSelections.Count(m => 
-				m.Position == Enums.BoardPosition.BottomLeft
-				|| m.Position == Enums.BoardPosition.BottomCenter
-				|| m.Position == Enums.BoardPosition.BottomRight
-			);
-			return numberInSet == Constants.NumberInSetToWin;
+			var move = game.Moves.FirstOrDefault(m => m.Position.Equals(position));
+			return move != null 
+				&& move.Owner == owner;
 		}
 
-		private bool hasLeftColumnMatch(Game game, Enums.PlayerType owner)
+		private string numericValueToAlphabetValue(int numeric)
 		{
-			var ownersSelections = game.Moves.Where(m => m.Owner == owner);
-			var numberInSet = ownersSelections.Count(m => 
-				m.Position == Enums.BoardPosition.TopLeft
-				|| m.Position == Enums.BoardPosition.MiddleLeft
-				|| m.Position == Enums.BoardPosition.BottomLeft
-			);
-			return numberInSet == Constants.NumberInSetToWin;
-		}
-		
-		private bool hasCenterColumnMatch(Game game, Enums.PlayerType owner)
-		{
-			var ownersSelections = game.Moves.Where(m => m.Owner == owner);
-			var numberInSet = ownersSelections.Count(m => 
-				m.Position == Enums.BoardPosition.TopCenter
-				|| m.Position == Enums.BoardPosition.MiddleCenter
-				|| m.Position == Enums.BoardPosition.BottomCenter
-			);
-			return numberInSet == Constants.NumberInSetToWin;
-		}
-		
-		private bool hasRightColumnMatch(Game game, Enums.PlayerType owner)
-		{
-			var ownersSelections = game.Moves.Where(m => m.Owner == owner);
-			var numberInSet = ownersSelections.Count(m => 
-				m.Position == Enums.BoardPosition.TopRight
-				|| m.Position == Enums.BoardPosition.MiddleRight
-				|| m.Position == Enums.BoardPosition.BottomRight
-			);
-			return numberInSet == Constants.NumberInSetToWin;
-		}
-		
-		private bool hasTopLeftDiagonalMatch(Game game, Enums.PlayerType owner)
-		{
-			var ownersSelections = game.Moves.Where(m => m.Owner == owner);
-			var numberInSet = ownersSelections.Count(m => 
-				m.Position == Enums.BoardPosition.TopLeft
-				|| m.Position == Enums.BoardPosition.MiddleCenter
-				|| m.Position == Enums.BoardPosition.BottomRight
-			);
-			return numberInSet == Constants.NumberInSetToWin;
-		}
-		
-		private bool hasBottomLeftDiagonalMatch(Game game, Enums.PlayerType owner)
-		{
-			var ownersSelections = game.Moves.Where(m => m.Owner == owner);
-			var numberInSet = ownersSelections.Count(m => 
-				m.Position == Enums.BoardPosition.BottomLeft
-				|| m.Position == Enums.BoardPosition.MiddleCenter
-				|| m.Position == Enums.BoardPosition.TopRight
-			);
-			return numberInSet == Constants.NumberInSetToWin;
+			return ((char)(65 + (numeric - 1))).ToString();
 		}
 	}
 }

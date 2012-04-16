@@ -7,6 +7,7 @@ namespace TTT.Core.Application.Request
 	{
 		public Guid GameId { get; set; }
 		public Enums.PlayerType Owner { get; set; }
-		public Enums.BoardPosition Position { get; set; }
+		public string SelectedColumn { get; set; }
+		public int SelectedRow { get; set; }
 	}
 }

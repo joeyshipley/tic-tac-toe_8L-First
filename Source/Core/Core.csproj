@@ -54,6 +54,7 @@
     <Compile Include="Application\Services\IGameService.cs" />
     <Compile Include="Data\Infrastructure\CacheDataStorage.cs" />
     <Compile Include="Data\Repositories\CacheGameRepository.cs" />
+    <Compile Include="Domain\Constants.cs" />
     <Compile Include="Domain\Entities\Game.cs" />
     <Compile Include="Domain\Entities\GameMove.cs" />
     <Compile Include="Domain\Enums.cs" />

@@ -6,5 +6,7 @@ namespace TTT.Core.Domain.Specifications
 	{
 		bool IsMoveLegitimate(Game game, Enums.PlayerType owner, Enums.BoardPosition position);
 		bool IsGameOver(Game game);
+		bool IsPlayerWinner(Game game);
+		bool IsComputerWinner(Game game);
 	}
 }

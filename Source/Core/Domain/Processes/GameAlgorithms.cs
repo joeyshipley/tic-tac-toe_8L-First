@@ -12,13 +12,6 @@ namespace TTT.Core.Domain.Processes
 				return getFirstMove(game);
 
 			GameMove move = null;
-			return move;
-		}
-
-		private GameMove getFirstMove(Game game)
-		{
-			var move = getCenterPositionIfAvailable(game) 
-				?? firstMoveCornerFallBackWhenCenterHasBeenTaken();
 
 			// TODO: check to see if there are any player winning positions that should be taken
 			// ----- use the AvailableWinningPositionsProvider for this.
@@ -28,6 +21,13 @@ namespace TTT.Core.Domain.Processes
 
 			// TODO: if none have been found, randomly select from the available positions.
 
+			return move;
+		}
+
+		private GameMove getFirstMove(Game game)
+		{
+			var move = getCenterPositionIfAvailable(game) 
+				?? firstMoveCornerFallBackWhenCenterHasBeenTaken();
 			return move;
 		}
 

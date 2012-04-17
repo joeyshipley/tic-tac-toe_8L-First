@@ -5,5 +5,10 @@
 <div id="mainContentInnerContainer">
 	@using(Html.BeginForm<HomeController>(c => c.PerformMove(null), FormMethod.Post)) {
 		@this.Hidden(h => h.GameId)
+
+		<div class="boardPosition" id="boardPositionTopLeft">
+			<img src="">
+		</div>
+	 
 	 }
 </div>

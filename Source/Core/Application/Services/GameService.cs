@@ -57,8 +57,11 @@ namespace TTT.Core.Application.Services
 			var playerMove = _gameFactory.CreateFrom(Enums.PlayerType.Human, boardPosition);
 			game.AddMove(playerMove);
 
-			var computerMove = _gameAlgorithms.DetermineNextMove(game);
-			game.AddMove(computerMove);
+			if(!_gameSpecifications.IsGameOver(game)) 
+			{
+				var computerMove = _gameAlgorithms.DetermineNextMove(game);
+				game.AddMove(computerMove);
+			}
 
 			var isGameOver = _gameSpecifications.IsGameOver(game);
 			game.IsGameOver = isGameOver;
@@ -73,6 +76,8 @@ namespace TTT.Core.Application.Services
 
 			var isGameDraw = isGameOver && !isComputerWinner && !isPlayerWinner;
 			model.IsGameDraw = isGameDraw;
+
+			_gameRepository.Save(game);
 
 			return model;
 		}

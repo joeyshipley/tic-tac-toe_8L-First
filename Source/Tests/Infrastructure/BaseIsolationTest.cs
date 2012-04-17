@@ -1,11 +1,18 @@
 ﻿using AutoMoq;
+using Machine.Specifications;
 
 namespace TTT.Tests.Infrastructure
 {
 	public class BaseIsolationTest<T>
 		where T : class
 	{
-		protected readonly static AutoMoqer Mocks = new AutoMoqer();
-		protected static T ClassUnderTest = Mocks.Resolve<T>();
+		protected static AutoMoqer Mocks;
+		protected static T ClassUnderTest;
+
+		Establish context = () =>
+		{
+			Mocks = new AutoMoqer();
+			ClassUnderTest = Mocks.Resolve<T>();
+		};
 	}
 }

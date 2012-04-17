@@ -59,6 +59,8 @@ ttt.game.Controller = function () {
 		var gameMoves = data.GameMoves;
 		drawMoves(gameMoves);
 
+		console.log(data);
+
 		if (data.IsGameOver) {
 			if (data.IsComputerWinner) {
 				endGame("Game Over! The computer has won!");

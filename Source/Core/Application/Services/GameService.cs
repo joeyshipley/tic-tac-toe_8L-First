@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TTT.Core.Application.Factories;
 using TTT.Core.Application.Repositories;
 using TTT.Core.Application.Request;
@@ -63,7 +62,18 @@ namespace TTT.Core.Application.Services
 			var isGameOver = _gameSpecifications.IsGameOver(game);
 			game.IsGameOver = isGameOver;
 
-			return _modelFactory.CreateFrom(game);
+			var model = _modelFactory.CreateFrom(game);
+
+			var isComputerWinner = isGameOver && _gameSpecifications.IsComputerWinner(game);
+			model.IsComputerWinner = isComputerWinner;
+
+			var isPlayerWinner = isGameOver && _gameSpecifications.IsPlayerWinner(game);
+			model.IsPlayerWinner = isPlayerWinner;
+
+			var isGameDraw = isGameOver && !isComputerWinner && !isPlayerWinner;
+			model.IsGameDraw = isGameDraw;
+
+			return model;
 		}
 	}
 }

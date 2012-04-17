@@ -249,47 +249,129 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 				new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 1) },
 				new GameMove { Owner = Enums.PlayerType.Computer, Position = BoardPosition.CreateFrom("B", 2) }
 			};
-			var game = new GameBuilder().WithId(_gameId).WithMoves(moves).Build();
+			var game = new GameBuilder().WithId(_gameId).WithMoves(moves).WithIsGameOver(false).Build();
 			Mocks.GetMock<IGameRepository>()
 				.Setup(f => f.Get(Moq.It.IsAny<Guid>()))
 				.Returns(game);
 			Mocks.GetMock<IGameSpecifications>()
 				.Setup(s => s.IsMoveLegitimate(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
 				.Returns(false);
+			Mocks.GetMock<IModelFactory>()
+				.Setup(f => f.CreateFrom(Moq.It.IsAny<Game>(), Moq.It.IsAny<IList<ValidationError>>()))
+				.Returns(new GameModel 
+				{
+					GameId = game.Id, 
+					IsGameOver = game.IsGameOver, 
+					MoveWarnings = new List<ValidationError> 
+					{
+						new ValidationError { Type = "InvalidMove" }
+					}
+				});
 		};
 
-		Because of;
+		Because of = () => _result = ClassUnderTest.PerformMove(_request);
 
-		It should_invalidate_the_legitimacy_of_the_move;
+		It should_invalidate_the_legitimacy_of_the_move = () =>
+			Mocks.GetMock<IGameSpecifications>()
+				.Verify(s => s.IsMoveLegitimate(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()));
 
-		It should_not_apply_the_players_move;
+		It should_not_end_the_game = () =>
+			_result.IsGameOver.ShouldBeFalse();
 
-		It should_not_perform_the_computers_next_move;
-
-		It should_not_determine_the_outcome_of_the_game;
-
-		It should_return_the_warning_messages;
+		It should_return_the_warning_messages = () =>
+			_result.MoveWarnings.Any(w => w.Type == "InvalidMove").ShouldBeTrue();
 	}
 
 	[Subject("Application, Services, GameService, Existing game")]
-	public class When_the_game_does_not_end_in_a_draw
+	public class When_the_game_does_not_end_in_a_draw_because_the_player_won
 		: BaseIsolationTest<GameService>
 	{
-		Establish context;
+		private static GameModel _result;
+		private static PerformMoveRequest _request;
 
-		Because of;
+		Establish context = () =>
+		{
+			_request = new PerformMoveRequest { GameId = Guid.NewGuid(), SelectedColumn = "A", SelectedRow = 1 };
+			var gameSpec = Mocks.GetMock<IGameSpecifications>();
+			gameSpec
+				.Setup(s => s.IsMoveLegitimate(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
+				.Returns(true);
+			gameSpec
+				.Setup(s => s.IsGameOver(Moq.It.IsAny<Game>()))
+				.Returns(true);
+			gameSpec
+				.Setup(s => s.IsPlayerWinner(Moq.It.IsAny<Game>()))
+				.Returns(true);
+			gameSpec
+				.Setup(s => s.IsComputerWinner(Moq.It.IsAny<Game>()))
+				.Returns(false);
+		};
 
-		It should_inform_the_player_of_the_developers_failure_to_create_an_unbeatable_tic_tac_toe_game;
+		Because of = () => _result = ClassUnderTest.PerformMove(_request);
+
+		It should_inform_the_player_of_the_developers_failure_to_create_an_unbeatable_tic_tac_toe_game = () =>
+			_result.IsPlayerWinner.ShouldBeTrue();
+	}
+
+	[Subject("Application, Services, GameService, Existing game")]
+	public class When_the_game_does_not_end_in_a_draw_because_the_computer_won
+		: BaseIsolationTest<GameService>
+	{
+		private static GameModel _result;
+		private static PerformMoveRequest _request;
+
+		Establish context = () =>
+		{
+			_request = new PerformMoveRequest { GameId = Guid.NewGuid(), SelectedColumn = "A", SelectedRow = 1 };
+			var gameSpec = Mocks.GetMock<IGameSpecifications>();
+			gameSpec
+				.Setup(s => s.IsMoveLegitimate(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
+				.Returns(true);
+			gameSpec
+				.Setup(s => s.IsGameOver(Moq.It.IsAny<Game>()))
+				.Returns(true);
+			gameSpec
+				.Setup(s => s.IsPlayerWinner(Moq.It.IsAny<Game>()))
+				.Returns(false);
+			gameSpec
+				.Setup(s => s.IsComputerWinner(Moq.It.IsAny<Game>()))
+				.Returns(true);
+		};
+
+		Because of = () => _result = ClassUnderTest.PerformMove(_request);
+
+		It should_inform_the_player_that_the_game_is_infact_unbeatable_and_that_continuing_will_only_make_them_feel_worse = () =>
+			_result.IsComputerWinner.ShouldBeTrue();
 	}
 
 	[Subject("Application, Services, GameService, Existing game")]
 	public class When_the_game_ends_in_a_draw
 		: BaseIsolationTest<GameService>
 	{
-		Establish context;
+		private static GameModel _result;
+		private static PerformMoveRequest _request;
 
-		Because of;
+		Establish context = () =>
+		{
+			_request = new PerformMoveRequest { GameId = Guid.NewGuid(), SelectedColumn = "A", SelectedRow = 1 };
+			var gameSpec = Mocks.GetMock<IGameSpecifications>();
+			gameSpec
+				.Setup(s => s.IsMoveLegitimate(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
+				.Returns(true);
+			gameSpec
+				.Setup(s => s.IsGameOver(Moq.It.IsAny<Game>()))
+				.Returns(true);
+			gameSpec
+				.Setup(s => s.IsPlayerWinner(Moq.It.IsAny<Game>()))
+				.Returns(false);
+			gameSpec
+				.Setup(s => s.IsComputerWinner(Moq.It.IsAny<Game>()))
+				.Returns(false);
+		};
 
-		It should_inform_the_player_that_the_game_is_infact_unbeatable_and_that_continuing_will_only_make_them_feel_worse;
+		Because of = () => _result = ClassUnderTest.PerformMove(_request);
+
+		It should_inform_the_player_that_the_game_is_infact_unbeatable_and_that_continuing_will_only_make_them_feel_worse = () =>
+			_result.IsGameDraw.ShouldBeTrue();
 	}
 }

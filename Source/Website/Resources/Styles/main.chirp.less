@@ -187,9 +187,9 @@ legend {
 /* --------------------------------------------------------- *\
 	Color
 \* --------------------------------------------------------- */
-@color_bg-base: #EEEEEE;
-@color_font-text: #666666;
-@color_font-header: #333333;
+@color_bg-base: #222222;
+@color_font-text: #CCCCCC;
+@color_font-header: #222222;
 
 
 /* --------------------------------------------------------- *\
@@ -247,12 +247,20 @@ HTML, BODY
 H1
 {
 	.relativeblock;
-	padding: 0px;
+	padding: 10px;
 	font-family: @site_fontfamily-black;
 	font-size: @site_fontsize-superlarge;
 	font-weight: bold;
-	line-height: 0.75em;
+	line-height: 0.8em;
 	color: @color_font-header;
+
+	.headerNote
+	{
+		.relativeblock;
+		font-size: 0.6em;
+		line-height: 0.75em;
+		text-transform: uppercase;
+	}
 }
 H2
 {
@@ -310,6 +318,23 @@ A:hover
 /* --------------------------------------------------------- *\
 	Layout
 \* --------------------------------------------------------- */
+
+.boxsizing
+{
+	-webkit-box-sizing: border-box;	/* WebKit */
+	-moz-box-sizing: border-box; /* Firefox */
+	box-sizing: border-box; /* Opera/IE 8+ */
+}
+
+.clearFloat
+{
+	.relativeblock;
+	clear: both;
+	margin: 0px;
+	padding: 0px;
+	line-height: 0px;
+	font-size: 0px;
+}
 
 .noDisplay
 {
@@ -435,6 +460,132 @@ SECTION.spaced
 /* --------------------------------------------------------- *\
 	Page Specific Styles
 \* --------------------------------------------------------- */
+.boardPositionContainer
+{
+	.relativeblock;
+	margin: 0px;
+	padding: 0px;
+
+	.boardPositionRowContainer
+	{
+		.relativeblock;
+		min-width: 340px;
+		clear: both;
+		margin: 0px;
+		padding: 0px;
+		text-align: center;
+
+		.boardPosition
+		{
+			.leftblock;
+			.boxsizing;
+			margin: 0px;
+			padding: 0px;
+			width: 33.33%;
+			font-size: 10em;
+			font-weight: bold;
+			line-height: 1em;
+			.antialias;
+			text-transform: uppercase;
+			font-family: @site_fontfamily-black;
+			border-width: 1px;
+			border-style: double;
+			border-color: #FFFFFF;
+			cursor: pointer;
+		}
+		.boardPosition.topLeft
+		{
+			border-width: 0px 3px 3px 0px;
+		}
+		.boardPosition.topCenter
+		{
+			border-width: 0px 3px 3px 3px;
+		}
+		.boardPosition.topRight
+		{
+			border-width: 0px 0px 3px 3px;
+		}
+		.boardPosition.middleLeft
+		{
+			border-width: 3px 3px 3px 0px;
+		}
+		.boardPosition.middleCenter
+		{
+			border-width: 3px;
+		}
+		.boardPosition.middleRight
+		{
+			border-width: 3px 0px 3px 3px;
+		}
+		.boardPosition.bottomLeft
+		{
+			border-width: 3px 3px 0px 0px;
+		}
+		.boardPosition.bottomCenter
+		{
+			border-width: 3px 3px 0px 3px;
+		}
+		.boardPosition.bottomRight
+		{
+			border-width: 3px 0px 0px 3px;
+		}
+
+		.boardPositionDisplay
+		{
+			.relativeblock;
+			margin: 3px;
+			padding: 20px;
+			color: @color_bg-base;
+			background-color: RGBA(255, 255, 255, 0.25);
+			background-image: url('../images/pattern_whitestripes.png');
+			background-repeat: repeat;
+			background-position: center center;
+			border: 1px solid #FFFFFF;
+			.borderradius(5px, 5px, 5px, 5px);
+		}
+
+		.boardPositionDisplay.human
+		{
+			background-color: RGBA(90, 100, 200, 0.5);
+		}
+
+		.boardPositionDisplay.computer
+		{
+			background-color: RGBA(150, 60, 55, 0.5);
+		}
+	}
+}
+
+#gameStartMessage
+{
+	.relativeblock;
+	margin: 5px;
+	padding: 15px;
+	font-size: @site_fontsize-large;
+}
+
+#messageContainer
+{
+	.relativeblock;
+	display: none;
+	margin: 5px;
+	padding: 15px;
+	font-size: @site_fontsize-large;
+}
+
+
+/* --------------------------------------------------------- *\
+	Responsive Support
+\* --------------------------------------------------------- */
+
+/* set the font-size em based on screen width */
+/* 340 = 5em */
+/* 480 = 7em */
+/* 960 = 10em */
+/* 1200 = 12em */
+.boardPosition 
+{
+}
 
 
 /* --------------------------------------------------------- *\

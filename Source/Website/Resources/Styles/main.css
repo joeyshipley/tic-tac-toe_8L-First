@@ -154,8 +154,8 @@ HTML, BODY {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 100%;
   line-height: 1.5em;
-  color: #666666;
-  background-color: #eeeeee;
+  color: #cccccc;
+  background-color: #222222;
   background-image: url('../images/pattern_noise.png');
   background-repeat: repeat;
   background-position: center center;
@@ -185,12 +185,19 @@ HTML, BODY {
 H1 {
   position: relative;
   display: block;
-  padding: 0px;
+  padding: 10px;
   font-family: "Arial Black", Arial, sans-serif;
   font-size: 3.5em;
   font-weight: bold;
+  line-height: 0.8em;
+  color: #222222;
+}
+H1 .headerNote {
+  position: relative;
+  display: block;
+  font-size: 0.6em;
   line-height: 0.75em;
-  color: #333333;
+  text-transform: uppercase;
 }
 H2 {
   position: relative;
@@ -199,7 +206,7 @@ H2 {
   font-weight: bold;
   color: #4A4A4A;
   margin-bottom: 1em;
-  color: #333333;
+  color: #222222;
 }
 H3 {
   position: relative;
@@ -217,7 +224,7 @@ H3 {
   font-size: 1.75em;
   font-weight: bold;
   line-height: 0.9em;
-  color: #333333;
+  color: #222222;
 }
 .pageHeadline.reallylarge {
   margin: 0px;
@@ -242,6 +249,26 @@ A:hover {
 /* --------------------------------------------------------- *\
 	Layout
 \* --------------------------------------------------------- */
+.boxsizing {
+  -webkit-box-sizing: border-box;
+  /* WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+}
+.clearFloat {
+  position: relative;
+  display: block;
+  clear: both;
+  margin: 0px;
+  padding: 0px;
+  line-height: 0px;
+  font-size: 0px;
+}
 .noDisplay {
   display: none;
 }
@@ -256,7 +283,7 @@ A:hover {
   display: block;
   margin: 0px;
   padding: 0px;
-  background-color: #eeeeee;
+  background-color: #222222;
 }
 #pageContainer HEADER P {
   margin: 0px;
@@ -341,6 +368,119 @@ SECTION.spaced {
 /* --------------------------------------------------------- *\
 	Page Specific Styles
 \* --------------------------------------------------------- */
+.boardPositionContainer {
+  position: relative;
+  display: block;
+  margin: 0px;
+  padding: 0px;
+}
+.boardPositionContainer .boardPositionRowContainer {
+  position: relative;
+  display: block;
+  min-width: 340px;
+  clear: both;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+.boardPositionContainer .boardPositionRowContainer .boardPosition {
+  float: left;
+  display: block;
+  -webkit-box-sizing: border-box;
+  /* WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+  margin: 0px;
+  padding: 0px;
+  width: 33.33%;
+  font-size: 10em;
+  font-weight: bold;
+  line-height: 1em;
+  text-shadow: rgba(0, 0, 0, 0.75) 0 0 1px;
+  /* Anti-alias hack for some browsers to make the font look better. */
+
+  text-transform: uppercase;
+  font-family: "Arial Black", Arial, sans-serif;
+  border-width: 1px;
+  border-style: double;
+  border-color: #FFFFFF;
+  cursor: pointer;
+}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.topLeft {
+  border-width: 0px 3px 3px 0px;
+}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.topCenter {
+  border-width: 0px 3px 3px 3px;
+}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.topRight {
+  border-width: 0px 0px 3px 3px;
+}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.middleLeft {
+  border-width: 3px 3px 3px 0px;
+}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.middleCenter {
+  border-width: 3px;
+}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.middleRight {
+  border-width: 3px 0px 3px 3px;
+}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.bottomLeft {
+  border-width: 3px 3px 0px 0px;
+}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.bottomCenter {
+  border-width: 3px 3px 0px 3px;
+}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.bottomRight {
+  border-width: 3px 0px 0px 3px;
+}
+.boardPositionContainer .boardPositionRowContainer .boardPositionDisplay {
+  position: relative;
+  display: block;
+  margin: 3px;
+  padding: 20px;
+  color: #222222;
+  background-color: rgba(255, 255, 255, 0.25);
+  background-image: url('../images/pattern_whitestripes.png');
+  background-repeat: repeat;
+  background-position: center center;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+}
+.boardPositionContainer .boardPositionRowContainer .boardPositionDisplay.human {
+  background-color: rgba(90, 100, 200, 0.5);
+}
+.boardPositionContainer .boardPositionRowContainer .boardPositionDisplay.computer {
+  background-color: rgba(150, 60, 55, 0.5);
+}
+#gameStartMessage {
+  position: relative;
+  display: block;
+  margin: 5px;
+  padding: 15px;
+  font-size: 1.3em;
+}
+#messageContainer {
+  position: relative;
+  display: block;
+  display: none;
+  margin: 5px;
+  padding: 15px;
+  font-size: 1.3em;
+}
+/* --------------------------------------------------------- *\
+	Responsive Support
+\* --------------------------------------------------------- */
+/* set the font-size em based on screen width */
+/* 340 = 5em */
+/* 480 = 7em */
+/* 960 = 10em */
+/* 1200 = 12em */
 /* --------------------------------------------------------- *\
 	Legacy Style Support
 \* --------------------------------------------------------- */

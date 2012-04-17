@@ -4,7 +4,8 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Tic-Tac-Toe</title>
-	@Html.Stylesheet("main.min.css")
+	@Html.LoadStylesheet("main.min.css")
+	@Html.LoadScript("modernizr.custom.58098.js")
 </head>
 <body>
 	<div id="pageContainer">
@@ -22,5 +23,13 @@
 		<footer>
 		</footer>
 	</div>
+	
+	@Html.LoadScript("jquery-1.7.1.min.js")
+	<script type="text/javascript">
+		$(document).ready(function () {
+		});
+	</script>
+
+	@RenderSection("PageLevelJavascript", false)
 </body>
 </html>

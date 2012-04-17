@@ -82,6 +82,8 @@
     <Content Include="Global.asax" />
     <Content Include="Resources\Images\pattern_noise.png" />
     <Content Include="Resources\Images\pattern_whitestripes.png" />
+    <Content Include="Resources\Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Resources\Scripts\modernizr.custom.58098.js" />
     <Content Include="Resources\Styles\main.css">
       <DependentUpon>main.chirp.less</DependentUpon>
     </Content>
@@ -102,7 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Resources\Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Styles\main.chirp.less" />

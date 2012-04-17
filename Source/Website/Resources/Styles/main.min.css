@@ -18,24 +18,27 @@ legend{color:#000}
 .absoluteblock{position:absolute;display:block}
 .leftblock{float:left;display:block}
 .rightblock{float:right;display:block}
-HTML,BODY{font-family:Helvetica,Arial,sans-serif;font-size:100%;line-height:1.5em;color:#666;background-color:#eee;background-image:url('../images/pattern_noise.png');background-repeat:repeat;background-position:center center}
+HTML,BODY{font-family:Helvetica,Arial,sans-serif;font-size:100%;line-height:1.5em;color:#ccc;background-color:#222;background-image:url('../images/pattern_noise.png');background-repeat:repeat;background-position:center center}
 .antialias{text-shadow:rgba(0,0,0,0.75) 0 0 1px}
 .antialias-white{text-shadow:rgba(255,255,255,0.75) 0 0 1px}
 .textleft{text-align:left}
 .textcenter{text-align:center}
 .textright{text-align:right}
-H1{position:relative;display:block;padding:0;font-family:"Arial Black",Arial,sans-serif;font-size:3.5em;font-weight:bold;line-height:.75em;color:#333}
-H2{position:relative;display:block;font-size:1.3em;font-weight:bold;color:#4A4A4A;margin-bottom:1em;color:#333}
+H1{position:relative;display:block;padding:10px;font-family:"Arial Black",Arial,sans-serif;font-size:3.5em;font-weight:bold;line-height:.8em;color:#222}
+H1 .headerNote{position:relative;display:block;font-size:.6em;line-height:.75em;text-transform:uppercase}
+H2{position:relative;display:block;font-size:1.3em;font-weight:bold;color:#4A4A4A;margin-bottom:1em;color:#222}
 H3{position:relative;display:block;font-size:100%;font-weight:bold;color:#4A4A4A}
-.pageHeadline{position:relative;display:block;margin:0 0 0 1px;padding:0;font-family:"Arial Black",Arial,sans-serif;font-size:1.75em;font-weight:bold;line-height:.9em;color:#333}
+.pageHeadline{position:relative;display:block;margin:0 0 0 1px;padding:0;font-family:"Arial Black",Arial,sans-serif;font-size:1.75em;font-weight:bold;line-height:.9em;color:#222}
 .pageHeadline.reallylarge{margin:0;font-size:2.5em}
 .pageHeadline.superlarge{margin:0;font-size:3.5em}
 P{position:relative;display:block;margin:0 0 1em}
 A{font-weight:bold;text-decoration:none}
 A:hover{text-decoration:underline}
+.boxsizing{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+.clearFloat{position:relative;display:block;clear:both;margin:0;padding:0;line-height:0;font-size:0}
 .noDisplay{display:none}
 #pageContainer{position:relative;display:block;margin:0;padding:0}
-#pageContainer HEADER{position:relative;display:block;margin:0;padding:0;background-color:#eee}
+#pageContainer HEADER{position:relative;display:block;margin:0;padding:0;background-color:#222}
 #pageContainer HEADER P{margin:0;padding:10px;font-size:1.75em;color:#333;line-height:1.5em}
 #pageContainer #pageContent{position:relative;display:block;margin:0;padding:0}
 #pageContainer #pageContent #mainHeader{position:relative;display:block;margin:0;padding:0}
@@ -51,3 +54,20 @@ INPUT.full,SELECT.full{width:75%}
 INPUT.medium,SELECT.medium{width:150px}
 SECTION{position:relative;display:block;margin:20px 0}
 SECTION.spaced{margin:50px 0}
+.boardPositionContainer{position:relative;display:block;margin:0;padding:0}
+.boardPositionContainer .boardPositionRowContainer{position:relative;display:block;min-width:340px;clear:both;margin:0;padding:0;text-align:center}
+.boardPositionContainer .boardPositionRowContainer .boardPosition{float:left;display:block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;width:33.33%;font-size:10em;font-weight:bold;line-height:1em;text-shadow:rgba(0,0,0,0.75) 0 0 1px;text-transform:uppercase;font-family:"Arial Black",Arial,sans-serif;border-width:1px;border-style:double;border-color:#FFF;cursor:pointer}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.topLeft{border-width:0 3px 3px 0}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.topCenter{border-width:0 3px 3px 3px}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.topRight{border-width:0 0 3px 3px}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.middleLeft{border-width:3px 3px 3px 0}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.middleCenter{border-width:3px}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.middleRight{border-width:3px 0 3px 3px}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.bottomLeft{border-width:3px 3px 0 0}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.bottomCenter{border-width:3px 3px 0 3px}
+.boardPositionContainer .boardPositionRowContainer .boardPosition.bottomRight{border-width:3px 0 0 3px}
+.boardPositionContainer .boardPositionRowContainer .boardPositionDisplay{position:relative;display:block;margin:3px;padding:20px;color:#222;background-color:rgba(255,255,255,0.25);background-image:url('../images/pattern_whitestripes.png');background-repeat:repeat;background-position:center center;border:1px solid #FFF;border-radius:5px 5px 5px 5px;-moz-border-radius:5px 5px 5px 5px}
+.boardPositionContainer .boardPositionRowContainer .boardPositionDisplay.human{background-color:rgba(90,100,200,0.5)}
+.boardPositionContainer .boardPositionRowContainer .boardPositionDisplay.computer{background-color:rgba(150,60,55,0.5)}
+#gameStartMessage{position:relative;display:block;margin:5px;padding:15px;font-size:1.3em}
+#messageContainer{position:relative;display:block;display:none;margin:5px;padding:15px;font-size:1.3em}

@@ -316,6 +316,18 @@ A:hover {
   margin: 0px;
   padding: 0px;
 }
+#pageContainer #pageContent #mainContent #mainContentInnerContainer P {
+  position: relative;
+  display: block;
+  padding: 15px;
+  margin: 0.5em 0 1em;
+  line-height: 1.5em;
+  color: #999999;
+}
+#pageContainer #pageContent #mainContent #mainContentInnerContainer .landingMessage {
+  font-size: 1.75em;
+  background-color: rgba(0, 0, 0, 0.25);
+}
 #pageContainer #pageContent #mainFooter {
   position: relative;
   display: block;
@@ -368,6 +380,21 @@ SECTION.spaced {
 /* --------------------------------------------------------- *\
 	Page Specific Styles
 \* --------------------------------------------------------- */
+.startGameButton {
+  position: relative;
+  display: inline-block;
+  margin: 0px;
+  font-size: 2.5em;
+  color: rgba(255, 255, 190, 0.75);
+  text-decoration: none;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.75);
+}
+.startGameButton:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+  text-shadow: 0px 0px 14px rgba(0, 0, 0, 0.75);
+}
 .boardPositionContainer {
   position: relative;
   display: block;
@@ -452,23 +479,18 @@ SECTION.spaced {
   border-radius: 5px 5px 5px 5px;
   -moz-border-radius: 5px 5px 5px 5px;
 }
+.boardPositionContainer .boardPositionRowContainer .boardPositionDisplay.human, .boardPositionContainer .boardPositionRowContainer .boardPositionDisplay.computer {
+  cursor: default;
+}
 .boardPositionContainer .boardPositionRowContainer .boardPositionDisplay.human {
   background-color: rgba(90, 100, 200, 0.5);
 }
 .boardPositionContainer .boardPositionRowContainer .boardPositionDisplay.computer {
   background-color: rgba(150, 60, 55, 0.5);
 }
-#gameStartMessage {
-  position: relative;
-  display: block;
-  margin: 5px;
-  padding: 15px;
-  font-size: 1.3em;
-}
 #messageContainer {
   position: relative;
   display: block;
-  display: none;
   margin: 5px;
   padding: 15px;
   font-size: 1.3em;

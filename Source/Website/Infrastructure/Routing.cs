@@ -12,8 +12,8 @@ namespace TTT.Website.Infrastructure
 			routes.MapRoute(
 				"Pretty Home Routes",
 				"{action}",
-				new { controller = "Home", action = "Play" },
-				new { action = "Play" }
+				new { controller = "Home", action = "Index" },
+				new { action = "Index|Play" }
 			);
 
 			routes.MapRoute(

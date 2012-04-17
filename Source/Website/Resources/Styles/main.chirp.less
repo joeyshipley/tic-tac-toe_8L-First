@@ -388,6 +388,21 @@ A:hover
 				.relativeblock;
 				margin: 0px;
 				padding: 0px;
+
+				P
+				{
+					.relativeblock;
+					padding: 15px;
+					margin: 0.5em 0 1em;
+					line-height: 1.5em;
+					color: #999999;
+				}
+
+				.landingMessage
+				{
+					font-size: @site_fontsize-xlarge;
+					background-color: RGBA(0, 0, 0, 0.25);
+				}
 			}
 		}
 
@@ -460,6 +475,24 @@ SECTION.spaced
 /* --------------------------------------------------------- *\
 	Page Specific Styles
 \* --------------------------------------------------------- */
+
+.startGameButton
+{
+	.relativeinlineblock;
+	margin: 0px;
+	font-size: @site_fontsize-reallylarge;
+	color: RGBA(255, 255, 190, 0.75);
+	text-decoration: none;
+	text-transform: uppercase;
+	.textshadow(7px);
+}
+.startGameButton:hover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+	.textshadow(14px);
+}
+
 .boardPositionContainer
 {
 	.relativeblock;
@@ -544,6 +577,11 @@ SECTION.spaced
 			.borderradius(5px, 5px, 5px, 5px);
 		}
 
+		.boardPositionDisplay.human, .boardPositionDisplay.computer
+		{
+			cursor: default;
+		}
+
 		.boardPositionDisplay.human
 		{
 			background-color: RGBA(90, 100, 200, 0.5);
@@ -556,18 +594,9 @@ SECTION.spaced
 	}
 }
 
-#gameStartMessage
-{
-	.relativeblock;
-	margin: 5px;
-	padding: 15px;
-	font-size: @site_fontsize-large;
-}
-
 #messageContainer
 {
 	.relativeblock;
-	display: none;
 	margin: 5px;
 	padding: 15px;
 	font-size: @site_fontsize-large;

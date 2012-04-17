@@ -6,10 +6,6 @@
 	@using(Html.BeginForm<HomeController>(c => c.PerformMove(null), FormMethod.Post)) {
 		@this.Hidden(h => h.GameId)
 
-		<div id="gameStartMessage">
-			Choose any Tic-Tac-Toe square to begin.
-		</div>
-
 		<div class="boardPositionContainer">
 			<div class="boardPositionRowContainer">
 				<div class="boardPosition topLeft" id="boardPositionTopLeft">
@@ -52,8 +48,6 @@
 		<div id="messageContainer">
 			Welcome, choose any Tic-Tac-Toe square to begin.
 		</div>
-	
-	 	<h1><span class="headerNote">Welcome To </span> You're Going To Loose, So Why Play?!</h1>
 	}
 </div>
 

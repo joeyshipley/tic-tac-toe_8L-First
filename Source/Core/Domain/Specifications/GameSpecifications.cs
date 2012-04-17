@@ -71,7 +71,7 @@ namespace TTT.Core.Domain.Specifications
 			if(!foundCompleteMatch)
 			{
 				var isDiagonalMatch = true;
-				for(var i = 1; i < Constants.BoardPositionRowLength; i++)
+				for(var i = 1; i <= Constants.BoardPositionRowLength; i++)
 				{
 					var column = i.ToAlphabet();
 					var currentDiagonalPosition = BoardPosition.CreateFrom(column, i);

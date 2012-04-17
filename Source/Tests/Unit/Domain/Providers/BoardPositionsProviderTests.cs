@@ -7,11 +7,11 @@ using TTT.Core.Domain.Providers;
 using TTT.Tests.Helpers.Builders;
 using TTT.Tests.Infrastructure;
 
-namespace TTT.Tests.Unit.Domain.Providers.WinningPositionProviderTests
+namespace TTT.Tests.Unit.Domain.Providers.BoardPositionProviderTests
 {
-	[Subject("Domain, Providers, WinningPositionProvider")]
+	[Subject("Domain, Providers, GetPotentialWinningMovesFor")]
 	public class When_asking_for_the_possible_winning_moves_and_there_are_none
-		: BaseIntegrationTest<AvailableWinningPositionsProvider>
+		: BaseIntegrationTest<BoardPositionsProvider>
 	{
 		private static IList<BoardPosition> _result;
 		private static Game _game;
@@ -27,9 +27,9 @@ namespace TTT.Tests.Unit.Domain.Providers.WinningPositionProviderTests
 			_result.Count().ShouldEqual(0);
 	}
 
-	[Subject("Domain, Providers, WinningPositionProvider")]
+	[Subject("Domain, Providers, GetPotentialWinningMovesFor")]
 	public class When_asking_for_the_possible_winning_moves_and_there_are_none_because_they_have_been_blocked_by_the_other_player
-		: BaseIntegrationTest<AvailableWinningPositionsProvider>
+		: BaseIntegrationTest<BoardPositionsProvider>
 	{
 		private static IList<BoardPosition> _result;
 		private static Game _game;
@@ -53,9 +53,9 @@ namespace TTT.Tests.Unit.Domain.Providers.WinningPositionProviderTests
 			_result.Count().ShouldEqual(0);
 	}
 
-	[Subject("Domain, Providers, WinningPositionProvider")]
+	[Subject("Domain, Providers, GetPotentialWinningMovesFor")]
 	public class When_asking_for_the_possible_winning_moves_and_there_is_one
-		: BaseIntegrationTest<AvailableWinningPositionsProvider>
+		: BaseIntegrationTest<BoardPositionsProvider>
 	{
 		private static IList<BoardPosition> _result;
 		private static Game _game;
@@ -71,9 +71,9 @@ namespace TTT.Tests.Unit.Domain.Providers.WinningPositionProviderTests
 			_result.Count().ShouldEqual(1);
 	}
 
-	[Subject("Domain, Providers, WinningPositionProvider")]
+	[Subject("Domain, Providers, GetPotentialWinningMovesFor")]
 	public class When_asking_for_the_possible_winning_moves_and_there_is_more_than_one
-		: BaseIntegrationTest<AvailableWinningPositionsProvider>
+		: BaseIntegrationTest<BoardPositionsProvider>
 	{
 		private static IList<BoardPosition> _result;
 		private static Game _game;
@@ -87,5 +87,31 @@ namespace TTT.Tests.Unit.Domain.Providers.WinningPositionProviderTests
 
 		It should_return_the_list_of_positions = () =>
 			_result.Count().ShouldEqual(2);
+	}
+
+	[Subject("Domain, Providers, GetRemainingAvailableBoardPositions")]
+	public class When_checking_to_see_what_moves_are_still_available
+		: BaseIntegrationTest<BoardPositionsProvider>
+	{
+		private static IList<BoardPosition> _result;
+		private static Game _game;
+		private static int _numberOfSelectedMoves;
+		private static int _numberOfMaxAvailableMoves;
+
+		Establish context = () => 
+		{
+			_game = new GameBuilder().WithMoves(new List<GameMove>
+			{
+				new GameMove { Position = BoardPosition.CreateFrom("B", 2) }
+			})
+			.Build();
+			_numberOfSelectedMoves = _game.Moves.Count();
+			_numberOfMaxAvailableMoves = Constants.BoardPositionRowLength * Constants.BoardPositionRowLength;
+		};
+
+		Because of = () => _result = ClassUnderTest.GetRemainingAvailableBoardPositions(_game);
+
+		It should_return_all_non_selected_board_positions = () =>
+			_result.Count().ShouldEqual(_numberOfMaxAvailableMoves - _numberOfSelectedMoves);
 	}
 }

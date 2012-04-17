@@ -1,27 +1,43 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TTT.Core.Domain.Entities;
+using TTT.Core.Domain.Providers;
 
 namespace TTT.Core.Domain.Processes
 {
 	public class GameAlgorithms : IGameAlgorithms
 	{
+		private readonly IBoardPositionsProvider _boardPositionsProvider;
+
+		public GameAlgorithms(IBoardPositionsProvider boardPositionsProvider)
+		{
+			_boardPositionsProvider = boardPositionsProvider;
+		}
+
 		public GameMove DetermineNextMove(Game game)
 		{
 			if(game.Moves.Count() == 1)
 				return getFirstMove(game);
 
-			GameMove move = null;
+			var computerWinPositions = _boardPositionsProvider.GetPotentialWinningMovesFor(game, Enums.PlayerType.Computer);
+			if(computerWinPositions.Any())
+				return GameMove.CreateFrom(Enums.PlayerType.Computer, computerWinPositions.FirstOrDefault());
 
-			// TODO: check to see if there are any player winning positions that should be taken
-			// ----- use the AvailableWinningPositionsProvider for this.
+			var humanThreatPositions = _boardPositionsProvider.GetPotentialWinningMovesFor(game, Enums.PlayerType.Human);
+			if(humanThreatPositions.Any())
+				return GameMove.CreateFrom(Enums.PlayerType.Computer, humanThreatPositions.FirstOrDefault());
 
-			// TODO: check to see if there are any computer winning positions that should be taken
-			// ----- use the AvailableWinningPositionsProvider for this.
+			var availablePositions = _boardPositionsProvider.GetRemainingAvailableBoardPositions(game);
+			return getRandomMoveFromAvailable(availablePositions);
+		}
 
-			// TODO: if none have been found, randomly select from the available positions.
-
-			return move;
+		private GameMove getRandomMoveFromAvailable(IList<BoardPosition> availablePositions)
+		{
+			var random = new Random();
+			var randomNumber = random.Next(0, availablePositions.Count() - 1);
+			var randomPosition = availablePositions.ElementAt(randomNumber);
+			return GameMove.CreateFrom(Enums.PlayerType.Computer, randomPosition);
 		}
 
 		private GameMove getFirstMove(Game game)

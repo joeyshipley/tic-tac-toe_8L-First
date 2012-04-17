@@ -1,16 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TTT.Core.Domain.Entities;
+using TTT.Core.Domain.Helpers;
 
 namespace TTT.Core.Domain.Providers
 {
-	public class AvailableWinningPositionsProvider : IAvailableWinningPositionsProvider
+	public class BoardPositionsProvider : IBoardPositionsProvider
 	{
 		private readonly IWinningSetsProvider _winningSetsProvider;
 
-		public AvailableWinningPositionsProvider(IWinningSetsProvider winningSetsProvider)
+		public BoardPositionsProvider(IWinningSetsProvider winningSetsProvider)
 		{
 			_winningSetsProvider = winningSetsProvider;
+		}
+
+		public IList<BoardPosition> GetRemainingAvailableBoardPositions(Game game)
+		{
+			var positions = getAllPossibleBoardPositions();
+			var previouslySelectedPositions = game.Moves.Select(m => m.Position).ToList();
+			previouslySelectedPositions.ForEach(p => positions.Remove(p));
+
+			return positions;
 		}
 
 		public IList<BoardPosition> GetPotentialWinningMovesFor(Game game, Enums.PlayerType owner)
@@ -33,6 +43,15 @@ namespace TTT.Core.Domain.Providers
 					});
 			});
 			return winningMovePositions;
+		}
+
+		private IList<BoardPosition> getAllPossibleBoardPositions()
+		{
+			var allPossibleBoardPositions = new List<BoardPosition>();
+			for(var i = 1; i <= Constants.BoardPositionRowLength; i++)
+				for(var j = 1; j <= Constants.BoardPositionRowLength; j++)
+					allPossibleBoardPositions.Add(BoardPosition.CreateFrom(i.ToAlphabet(), j));
+			return allPossibleBoardPositions;
 		}
 	}
 }

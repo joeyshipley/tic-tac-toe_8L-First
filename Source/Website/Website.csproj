@@ -77,6 +77,10 @@
     <Compile Include="Infrastructure\IoCConfigurator.cs" />
     <Compile Include="Infrastructure\Routing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Resources\Scripts\gameEngine.min.js">
+      <DependentUpon>gameEngine.yui.js</DependentUpon>
+    </Content>
+    <Content Include="Resources\Scripts\gameEngine.yui.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

@@ -2,6 +2,7 @@
 using TTT.Core.Application.Factories;
 using TTT.Core.Application.Repositories;
 using TTT.Core.Application.Request;
+using TTT.Core.Domain;
 using TTT.Core.Domain.Entities;
 using TTT.Core.Domain.Factories;
 using TTT.Core.Domain.Models;
@@ -43,7 +44,7 @@ namespace TTT.Core.Application.Services
 		{
 			var game = _gameRepository.Get(request.GameId);
 			var boardPosition = BoardPosition.CreateFrom(request.SelectedColumn, request.SelectedRow);
-			var isMoveLegitimate = _gameSpecifications.IsMoveLegitimate(game, request.Owner, boardPosition);
+			var isMoveLegitimate = _gameSpecifications.IsMoveLegitimate(game, Enums.PlayerType.Human, boardPosition);
 			if(!isMoveLegitimate)
 			{
 				var moveWarnings = new List<ValidationError> 
@@ -53,7 +54,7 @@ namespace TTT.Core.Application.Services
 				return _modelFactory.CreateFrom(game, moveWarnings);
 			}
 
-			var playerMove = _gameFactory.CreateFrom(request.Owner, boardPosition);
+			var playerMove = _gameFactory.CreateFrom(Enums.PlayerType.Human, boardPosition);
 			game.AddMove(playerMove);
 
 			var computerMove = _gameAlgorithms.DetermineNextMove(game);

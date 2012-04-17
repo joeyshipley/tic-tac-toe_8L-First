@@ -32,7 +32,7 @@ namespace TTT.Core.Application.Factories
 				var position = BoardPositionModel.CreateFrom(move.Position);;
 				var moveModel = new GameMoveModel
 				{
-					Owner = move.Owner,
+					Owner = move.Owner.ToString(),
 					Position = position
 				};
 				return moveModel;

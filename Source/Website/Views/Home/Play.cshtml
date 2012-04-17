@@ -1,0 +1,9 @@
+﻿@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@inherits ModelWebViewPage<GameModel>
+<div id="mainContentInnerContainer">
+	@using(Html.BeginForm<HomeController>(c => c.PerformMove(null), FormMethod.Post)) {
+		@this.Hidden(h => h.GameId)
+	 }
+</div>

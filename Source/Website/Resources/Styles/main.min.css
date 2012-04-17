@@ -40,6 +40,7 @@ A:hover{text-decoration:underline}
 #pageContainer #pageContent{position:relative;display:block;margin:0;padding:0}
 #pageContainer #pageContent #mainHeader{position:relative;display:block;margin:0;padding:0}
 #pageContainer #pageContent #mainContent{position:relative;display:block;margin:0;padding:0}
+#pageContainer #pageContent #mainContent #mainContentInnerContainer{position:relative;display:block;margin:0;padding:0}
 #pageContainer #pageContent #mainFooter{position:relative;display:block;margin:0;padding:0}
 #pageContainer FOOTER{position:relative;display:block;padding:0}
 .codeblock{position:relative;display:block;overflow-x:scroll;padding:10px 10px 10px 20px;color:#666;text-align:left;background:#DDD;border:1px dashed #333}

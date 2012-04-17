@@ -283,6 +283,12 @@ A:hover {
   margin: 0px;
   padding: 0px;
 }
+#pageContainer #pageContent #mainContent #mainContentInnerContainer {
+  position: relative;
+  display: block;
+  margin: 0px;
+  padding: 0px;
+}
 #pageContainer #pageContent #mainFooter {
   position: relative;
   display: block;

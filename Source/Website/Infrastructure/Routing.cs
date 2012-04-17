@@ -10,6 +10,13 @@ namespace TTT.Website.Infrastructure
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute(
+				"Pretty Home Routes",
+				"{action}",
+				new { controller = "Home", action = "Play" },
+				new { action = "Play" }
+			);
+
+			routes.MapRoute(
 				"Default", // Route name
 				"{controller}/{action}/{id}", // URL with parameters
 				new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults

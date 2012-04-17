@@ -2,6 +2,10 @@ The nothingy fancy, yet entirely unbeatable, Tic-Tac-Toe game.
 
 http://tic-tac-toe.apphb.com
 
+Currently Supported Browsers:
+- Chrome
+- Firefox
+
 Project Information
 - ASP.net MVC C#
 - StructureMap

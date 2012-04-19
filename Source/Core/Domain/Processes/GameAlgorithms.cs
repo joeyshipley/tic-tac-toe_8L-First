@@ -28,6 +28,12 @@ namespace TTT.Core.Domain.Processes
 			if(humanThreatPositions.Any())
 				return GameMove.CreateFrom(Enums.PlayerType.Computer, humanThreatPositions.FirstOrDefault());
 
+			// TODO: determine how to handle the Corner to Corner win pattern. 
+			// NOTE: Should we weight the N/S/E/W as higher priority moves to make or possibly
+			// determine if we are forcing the player to make a blocking move to keep playing, and if so
+			// how many possible win moves would that create for the players. Then select a move from
+			// the lowest win possibilities.
+
 			var availablePositions = _boardPositionsProvider.GetRemainingAvailableBoardPositions(game);
 			return getRandomMoveFromAvailable(availablePositions);
 		}

@@ -1,0 +1,1055 @@
+<html>
+<head>
+  <title>Machine.Specifications Report</title>
+  <style type="text/css">body {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: .9em;
+}
+
+.count {
+  color: lightgrey;
+}
+
+.failure, .notimplemented, .ignored {
+  color: red;
+  font-weight: bold;
+  display: inline;
+}
+
+.notimplemented {
+  color: orange;
+}
+
+.ignored {
+  color: gold;
+}
+
+p.exception_type {
+  color: black;
+  font-weight: bold;
+  display: inline;
+}
+
+pre.exception_message {
+  border-style: dashed;
+  border-color: #FF828D;
+  border-width: thin;
+  background-color: #FFD2CF;
+  white-space: pre-wrap; /* CSS2.1 compliant */
+  white-space: -moz-pre-wrap; /* Mozilla-based browsers */
+  white-space: o-pre-wrap; /* Opera 7+ */
+  padding: 1em;
+}
+
+hr {
+  color: lightgrey;
+  border: 1px solid lightgrey;
+  height: 1px;
+}
+
+ul.prev-next {
+  padding: 0;
+  margin: 0;
+  font-size: 2em;
+  }
+  
+.spec ul.prev-next {
+  float: right;
+  right: 30%;
+  position: absolute;
+  margin-top: -1em;
+  }
+
+ul.prev-next li {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+ul.prev-next li a {
+  color: lightgrey;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0 .3em;
+  border: 1px solid lightgrey;
+}
+
+ul.prev-next li.failure a {
+  border-color: red;
+}
+
+ul.prev-next li.notimplemented a {
+  border-color: orange;
+}
+
+ul.prev-next li.ignored a {
+  border-color: gold;
+}
+
+ul.prev-next li.failure a:hover {
+  background-color: red;
+  color: #fff;
+}
+
+ul.prev-next li.notimplemented a:hover {
+  background-color: orange;
+  color: #000;
+}
+
+ul.prev-next li.ignored a:hover {
+  background-color: gold;
+  color: #000;
+}
+
+ul.prev-next li.back a:hover {
+  background-color: #444;
+  color: #fff;
+}
+
+div.supplement {
+  display: none;
+}
+  
+@media print {
+  ul.prev-next {
+    display: none;
+  }
+}
+  </style>
+</head>
+<body>
+  <ul class="prev-next">
+  </ul>
+  <h1>
+    TTT.Tests
+</h1>
+<h2 class="count">
+  14 concerns,
+  42 contexts,
+  67 specifications
+</h2>
+  
+  <hr/>
+  <hr/>
+  
+  <h2 class="concern">
+  Application, Factories, ModelFactory, GameModel creation specifications
+</h2>
+<h3 class="count">
+  2 contexts, 5 specifications
+</h3><h3 class="context">
+  When asking for a game model
+</h3>
+<h4 class="count">
+  4 specifications
+</h4>
+        <ul>
+          <li class="spec"><span id="4">should return a game model</span>
+
+
+
+
+
+<script type="text/javascript">
+  function toggleVisibility(id, description)
+  {
+    var section = document.getElementById(id);
+    var link = document.getElementById(id + "_link");
+
+    if (section.style.display == "block")
+    {
+      section.style.display = "none";
+      link.innerHTML = "Show " + description;
+    } else
+    {
+      section.style.display = "block";
+      link.innerHTML = "Hide " + description;
+    }
+  };
+</script> 
+
+          </li>
+          <li class="spec"><span id="5">should set the models id to match the game</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="6">should build the moves from the games moves</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="7">should set the is game over value</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When asking for a game model with move warnings
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="8">should set the games move warnings</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Application, Services, GameService specifications
+</h2>
+<h3 class="count">
+  1 context, 1 specification
+</h3><h3 class="context">
+  When following particular move list that was resulting in a bug
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="1">should not return game over</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Application, Services, GameService, Existing game specifications
+</h2>
+<h3 class="count">
+  8 contexts, 14 specifications
+</h3><h3 class="context">
+  When a player is performing an invalid move
+</h3>
+<h4 class="count">
+  3 specifications
+</h4>
+        <ul>
+          <li class="spec"><span id="19">should invalidate the legitimacy of the move</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="20">should not end the game</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="21">should return the warning messages</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When a player is performing an valid move
+</h3>
+<h4 class="count">
+  5 specifications
+</h4>
+        <ul>
+          <li class="spec"><span id="12">should validate the legitimacy of the move</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="13">should apply the players move</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="14">should calculate the computers next move</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="15">should determine if the game should continue</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="16">should return the current set of moves performed</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When a player is performing an valid move and the game comes to an end
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="18">should return whether or not the game should go on</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When a player is performing an valid move and the game does not end
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="17">should return whether or not the game should go on</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When the game does not end in a draw because the computer won
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="23">should inform the player that the game is infact unbeatable and that continuing will only make them feel worse</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When the game does not end in a draw because the player won
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="22">should inform the player of the developers failure to create an unbeatable tic tac toe game</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When the game ends in a draw
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="24">should inform the player that the game is infact unbeatable and that continuing will only make them feel worse</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When the player makes the last move
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="25">should not attempt to have the computer perform another move</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Application, Services, GameService, New game specifications
+</h2>
+<h3 class="count">
+  1 context, 3 specifications
+</h3><h3 class="context">
+  When loading a new game up for a player
+</h3>
+<h4 class="count">
+  3 specifications
+</h4>
+        <ul>
+          <li class="spec"><span id="9">should create the game in storage</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="10">should return the current games id</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="11">should return an empty set of moves performed</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Data, Repositories, Game specifications
+</h2>
+<h3 class="count">
+  1 context, 2 specifications
+</h3><h3 class="context">
+  When using the game repository
+</h3>
+<h4 class="count">
+  2 specifications
+</h4>
+        <ul>
+          <li class="spec"><span id="2">should be able save and return a game from storage</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="3">should be able to remove a game from storage</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Domain, Entities, BoardPosition specifications
+</h2>
+<h3 class="count">
+  2 contexts, 2 specifications
+</h3><h3 class="context">
+  When checking to see if two board positions with different values
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="27">should return false</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When checking to see if two board positions with the same column and row are equal
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="26">should return true</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Domain, Entities, Game specifications
+</h2>
+<h3 class="count">
+  1 context, 1 specification
+</h3><h3 class="context">
+  When add a move to a game
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="28">should add it to the move collection</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Domain, Factories, GameFactory, Game creation specifications
+</h2>
+<h3 class="count">
+  2 contexts, 7 specifications
+</h3><h3 class="context">
+  When asking for a game
+</h3>
+<h4 class="count">
+  3 specifications
+</h4>
+        <ul>
+          <li class="spec"><span id="29">should create a game</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="30">should assign the game an id</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="31">should assing an empty list of moves</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When asking for a game move
+</h3>
+<h4 class="count">
+  4 specifications
+</h4>
+        <ul>
+          <li class="spec"><span id="32">should create a game move</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="33">should assign the game an id</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="34">should assign the owner</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="35">should assign the position</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Domain, Processes, GameAlgorithms specifications
+</h2>
+<h3 class="count">
+  6 contexts, 7 specifications
+</h3><h3 class="context">
+  When the choosing a move for the computer and is a player blocking move and a computer winning move available
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="40">should decide to take the winning move instead of the blocking move</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When the choosing a move for the computer and there is an available position the computer can use to win
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="39">should decide to take the board position</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When the choosing a move for the computer and there is an available position the player can use to win
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="38">should decide to take the board position</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When the choosing a move for the computer and there is no winning moves
+</h3>
+<h4 class="count">
+  2 specifications
+</h4>
+        <ul>
+          <li class="spec"><span id="41">should return a move</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="42">should not return a choosen position</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When the players first move is not on the middle center position
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="36">should decide to return a move for the middle center position</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When the players first move is on the middle center position
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="37">should decide to return a move for any of the corner positions</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Domain, Providers, GetPotentialWinningMovesFor specifications
+</h2>
+<h3 class="count">
+  4 contexts, 4 specifications
+</h3><h3 class="context">
+  When asking for the possible winning moves and there are none
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="43">should return an empty list of positions</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When asking for the possible winning moves and there are none because they have been blocked by the other player
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="44">should return an empty list of positions</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When asking for the possible winning moves and there is more than one
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="46">should return the list of positions</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When asking for the possible winning moves and there is one
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="45">should return the list of positions</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Domain, Providers, GetRemainingAvailableBoardPositions specifications
+</h2>
+<h3 class="count">
+  1 context, 1 specification
+</h3><h3 class="context">
+  When checking to see what moves are still available
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="47">should return all non selected board positions</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Domain, Providers, WinningSetsProvider specifications
+</h2>
+<h3 class="count">
+  1 context, 8 specifications
+</h3><h3 class="context">
+  When asking for the possible winning combinations
+</h3>
+<h4 class="count">
+  8 specifications
+</h4>
+        <ul>
+          <li class="spec"><span id="48">should return a set for the top row</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="49">should return a set for the middle row</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="50">should return a set for the bottom row</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="51">should return a set for the left column</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="52">should return a set for the center column</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="53">should return a set for the right column</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="54">should return a set for the top left to bottom right diagonal</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="55">should return a set for the bottom left to top right diagonal</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Domain, Specifications, GameAlgorithms specifications
+</h2>
+<h3 class="count">
+  10 contexts, 10 specifications
+</h3><h3 class="context">
+  When determining a game that has all of its positions selected
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="59">should let us know it is in fact over</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on bottom left diagonal row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="67">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on the bottom row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="62">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on the center row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="64">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on the left row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="63">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on the middle row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="61">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on the right row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="65">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on the top row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="60">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on top left diagonal row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="66">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining if a game with no sets completed or still has moves available is over
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="58">should let us know it is not over</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Domain, Specifications, GameSpecifications specifications
+</h2>
+<h3 class="count">
+  2 contexts, 2 specifications
+</h3><h3 class="context">
+  When determining if a valid move is legitimate or not
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="56">should let us know that it is valid</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining if an invalid move is legitimate or not
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="57">should let us know that it is not valid</span>
+
+
+
+
+ 
+
+          </li>
+        </ul>
+    <hr/>
+</body>
+</html>

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TTT.Core.Domain.Entities;
 using TTT.Core.Domain.Providers;
@@ -56,6 +55,7 @@ namespace TTT.Core.Domain.Processes
 
 		private GameMove getCenterPositionIfAvailable(Game game)
 		{
+			// TODO: determine center position from logic, not hard coding.
 			var centerPosition = BoardPosition.CreateFrom("B", 2);
 			var centerIsAlreadySelected = game.Moves.Any(m => m.Position.Equals(centerPosition));
 			return !centerIsAlreadySelected 
@@ -65,8 +65,8 @@ namespace TTT.Core.Domain.Processes
 
 		private GameMove firstMoveCornerFallBackWhenCenterHasBeenTaken()
 		{
-			var random = new Random();
-			var randomNumber = random.Next(1, 4);
+			// TODO: build this from logic instead of hardcoded case statement.
+			var randomNumber = _randomNumberProvider.GenerateNumber(1, 4);
 			switch(randomNumber)
 			{
 				case 1:

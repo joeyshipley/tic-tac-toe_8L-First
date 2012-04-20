@@ -70,8 +70,10 @@
     <Compile Include="Domain\Processes\IGameAlgorithms.cs" />
     <Compile Include="Domain\Processes\GameAlgorithms.cs" />
     <Compile Include="Domain\Providers\IBoardPositionsProvider.cs" />
+    <Compile Include="Domain\Providers\IRandomNumberProvider.cs" />
     <Compile Include="Domain\Providers\IWinningSetsProvider.cs" />
     <Compile Include="Domain\Providers\BoardPositionsProvider.cs" />
+    <Compile Include="Domain\Providers\RandomNumberProvider.cs" />
     <Compile Include="Domain\Providers\WinningSetsProvider.cs" />
     <Compile Include="Domain\Specifications\GameSpecifications.cs" />
     <Compile Include="Domain\Specifications\IGameSpecifications.cs" />

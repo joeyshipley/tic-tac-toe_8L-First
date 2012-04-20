@@ -137,14 +137,14 @@ namespace TTT.Tests.Unit.Domain.Processes.GameAlgorithmsTests
 
 		Establish context = () => 
 		{
-			// available computer moves
+			// available winning computer moves
 			Mocks.GetMock<IBoardPositionsProvider>()
 				.Setup(p => p.GetPotentialWinningMovesFor(Moq.It.IsAny<Game>(), Enums.PlayerType.Computer))
 				.Returns(new List<BoardPosition>
 				{
 					BoardPosition.CreateFrom("B", 1)
 				});
-			// available human moves
+			// available winning human moves
 			Mocks.GetMock<IBoardPositionsProvider>()
 				.Setup(p => p.GetPotentialWinningMovesFor(Moq.It.IsAny<Game>(), Enums.PlayerType.Human))
 				.Returns(new List<BoardPosition>
@@ -178,11 +178,11 @@ namespace TTT.Tests.Unit.Domain.Processes.GameAlgorithmsTests
 
 		Establish context = () => 
 		{
-			// no available computer moves
+			// no available winning computer moves
 			Mocks.GetMock<IBoardPositionsProvider>()
 				.Setup(p => p.GetPotentialWinningMovesFor(Moq.It.IsAny<Game>(), Enums.PlayerType.Computer))
 				.Returns(new List<BoardPosition>());
-			// no available human moves
+			// no available winning human moves
 			Mocks.GetMock<IBoardPositionsProvider>()
 				.Setup(p => p.GetPotentialWinningMovesFor(Moq.It.IsAny<Game>(), Enums.PlayerType.Human))
 				.Returns(new List<BoardPosition>());
@@ -213,5 +213,66 @@ namespace TTT.Tests.Unit.Domain.Processes.GameAlgorithmsTests
 
 		It should_not_return_a_choosen_position = () =>
 			_result.Position.Equals(BoardPosition.CreateFrom("A", 1)).ShouldBeFalse();
+	}
+
+	[Subject("Domain, Processes, GameAlgorithms")]
+	public class When_the_player_places_their_first_two_moves_in_opposite_corners
+		: BaseIsolationTest<GameAlgorithms>
+	{
+		private static List<GameMove> _results = new List<GameMove>();
+		private static Game _game;
+		private static List<BoardPosition> _availablePositions = new List<BoardPosition>();
+
+		Establish context = () => 
+		{
+			// no available winning computer moves
+			Mocks.GetMock<IBoardPositionsProvider>()
+				.Setup(p => p.GetPotentialWinningMovesFor(Moq.It.IsAny<Game>(), Enums.PlayerType.Computer))
+				.Returns(new List<BoardPosition>());
+			// no available winning human moves
+			Mocks.GetMock<IBoardPositionsProvider>()
+				.Setup(p => p.GetPotentialWinningMovesFor(Moq.It.IsAny<Game>(), Enums.PlayerType.Human))
+				.Returns(new List<BoardPosition>());
+			_availablePositions = new List<BoardPosition>
+			{
+				BoardPosition.CreateFrom("A", 2),
+				BoardPosition.CreateFrom("A", 3),
+				BoardPosition.CreateFrom("B", 1),
+				BoardPosition.CreateFrom("B", 3),
+				BoardPosition.CreateFrom("C", 1),
+				BoardPosition.CreateFrom("C", 2)
+			};
+			Mocks.GetMock<IBoardPositionsProvider>()
+				.Setup(p => p.GetRemainingAvailableBoardPositions(Moq.It.IsAny<Game>()))
+				.Returns(_availablePositions);
+			_game = new GameBuilder().WithMoves(new List<GameMove>
+			{
+				new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 1) },
+				new GameMove { Owner = Enums.PlayerType.Computer, Position = BoardPosition.CreateFrom("B", 2) },
+				new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("C", 3) }
+			})
+			.Build();
+		};
+
+		Because of = () => 
+		{
+			for(var i = 0; i < _availablePositions.Count; i++)
+			{
+				Mocks.GetMock<IRandomNumberProvider>()
+					.Setup(p => p.GenerateNumber(Moq.It.IsAny<int>(), Moq.It.IsAny<int>()))
+					.Returns(i);
+				_results.Add(ClassUnderTest.DetermineNextMove(_game));
+			}
+		};
+
+		It should_not_let_the_computer_pick_a_corner_move = () =>
+		{
+			foreach(var result in _results)
+			{
+				var isTopRightCorner = result.Position.Equals(BoardPosition.CreateFrom("C", 1));
+				var isBottomLeftCorner = result.Position.Equals(BoardPosition.CreateFrom("A", 3));
+				(isTopRightCorner || isBottomLeftCorner).ShouldBeFalse();
+			}
+		};
 	}
 }

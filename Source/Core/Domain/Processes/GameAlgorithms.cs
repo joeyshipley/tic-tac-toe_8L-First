@@ -9,10 +9,12 @@ namespace TTT.Core.Domain.Processes
 	public class GameAlgorithms : IGameAlgorithms
 	{
 		private readonly IBoardPositionsProvider _boardPositionsProvider;
+		private readonly IRandomNumberProvider _randomNumberProvider;
 
-		public GameAlgorithms(IBoardPositionsProvider boardPositionsProvider)
+		public GameAlgorithms(IBoardPositionsProvider boardPositionsProvider, IRandomNumberProvider randomNumberProvider)
 		{
 			_boardPositionsProvider = boardPositionsProvider;
+			_randomNumberProvider = randomNumberProvider;
 		}
 
 		public GameMove DetermineNextMove(Game game)
@@ -40,8 +42,7 @@ namespace TTT.Core.Domain.Processes
 
 		private GameMove getRandomMoveFromAvailable(IList<BoardPosition> availablePositions)
 		{
-			var random = new Random();
-			var randomNumber = random.Next(0, availablePositions.Count() - 1);
+			var randomNumber = _randomNumberProvider.GenerateNumber(0, availablePositions.Count() - 1);
 			var randomPosition = availablePositions.ElementAt(randomNumber);
 			return GameMove.CreateFrom(Enums.PlayerType.Computer, randomPosition);
 		}

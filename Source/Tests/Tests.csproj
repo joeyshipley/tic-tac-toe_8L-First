@@ -71,6 +71,7 @@
     <Compile Include="Unit\Domain\Factories\GameFactoryTests.cs" />
     <Compile Include="Unit\Domain\Processes\GameAlgorithmsTests.cs" />
     <Compile Include="Unit\Domain\Providers\BoardPositionsProviderTests.cs" />
+    <Compile Include="Unit\Domain\Providers\RandomNumberGeneratorTests.cs" />
     <Compile Include="Unit\Domain\Providers\WinningSetsProviderTests.cs" />
     <Compile Include="Unit\Domain\Specifications\GameSpecificationsTests.cs" />
   </ItemGroup>

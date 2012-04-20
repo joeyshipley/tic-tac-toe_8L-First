@@ -23,12 +23,12 @@ namespace TTT.Core.Domain.Providers
 			return positions;
 		}
 
-		public IList<BoardPosition> GetPotentialWinningMovesFor(Game game, Enums.PlayerType owner)
+		public IList<BoardPosition> GetPotentialWinningMovesFor(IList<GameMove> currentMoves, Enums.PlayerType owner)
 		{
 			var winningMovePositions = new List<BoardPosition>();
 			var possibleWinningSets = _winningSetsProvider.GetWinningSets();
 			var ownersPositions = new List<BoardPosition>();
-			var gameMoves = game.Moves.Where(m => m.Owner == owner).ToList();
+			var gameMoves = currentMoves.Where(m => m.Owner == owner).ToList();
 			gameMoves.ForEach(m => ownersPositions.Add(m.Position));
 	
 			possibleWinningSets.ToList().ForEach(set =>
@@ -37,7 +37,7 @@ namespace TTT.Core.Domain.Providers
 				if(hasPotentialWinningPosition)
 					set.Positions.ToList().ForEach(p => 
 					{
-						var hasAlreadyBeenChoosen = game.Moves.Any(m => m.Position.Equals(p));
+						var hasAlreadyBeenChoosen = currentMoves.Any(m => m.Position.Equals(p));
 						if(!hasAlreadyBeenChoosen)
 							winningMovePositions.Add(p);
 					});

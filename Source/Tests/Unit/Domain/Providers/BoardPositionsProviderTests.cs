@@ -21,7 +21,7 @@ namespace TTT.Tests.Unit.Domain.Providers.BoardPositionProviderTests
 			_game = new GameBuilder().Build();
 		};
 
-		Because of = () => _result = ClassUnderTest.GetPotentialWinningMovesFor(_game, Enums.PlayerType.Human);
+		Because of = () => _result = ClassUnderTest.GetPotentialWinningMovesFor(_game.Moves, Enums.PlayerType.Human);
 
 		It should_return_an_empty_list_of_positions = () =>
 			_result.Count().ShouldEqual(0);
@@ -47,7 +47,7 @@ namespace TTT.Tests.Unit.Domain.Providers.BoardPositionProviderTests
 			.Build();
 		};
 
-		Because of = () => _result = ClassUnderTest.GetPotentialWinningMovesFor(_game, Enums.PlayerType.Human);
+		Because of = () => _result = ClassUnderTest.GetPotentialWinningMovesFor(_game.Moves, Enums.PlayerType.Human);
 
 		It should_return_an_empty_list_of_positions = () =>
 			_result.Count().ShouldEqual(0);
@@ -65,7 +65,7 @@ namespace TTT.Tests.Unit.Domain.Providers.BoardPositionProviderTests
 			_game = new GameBuilder().BuildWithPossibleWinningMove();
 		};
 
-		Because of = () => _result = ClassUnderTest.GetPotentialWinningMovesFor(_game, Enums.PlayerType.Human);
+		Because of = () => _result = ClassUnderTest.GetPotentialWinningMovesFor(_game.Moves, Enums.PlayerType.Human);
 
 		It should_return_the_list_of_positions = () =>
 			_result.Count().ShouldEqual(1);
@@ -83,7 +83,7 @@ namespace TTT.Tests.Unit.Domain.Providers.BoardPositionProviderTests
 			_game = new GameBuilder().BuildWithMultiplePossibleWinningMove();
 		};
 
-		Because of = () => _result = ClassUnderTest.GetPotentialWinningMovesFor(_game, Enums.PlayerType.Human);
+		Because of = () => _result = ClassUnderTest.GetPotentialWinningMovesFor(_game.Moves, Enums.PlayerType.Human);
 
 		It should_return_the_list_of_positions = () =>
 			_result.Count().ShouldEqual(2);

@@ -63,6 +63,7 @@
     <Compile Include="Infrastructure\BaseIsolationTest.cs" />
     <Compile Include="Integration\Application\Services\GameServiceTests.cs" />
     <Compile Include="Integration\Data\Repositories\GameRepositoryTests.cs" />
+    <Compile Include="Integration\Domain\Processes\GameAlgorithmsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unit\Core\Application\Factories\ModelFactoryTests.cs" />
     <Compile Include="Unit\Core\Application\Services\GameServiceTests.cs" />

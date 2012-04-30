@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using TTT.Core.Domain.Models;
+using TTT.Domain.Models;
 
 namespace TTT.Tests.Helpers.Builders
 {

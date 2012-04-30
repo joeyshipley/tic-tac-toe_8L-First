@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading;
 using Machine.Specifications;
-using TTT.Core.Domain.Providers;
+using TTT.Domain.Providers;
 using TTT.Tests.Infrastructure;
 
 namespace TTT.Tests.Unit.Domain.Providers

@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using TTT.Core.Infrastructure.IoC;
+using TTT.Application.Infrastructure.IoC;
 using TTT.Website.Infrastructure;
 
 namespace TTT.Website

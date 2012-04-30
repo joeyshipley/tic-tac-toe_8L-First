@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using Machine.Specifications;
-using TTT.Core.Domain;
-using TTT.Core.Domain.Entities;
+using TTT.Domain;
+using TTT.Domain.Entities;
 using TTT.Tests.Helpers.Builders;
 using TTT.Tests.Infrastructure;
 

@@ -1,5 +1,5 @@
 ﻿using Machine.Specifications;
-using TTT.Core.Domain.Entities;
+using TTT.Domain.Entities;
 
 namespace TTT.Tests.Unit.Domain.Entities.BoardPositionTests
 {

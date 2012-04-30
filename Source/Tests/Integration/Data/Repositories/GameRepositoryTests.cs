@@ -1,7 +1,7 @@
 ﻿using System;
 using Machine.Specifications;
-using TTT.Core.Data.Repositories;
-using TTT.Core.Domain.Entities;
+using TTT.Domain.Entities;
+using TTT.Data.Repositories;
 using TTT.Tests.Helpers.Builders;
 using TTT.Tests.Infrastructure;
 

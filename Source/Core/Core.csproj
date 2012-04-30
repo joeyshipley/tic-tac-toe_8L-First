@@ -45,40 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Factories\IModelFactory.cs" />
-    <Compile Include="Application\Factories\ModelFactory.cs" />
-    <Compile Include="Application\Infrastructure\ICacheDataStorage.cs" />
-    <Compile Include="Application\Repositories\IGameRepository.cs" />
-    <Compile Include="Application\Request\PerformMoveRequest.cs" />
-    <Compile Include="Application\Services\GameService.cs" />
-    <Compile Include="Application\Services\IGameService.cs" />
-    <Compile Include="Data\Infrastructure\CacheDataStorage.cs" />
-    <Compile Include="Data\Repositories\CacheGameRepository.cs" />
-    <Compile Include="Domain\Constants.cs" />
-    <Compile Include="Domain\Entities\BoardPosition.cs" />
-    <Compile Include="Domain\Entities\BoardPositionSet.cs" />
-    <Compile Include="Domain\Entities\Game.cs" />
-    <Compile Include="Domain\Entities\GameMove.cs" />
-    <Compile Include="Domain\Enums.cs" />
-    <Compile Include="Domain\Factories\GameFactory.cs" />
-    <Compile Include="Domain\Factories\IGameFactory.cs" />
-    <Compile Include="Domain\Helpers\ExtensionMethods.cs" />
-    <Compile Include="Domain\Models\BoardPositionModel.cs" />
-    <Compile Include="Domain\Models\GameModel.cs" />
-    <Compile Include="Domain\Models\GameMoveModel.cs" />
-    <Compile Include="Domain\Models\ValidationError.cs" />
-    <Compile Include="Domain\Processes\IGameAlgorithms.cs" />
-    <Compile Include="Domain\Processes\GameAlgorithms.cs" />
-    <Compile Include="Domain\Providers\IBoardPositionsProvider.cs" />
-    <Compile Include="Domain\Providers\IRandomNumberProvider.cs" />
-    <Compile Include="Domain\Providers\IWinningSetsProvider.cs" />
-    <Compile Include="Domain\Providers\BoardPositionsProvider.cs" />
-    <Compile Include="Domain\Providers\RandomNumberProvider.cs" />
-    <Compile Include="Domain\Providers\WinningSetsProvider.cs" />
-    <Compile Include="Domain\Specifications\GameSpecifications.cs" />
-    <Compile Include="Domain\Specifications\IGameSpecifications.cs" />
-    <Compile Include="Infrastructure\IoC\IoCConfiguration.cs" />
-    <Compile Include="Infrastructure\IoC\StructureMapDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Machine.Specifications;
-using TTT.Core.Domain;
-using TTT.Core.Domain.Entities;
-using TTT.Core.Domain.Providers;
-using TTT.Tests.Helpers.Builders;
+using TTT.Domain.Entities;
+using TTT.Domain.Providers;
 using TTT.Tests.Infrastructure;
 
 namespace TTT.Tests.Unit.Domain.Providers.WinningPositionProviderTests

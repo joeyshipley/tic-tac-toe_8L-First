@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Machine.Specifications;
-using TTT.Core.Domain;
-using TTT.Core.Domain.Entities;
-using TTT.Core.Domain.Specifications;
+using TTT.Domain;
+using TTT.Domain.Entities;
+using TTT.Domain.Specifications;
 using TTT.Tests.Helpers.Builders;
 using TTT.Tests.Infrastructure;
 

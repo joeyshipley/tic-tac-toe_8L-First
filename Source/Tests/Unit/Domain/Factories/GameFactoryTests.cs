@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using Machine.Specifications;
-using TTT.Core.Domain;
-using TTT.Core.Domain.Entities;
-using TTT.Core.Domain.Factories;
+using TTT.Domain;
+using TTT.Domain.Entities;
+using TTT.Domain.Factories;
 using TTT.Tests.Infrastructure;
 
 namespace TTT.Tests.Unit.Domain.Factories.GameFactoryTests

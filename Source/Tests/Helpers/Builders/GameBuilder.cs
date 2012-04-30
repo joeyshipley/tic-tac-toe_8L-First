@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using TTT.Core.Domain;
-using TTT.Core.Domain.Entities;
+using TTT.Domain;
+using TTT.Domain.Entities;
 
 namespace TTT.Tests.Helpers.Builders
 {

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
-using TTT.Core.Application.Request;
-using TTT.Core.Application.Services;
+using TTT.Application.Request;
+using TTT.Application.Services;
 
 namespace TTT.Website.Controllers
 {

@@ -78,9 +78,17 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj">
-      <Project>{4CD392B4-4764-40A6-8BCE-D1CD3F0249F8}</Project>
-      <Name>Core</Name>
+    <ProjectReference Include="..\Application\Application.csproj">
+      <Project>{B0AA93D5-9D74-42DB-AAA9-CC35E7EA44D0}</Project>
+      <Name>Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{40FD915C-A143-4EC8-A69C-0BF48E19A449}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{73AE3E0F-C6A0-4452-B5B5-81C82A957981}</Project>
+      <Name>Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Website\Website.csproj">
       <Project>{C7F0941C-3AE3-4C87-A392-2F4EBF7BF2A1}</Project>

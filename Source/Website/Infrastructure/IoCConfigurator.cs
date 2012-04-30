@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using StructureMap;
-using TTT.Core.Application.Repositories;
-using TTT.Core.Data.Repositories;
-using TTT.Core.Infrastructure.IoC;
+using TTT.Application.Infrastructure.IoC;
+using TTT.Application.Repositories;
+using TTT.Data.Repositories;
 
 namespace TTT.Website.Infrastructure
 {
@@ -17,7 +17,7 @@ namespace TTT.Website.Infrastructure
 			}
 		}
 
-		private static readonly IList<string> _assemblies = new List<string> { "TTT.Core", "TTT.Website" }; 
+		private static readonly IList<string> _assemblies = new List<string> { "TTT.Domain", "TTT.Application", "TTT.Data", "TTT.Website" }; 
 
 		public static IContainer CreateContainer()
 		{

@@ -1,6 +1,6 @@
 ﻿using TTT.Domain.Entities;
 
-namespace TTT.Domain.Specifications
+namespace TTT.Domain.GameLogic.Specifications
 {
 	public interface IGameSpecifications
 	{

@@ -19,10 +19,11 @@ namespace TTT.Website.Infrastructure
 
 		private static readonly IList<string> _assemblies = new List<string> 
 		{ 
-			"TTT.Domain", 
 			"TTT.Application", 
 			"TTT.Application.Models", 
 			"TTT.Data", 
+			"TTT.Domain",
+			"TTT.Domain.GameLogic", 
 			"TTT.Website" 
 		}; 
 

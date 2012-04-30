@@ -3,7 +3,7 @@ using System.Linq;
 using TTT.Domain.Entities;
 using TTT.Domain.Helpers;
 
-namespace TTT.Domain.Providers
+namespace TTT.Domain.GameLogic.Providers
 {
 	public class BoardPositionsProvider : IBoardPositionsProvider
 	{

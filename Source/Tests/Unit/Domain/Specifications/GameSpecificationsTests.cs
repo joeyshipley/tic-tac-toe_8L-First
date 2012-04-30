@@ -2,7 +2,7 @@
 using Machine.Specifications;
 using TTT.Domain;
 using TTT.Domain.Entities;
-using TTT.Domain.Specifications;
+using TTT.Domain.GameLogic.Specifications;
 using TTT.Tests.Helpers.Builders;
 using TTT.Tests.Infrastructure;
 

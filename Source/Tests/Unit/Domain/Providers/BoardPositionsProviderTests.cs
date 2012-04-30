@@ -3,7 +3,7 @@ using System.Linq;
 using Machine.Specifications;
 using TTT.Domain;
 using TTT.Domain.Entities;
-using TTT.Domain.Providers;
+using TTT.Domain.GameLogic.Providers;
 using TTT.Tests.Helpers.Builders;
 using TTT.Tests.Infrastructure;
 

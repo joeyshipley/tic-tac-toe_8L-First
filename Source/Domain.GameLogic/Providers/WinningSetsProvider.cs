@@ -2,7 +2,7 @@
 using TTT.Domain.Entities;
 using TTT.Domain.Helpers;
 
-namespace TTT.Domain.Providers
+namespace TTT.Domain.GameLogic.Providers
 {
 	public class WinningSetsProvider : IWinningSetsProvider
 	{

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TTT.Domain.Providers
+namespace TTT.Domain.GameLogic.Providers
 {
 	public class RandomNumberProvider : IRandomNumberProvider
 	{

@@ -2,7 +2,7 @@
 using TTT.Domain.Entities;
 using TTT.Domain.Helpers;
 
-namespace TTT.Domain.Specifications
+namespace TTT.Domain.GameLogic.Specifications
 {
 	public class GameSpecifications : IGameSpecifications
 	{

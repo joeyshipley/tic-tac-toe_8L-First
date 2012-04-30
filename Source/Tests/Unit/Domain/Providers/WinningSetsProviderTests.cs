@@ -2,7 +2,7 @@
 using System.Linq;
 using Machine.Specifications;
 using TTT.Domain.Entities;
-using TTT.Domain.Providers;
+using TTT.Domain.GameLogic.Providers;
 using TTT.Tests.Infrastructure;
 
 namespace TTT.Tests.Unit.Domain.Providers.WinningPositionProviderTests

@@ -6,8 +6,8 @@ using TTT.Application.Request;
 using TTT.Domain;
 using TTT.Domain.Entities;
 using TTT.Domain.Factories;
-using TTT.Domain.Processes;
-using TTT.Domain.Specifications;
+using TTT.Domain.GameLogic.Processes;
+using TTT.Domain.GameLogic.Specifications;
 
 namespace TTT.Application.Services
 {

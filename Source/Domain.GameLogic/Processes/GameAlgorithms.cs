@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TTT.Domain.Entities;
-using TTT.Domain.Providers;
+using TTT.Domain.GameLogic.Providers;
 
-namespace TTT.Domain.Processes
+namespace TTT.Domain.GameLogic.Processes
 {
 	public class GameAlgorithms : IGameAlgorithms
 	{

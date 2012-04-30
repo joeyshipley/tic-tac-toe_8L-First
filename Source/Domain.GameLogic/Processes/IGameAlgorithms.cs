@@ -1,6 +1,6 @@
 ﻿using TTT.Domain.Entities;
 
-namespace TTT.Domain.Processes
+namespace TTT.Domain.GameLogic.Processes
 {
 	public interface IGameAlgorithms
 	{

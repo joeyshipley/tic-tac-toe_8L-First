@@ -1,4 +1,4 @@
-﻿namespace TTT.Domain.Providers
+﻿namespace TTT.Domain.GameLogic.Providers
 {
 	public interface IRandomNumberProvider
 	{

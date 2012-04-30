@@ -275,7 +275,6 @@ A:hover {
 #pageContainer {
   position: relative;
   display: block;
-  margin: 0px;
   padding: 0px;
 }
 #pageContainer HEADER {
@@ -327,6 +326,17 @@ A:hover {
 #pageContainer #pageContent #mainContent #mainContentInnerContainer .landingMessage {
   font-size: 1.75em;
   background-color: rgba(0, 0, 0, 0.25);
+}
+#pageContainer #pageContent #mainContent #mainContentInnerContainer #leftPanel {
+  position: relative;
+  display: inline-block;
+  width: 60%;
+}
+#pageContainer #pageContent #mainContent #mainContentInnerContainer #rightPanel {
+  position: relative;
+  display: inline-block;
+  width: 38%;
+  vertical-align: top;
 }
 #pageContainer #pageContent #mainFooter {
   position: relative;
@@ -404,7 +414,6 @@ SECTION.spaced {
 .boardPositionContainer .boardPositionRowContainer {
   position: relative;
   display: block;
-  min-width: 340px;
   clear: both;
   margin: 0px;
   padding: 0px;
@@ -425,14 +434,6 @@ SECTION.spaced {
   margin: 0px;
   padding: 0px;
   width: 33.33%;
-  font-size: 10em;
-  font-weight: bold;
-  line-height: 1em;
-  text-shadow: rgba(0, 0, 0, 0.75) 0 0 1px;
-  /* Anti-alias hack for some browsers to make the font look better. */
-
-  text-transform: uppercase;
-  font-family: "Arial Black", Arial, sans-serif;
   border-width: 1px;
   border-style: double;
   border-color: #FFFFFF;
@@ -469,6 +470,14 @@ SECTION.spaced {
   display: block;
   margin: 3px;
   padding: 20px;
+  font-size: 10em;
+  font-weight: bold;
+  line-height: 1em;
+  text-shadow: rgba(0, 0, 0, 0.75) 0 0 1px;
+  /* Anti-alias hack for some browsers to make the font look better. */
+
+  text-transform: uppercase;
+  font-family: "Arial Black", Arial, sans-serif;
   color: #222222;
   background-color: rgba(255, 255, 255, 0.25);
   background-image: url('../images/pattern_whitestripes.png');
@@ -495,6 +504,9 @@ SECTION.spaced {
   padding: 15px;
   font-size: 1.3em;
 }
+#messageContainer H3 {
+  color: #FFFFFF;
+}
 .gameOver {
   color: #FFFFFF;
 }
@@ -509,6 +521,43 @@ SECTION.spaced {
 /* 480 = 7em */
 /* 960 = 10em */
 /* 1200 = 12em */
+@media (min-width: 768px) and (max-width: 3000px) {
+  #pageContainer {
+    width: 960px;
+    left: 50%;
+    margin: 0px 0px 0px -480px;
+  }
+}
+@media (min-width: 480px) and (max-width: 767px) {
+  #pageContainer {
+    width: 460px;
+    left: 50%;
+    margin: 0px 0px 0px -230px;
+  }
+  #pageContainer .boardPositionDisplay {
+    padding: 10px;
+    font-size: 4em;
+  }
+}
+@media (min-width: 1px) and (max-width: 479px) {
+  #pageContainer {
+    width: 100%;
+    left: 0;
+    margin: 0px;
+  }
+  #pageContainer #leftPanel {
+    display: block !important;
+    width: 100% !important;
+  }
+  #pageContainer #rightPanel {
+    display: block !important;
+    width: 100% !important;
+  }
+  #pageContainer .boardPositionDisplay {
+    padding: 5px;
+    font-size: 5em;
+  }
+}
 /* --------------------------------------------------------- *\
 	Legacy Style Support
 \* --------------------------------------------------------- */

@@ -344,7 +344,6 @@ A:hover
 #pageContainer
 {
 	.relativeblock;
-	margin: 0px;
 	padding: 0px;
 
 	HEADER
@@ -402,6 +401,18 @@ A:hover
 				{
 					font-size: @site_fontsize-xlarge;
 					background-color: RGBA(0, 0, 0, 0.25);
+				}
+
+				#leftPanel
+				{
+					.relativeinlineblock;
+					width: 60%;
+				}
+				#rightPanel
+				{
+					.relativeinlineblock;
+					width: 38%;
+					vertical-align: top;
 				}
 			}
 		}
@@ -502,7 +513,6 @@ SECTION.spaced
 	.boardPositionRowContainer
 	{
 		.relativeblock;
-		min-width: 340px;
 		clear: both;
 		margin: 0px;
 		padding: 0px;
@@ -515,12 +525,6 @@ SECTION.spaced
 			margin: 0px;
 			padding: 0px;
 			width: 33.33%;
-			font-size: 10em;
-			font-weight: bold;
-			line-height: 1em;
-			.antialias;
-			text-transform: uppercase;
-			font-family: @site_fontfamily-black;
 			border-width: 1px;
 			border-style: double;
 			border-color: #FFFFFF;
@@ -567,6 +571,12 @@ SECTION.spaced
 			.relativeblock;
 			margin: 3px;
 			padding: 20px;
+			font-size: 10em;
+			font-weight: bold;
+			line-height: 1em;
+			.antialias;
+			text-transform: uppercase;
+			font-family: @site_fontfamily-black;
 			color: @color_bg-base;
 			background-color: RGBA(255, 255, 255, 0.25);
 			background-image: url('../images/pattern_whitestripes.png');
@@ -600,6 +610,11 @@ SECTION.spaced
 	margin: 5px;
 	padding: 15px;
 	font-size: @site_fontsize-large;
+
+	H3
+	{
+		color: #FFFFFF;
+	}
 }
 
 .gameOver 
@@ -621,8 +636,60 @@ SECTION.spaced
 /* 480 = 7em */
 /* 960 = 10em */
 /* 1200 = 12em */
-.boardPosition 
+@media (min-width: 768px) and (max-width: 3000px)
 {
+	#pageContainer
+	{
+		width: 960px;
+		left: 50%;
+		margin: 0px 0px 0px -480px;
+
+		#leftPanel {}
+		#rightPanel {}
+		.boardPositionDisplay {}
+	}
+}
+@media (min-width: 480px) and (max-width: 767px)
+{
+	#pageContainer
+	{
+		width: 460px;
+		left: 50%;
+		margin: 0px 0px 0px -230px;
+
+		#leftPanel {}
+		#rightPanel {}
+		.boardPositionDisplay
+		{
+			padding: 10px;
+			font-size: 4em;
+		}
+	}
+}
+@media (min-width: 1px) and (max-width: 479px)
+{
+	#pageContainer
+	{
+		width: 100%;
+		left: 0;
+		margin: 0px;
+
+		#leftPanel
+		{
+			display: block !important;
+			width: 100% !important;
+		}
+		#rightPanel
+		{
+			display: block !important;
+			width: 100% !important;
+		}
+		.boardPositionDisplay
+		{
+			padding: 5px;
+			font-size: 5em;
+		}
+	}
 }
 
 

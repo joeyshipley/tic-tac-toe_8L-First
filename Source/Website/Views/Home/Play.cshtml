@@ -6,49 +6,53 @@
 	@using(Html.BeginForm<HomeController>(c => c.PerformMove(null), FormMethod.Post)) {
 		@this.Hidden(h => h.GameId)
 
-		<div class="boardPositionContainer">
-			<div class="boardPositionRowContainer">
-				<div class="boardPosition topLeft">
-					<div class="boardPositionDisplay" id="A1">&nbsp;</div>
+		 <div id="leftPanel">
+		 	<div class="boardPositionContainer">
+				<div class="boardPositionRowContainer">
+					<div class="boardPosition topLeft">
+						<div class="boardPositionDisplay" id="A1">&nbsp;</div>
+					</div>
+					<div class="boardPosition topCenter">
+						<div class="boardPositionDisplay" id="B1">&nbsp;</div>
+					</div>
+					<div class="boardPosition topRight">
+						<div class="boardPositionDisplay" id="C1">&nbsp;</div>
+					</div>
+					<div class="clearFloat"></div>
 				</div>
-				<div class="boardPosition topCenter">
-					<div class="boardPositionDisplay" id="B1">&nbsp;</div>
+				<div class="boardPositionRowContainer">
+					<div class="boardPosition middleLeft">
+						<div class="boardPositionDisplay" id="A2">&nbsp;</div>
+					</div>
+					<div class="boardPosition middleCenter">
+						<div class="boardPositionDisplay" id="B2">&nbsp;</div>
+					</div>
+					<div class="boardPosition middleRight">
+						<div class="boardPositionDisplay" id="C2">&nbsp;</div>
+					</div>
+					<div class="clearFloat"></div>
 				</div>
-				<div class="boardPosition topRight">
-					<div class="boardPositionDisplay" id="C1">&nbsp;</div>
+				<div class="boardPositionRowContainer">
+					<div class="boardPosition bottomLeft">
+						<div class="boardPositionDisplay" id="A3">&nbsp;</div>
+					</div>
+					<div class="boardPosition bottomCenter">
+						<div class="boardPositionDisplay" id="B3">&nbsp;</div>
+					</div>
+					<div class="boardPosition bottomRight">
+						<div class="boardPositionDisplay" id="C3">&nbsp;</div>
+					</div>
+					<div class="clearFloat"></div>
 				</div>
-				<div class="clearFloat"></div>
-			</div>
-			<div class="boardPositionRowContainer">
-				<div class="boardPosition middleLeft">
-					<div class="boardPositionDisplay" id="A2">&nbsp;</div>
-				</div>
-				<div class="boardPosition middleCenter">
-					<div class="boardPositionDisplay" id="B2">&nbsp;</div>
-				</div>
-				<div class="boardPosition middleRight">
-					<div class="boardPositionDisplay" id="C2">&nbsp;</div>
-				</div>
-				<div class="clearFloat"></div>
-			</div>
-			<div class="boardPositionRowContainer">
-				<div class="boardPosition bottomLeft">
-					<div class="boardPositionDisplay" id="A3">&nbsp;</div>
-				</div>
-				<div class="boardPosition bottomCenter">
-					<div class="boardPositionDisplay" id="B3">&nbsp;</div>
-				</div>
-				<div class="boardPosition bottomRight">
-					<div class="boardPositionDisplay" id="C3">&nbsp;</div>
-				</div>
-				<div class="clearFloat"></div>
 			</div>
 		</div>
-	 
-		<div id="messageContainer">
-			Welcome, choose any Tic-Tac-Toe square to begin.
+		
+		<div id="rightPanel">
+			<div id="messageContainer">
+				<h3>Welcome,</h3> choose any Tic-Tac-Toe square to begin.
+			</div>
+			<p class="startNewGame noDisplay">@Html.ActionLink("New Game", "Play", "Home", null, new { @class="startGameButton" })</p>
 		</div>
-		<p class="startNewGame noDisplay">@Html.ActionLink("New Game", "Play", "Home", null, new { @class="startGameButton" })</p>
 	}
 </div>
 

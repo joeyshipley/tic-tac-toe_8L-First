@@ -66,7 +66,7 @@ ttt.game.Controller = function () {
 				endGame("Game Over! The computer has won!");
 			}
 			if (data.IsPlayerWinner) {
-				endGame("Oh Noes!!! You beat the game, that really wasn't supposed to be possible.");
+				endGame("Oh Noes!!! You beat the game! That really wasn't supposed to be possible.");
 			}
 			if (data.IsGameDraw) {
 				endGame("Game over! The computer has placed you in a draw match.");

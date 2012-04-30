@@ -1,5 +1,5 @@
-﻿using TTT.Application.Request;
-using TTT.Domain.Models;
+﻿using TTT.Application.Models;
+using TTT.Application.Request;
 
 namespace TTT.Application.Services
 {

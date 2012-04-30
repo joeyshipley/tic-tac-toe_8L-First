@@ -1,7 +1,7 @@
 ﻿using Machine.Specifications;
 using TTT.Application.Request;
 using TTT.Application.Services;
-using TTT.Domain.Models;
+using TTT.Application.Models;
 using TTT.Tests.Infrastructure;
 
 namespace TTT.Tests.Integration.Application.Services

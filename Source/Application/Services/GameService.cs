@@ -1,13 +1,11 @@
-﻿
-
-using System.Collections.Generic;
-using TTT.Application.Factories;
+﻿using System.Collections.Generic;
+using TTT.Application.Models;
+using TTT.Application.Models.Factories;
 using TTT.Application.Repositories;
 using TTT.Application.Request;
 using TTT.Domain;
 using TTT.Domain.Entities;
 using TTT.Domain.Factories;
-using TTT.Domain.Models;
 using TTT.Domain.Processes;
 using TTT.Domain.Specifications;
 

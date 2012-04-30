@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using TTT.Domain.Entities;
-using TTT.Domain.Models;
 
-namespace TTT.Application.Factories
+namespace TTT.Application.Models.Factories
 {
 	public interface IModelFactory
 	{

@@ -117,6 +117,10 @@
     <Content Include="Views\Home\Play.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Application.Models\Application.Models.csproj">
+      <Project>{73067EC2-9BE7-4CCA-B83D-F65D676D3321}</Project>
+      <Name>Application.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Application\Application.csproj">
       <Project>{B0AA93D5-9D74-42DB-AAA9-CC35E7EA44D0}</Project>
       <Name>Application</Name>

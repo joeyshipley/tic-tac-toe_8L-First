@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TTT.Domain.Entities;
-using TTT.Domain.Models;
 
-namespace TTT.Application.Factories
+namespace TTT.Application.Models.Factories
 {
 	public class ModelFactory : IModelFactory
 	{
@@ -29,7 +28,7 @@ namespace TTT.Application.Factories
 		{
 			var moves = game.Moves.Select(move => 
 			{
-				var position = BoardPositionModel.CreateFrom(move.Position);;
+				var position = BoardPositionModel.CreateFrom(move.Position);
 				var moveModel = new GameMoveModel
 				{
 					Owner = move.Owner.ToString(),

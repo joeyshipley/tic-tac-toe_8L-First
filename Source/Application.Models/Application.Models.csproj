@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{73AE3E0F-C6A0-4452-B5B5-81C82A957981}</ProjectGuid>
+    <ProjectGuid>{73067EC2-9BE7-4CCA-B83D-F65D676D3321}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TTT.Domain</RootNamespace>
-    <AssemblyName>TTT.Domain</AssemblyName>
+    <RootNamespace>TTT.Application.Models</RootNamespace>
+    <AssemblyName>TTT.Application.Models</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,26 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
-    <Compile Include="Entities\BoardPosition.cs" />
-    <Compile Include="Entities\BoardPositionSet.cs" />
-    <Compile Include="Entities\Game.cs" />
-    <Compile Include="Entities\GameMove.cs" />
-    <Compile Include="Enums.cs" />
-    <Compile Include="Factories\GameFactory.cs" />
-    <Compile Include="Factories\IGameFactory.cs" />
-    <Compile Include="Helpers\ExtensionMethods.cs" />
-    <Compile Include="Processes\GameAlgorithms.cs" />
-    <Compile Include="Processes\IGameAlgorithms.cs" />
+    <Compile Include="BoardPositionModel.cs" />
+    <Compile Include="Factories\IModelFactory.cs" />
+    <Compile Include="Factories\ModelFactory.cs" />
+    <Compile Include="GameModel.cs" />
+    <Compile Include="GameMoveModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\BoardPositionsProvider.cs" />
-    <Compile Include="Providers\IBoardPositionsProvider.cs" />
-    <Compile Include="Providers\IRandomNumberProvider.cs" />
-    <Compile Include="Providers\IWinningSetsProvider.cs" />
-    <Compile Include="Providers\RandomNumberProvider.cs" />
-    <Compile Include="Providers\WinningSetsProvider.cs" />
-    <Compile Include="Specifications\GameSpecifications.cs" />
-    <Compile Include="Specifications\IGameSpecifications.cs" />
+    <Compile Include="ValidationError.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{73AE3E0F-C6A0-4452-B5B5-81C82A957981}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

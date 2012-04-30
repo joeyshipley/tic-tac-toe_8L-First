@@ -17,7 +17,14 @@ namespace TTT.Website.Infrastructure
 			}
 		}
 
-		private static readonly IList<string> _assemblies = new List<string> { "TTT.Domain", "TTT.Application", "TTT.Data", "TTT.Website" }; 
+		private static readonly IList<string> _assemblies = new List<string> 
+		{ 
+			"TTT.Domain", 
+			"TTT.Application", 
+			"TTT.Application.Models", 
+			"TTT.Data", 
+			"TTT.Website" 
+		}; 
 
 		public static IContainer CreateContainer()
 		{

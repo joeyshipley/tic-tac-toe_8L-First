@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Machine.Specifications;
-using TTT.Application.Factories;
+using TTT.Application.Models.Factories;
 using TTT.Domain;
 using TTT.Domain.Entities;
-using TTT.Domain.Models;
+using TTT.Application.Models;
 using TTT.Tests.Helpers.Builders;
 using TTT.Tests.Infrastructure;
 

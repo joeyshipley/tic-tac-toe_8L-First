@@ -1,6 +1,6 @@
 ﻿using TTT.Domain.Entities;
 
-namespace TTT.Domain.Models
+namespace TTT.Application.Models
 {
 	public class BoardPositionModel
 	{

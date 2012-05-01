@@ -124,9 +124,9 @@ div.supplement {
     TTT.Tests
 </h1>
 <h2 class="count">
-  15 concerns,
-  44 contexts,
-  70 specifications
+  18 concerns,
+  49 contexts,
+  80 specifications
 </h2>
   
   <hr/>
@@ -136,7 +136,7 @@ div.supplement {
   Application, Factories, ModelFactory, GameModel creation specifications
 </h2>
 <h3 class="count">
-  2 contexts, 5 specifications
+  5 contexts, 14 specifications
 </h3><h3 class="context">
   When asking for a game model
 </h3>
@@ -194,13 +194,106 @@ div.supplement {
 
           </li>
         </ul><h3 class="context">
+  When asking for a game model from a game where the computer won
+</h3>
+<h4 class="count">
+  3 specifications
+</h4>
+        <ul>
+          <li class="spec"><span id="14">should set the is computer winner</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="15">should set the is player winner</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="16">should set the is game draw</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When asking for a game model from a game where the game ended in a draw
+</h3>
+<h4 class="count">
+  3 specifications
+</h4>
+        <ul>
+          <li class="spec"><span id="17">should set the is computer winner</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="18">should set the is player winner</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="19">should set the is game draw</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When asking for a game model from a game where the player won
+</h3>
+<h4 class="count">
+  3 specifications
+</h4>
+        <ul>
+          <li class="spec"><span id="11">should set the is computer winner</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="12">should set the is player winner</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="13">should set the is game draw</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
   When asking for a game model with move warnings
 </h3>
 <h4 class="count">
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="11">should set the games move warnings</span>
+          <li class="spec"><span id="20">should set the games move warnings</span>
 
 
 
@@ -232,7 +325,7 @@ div.supplement {
   Application, Services, GameService, Existing game specifications
 </h2>
 <h3 class="count">
-  8 contexts, 14 specifications
+  5 contexts, 10 specifications
 </h3><h3 class="context">
   When a player is performing an invalid move
 </h3>
@@ -240,7 +333,7 @@ div.supplement {
   3 specifications
 </h4>
         <ul>
-          <li class="spec"><span id="22">should invalidate the legitimacy of the move</span>
+          <li class="spec"><span id="29">should invalidate the legitimacy of the move</span>
 
 
 
@@ -248,7 +341,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="23">should not end the game</span>
+          <li class="spec"><span id="30">should not end the game</span>
 
 
 
@@ -256,7 +349,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="24">should return the warning messages</span>
+          <li class="spec"><span id="31">should return the warning messages</span>
 
 
 
@@ -268,10 +361,10 @@ div.supplement {
   When a player is performing an valid move
 </h3>
 <h4 class="count">
-  5 specifications
+  4 specifications
 </h4>
         <ul>
-          <li class="spec"><span id="15">should validate the legitimacy of the move</span>
+          <li class="spec"><span id="23">should validate the legitimacy of the move</span>
 
 
 
@@ -279,7 +372,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="16">should apply the players move</span>
+          <li class="spec"><span id="24">should calculate the computers next move</span>
 
 
 
@@ -287,7 +380,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="17">should calculate the computers next move</span>
+          <li class="spec"><span id="25">should determine if the game should continue</span>
 
 
 
@@ -295,15 +388,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="18">should determine if the game should continue</span>
-
-
-
-
- 
-
-          </li>
-          <li class="spec"><span id="19">should return the current set of moves performed</span>
+          <li class="spec"><span id="26">should return the current set of moves performed</span>
 
 
 
@@ -318,7 +403,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="21">should return whether or not the game should go on</span>
+          <li class="spec"><span id="28">should return whether or not the game should go on</span>
 
 
 
@@ -333,52 +418,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="20">should return whether or not the game should go on</span>
-
-
-
-
- 
-
-          </li>
-        </ul><h3 class="context">
-  When the game does not end in a draw because the computer won
-</h3>
-<h4 class="count">
-  1 specification
-</h4>
-        <ul>
-          <li class="spec"><span id="26">should inform the player that the game is infact unbeatable and that continuing will only make them feel worse</span>
-
-
-
-
- 
-
-          </li>
-        </ul><h3 class="context">
-  When the game does not end in a draw because the player won
-</h3>
-<h4 class="count">
-  1 specification
-</h4>
-        <ul>
-          <li class="spec"><span id="25">should inform the player of the developers failure to create an unbeatable tic tac toe game</span>
-
-
-
-
- 
-
-          </li>
-        </ul><h3 class="context">
-  When the game ends in a draw
-</h3>
-<h4 class="count">
-  1 specification
-</h4>
-        <ul>
-          <li class="spec"><span id="27">should inform the player that the game is infact unbeatable and that continuing will only make them feel worse</span>
+          <li class="spec"><span id="27">should return whether or not the game should go on</span>
 
 
 
@@ -393,7 +433,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="28">should not attempt to have the computer perform another move</span>
+          <li class="spec"><span id="32">should not attempt to have the computer perform another move</span>
 
 
 
@@ -405,15 +445,15 @@ div.supplement {
   Application, Services, GameService, New game specifications
 </h2>
 <h3 class="count">
-  1 context, 3 specifications
+  1 context, 2 specifications
 </h3><h3 class="context">
   When loading a new game up for a player
 </h3>
 <h4 class="count">
-  3 specifications
+  2 specifications
 </h4>
         <ul>
-          <li class="spec"><span id="12">should create the game in storage</span>
+          <li class="spec"><span id="21">should return the current games id</span>
 
 
 
@@ -421,15 +461,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="13">should return the current games id</span>
-
-
-
-
- 
-
-          </li>
-          <li class="spec"><span id="14">should return an empty set of moves performed</span>
+          <li class="spec"><span id="22">should return an empty set of moves performed</span>
 
 
 
@@ -477,7 +509,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="30">should return false</span>
+          <li class="spec"><span id="34">should return false</span>
 
 
 
@@ -492,7 +524,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="29">should return true</span>
+          <li class="spec"><span id="33">should return true</span>
 
 
 
@@ -512,7 +544,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="31">should add it to the move collection</span>
+          <li class="spec"><span id="35">should add it to the move collection</span>
 
 
 
@@ -532,7 +564,7 @@ div.supplement {
   3 specifications
 </h4>
         <ul>
-          <li class="spec"><span id="32">should create a game</span>
+          <li class="spec"><span id="36">should create a game</span>
 
 
 
@@ -540,7 +572,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="33">should assign the game an id</span>
+          <li class="spec"><span id="37">should assign the game an id</span>
 
 
 
@@ -548,7 +580,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="34">should assing an empty list of moves</span>
+          <li class="spec"><span id="38">should assing an empty list of moves</span>
 
 
 
@@ -563,7 +595,7 @@ div.supplement {
   4 specifications
 </h4>
         <ul>
-          <li class="spec"><span id="35">should create a game move</span>
+          <li class="spec"><span id="39">should create a game move</span>
 
 
 
@@ -571,7 +603,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="36">should assign the game an id</span>
+          <li class="spec"><span id="40">should assign the game an id</span>
 
 
 
@@ -579,7 +611,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="37">should assign the owner</span>
+          <li class="spec"><span id="41">should assign the owner</span>
 
 
 
@@ -587,7 +619,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="38">should assign the position</span>
+          <li class="spec"><span id="42">should assign the position</span>
 
 
 
@@ -607,7 +639,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="43">should decide to take the winning move instead of the blocking move</span>
+          <li class="spec"><span id="47">should decide to take the winning move instead of the blocking move</span>
 
 
 
@@ -622,7 +654,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="42">should decide to take the board position</span>
+          <li class="spec"><span id="46">should decide to take the board position</span>
 
 
 
@@ -637,7 +669,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="41">should decide to take the board position</span>
+          <li class="spec"><span id="45">should decide to take the board position</span>
 
 
 
@@ -690,7 +722,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="39">should decide to return a move for the middle center position</span>
+          <li class="spec"><span id="43">should decide to return a move for the middle center position</span>
 
 
 
@@ -705,7 +737,70 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="40">should decide to return a move for any of the corner positions</span>
+          <li class="spec"><span id="44">should decide to return a move for any of the corner positions</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Domain, Processes, GameMoveAssigner specifications
+</h2>
+<h3 class="count">
+  1 context, 2 specifications
+</h3><h3 class="context">
+  When asking the move assigner to apply a move to the game
+</h3>
+<h4 class="count">
+  2 specifications
+</h4>
+        <ul>
+          <li class="spec"><span id="48">should add the move to the game</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="49">should apply the players move</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Domain, Processes, GameStatusAssigner specifications
+</h2>
+<h3 class="count">
+  2 contexts, 2 specifications
+</h3><h3 class="context">
+  When asking for the game status to be set for a game that is not yet over
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="50">should set the is game over property to false</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When asking for the game status to be set for a game that is over
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="51">should set the is game over property to true</span>
 
 
 
@@ -725,7 +820,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="46">should return an empty list of positions</span>
+          <li class="spec"><span id="54">should return an empty list of positions</span>
 
 
 
@@ -740,7 +835,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="47">should return an empty list of positions</span>
+          <li class="spec"><span id="55">should return an empty list of positions</span>
 
 
 
@@ -755,7 +850,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="49">should return the list of positions</span>
+          <li class="spec"><span id="57">should return the list of positions</span>
 
 
 
@@ -770,7 +865,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="48">should return the list of positions</span>
+          <li class="spec"><span id="56">should return the list of positions</span>
 
 
 
@@ -790,7 +885,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="50">should return all non selected board positions</span>
+          <li class="spec"><span id="58">should return all non selected board positions</span>
 
 
 
@@ -810,7 +905,7 @@ div.supplement {
   2 specifications
 </h4>
         <ul>
-          <li class="spec"><span id="44">should not return numbers under the min value passed in</span>
+          <li class="spec"><span id="52">should not return numbers under the min value passed in</span>
 
 
 
@@ -818,7 +913,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="45">should not return numbers over the max value passed in</span>
+          <li class="spec"><span id="53">should not return numbers over the max value passed in</span>
 
 
 
@@ -838,7 +933,7 @@ div.supplement {
   8 specifications
 </h4>
         <ul>
-          <li class="spec"><span id="51">should return a set for the top row</span>
+          <li class="spec"><span id="59">should return a set for the top row</span>
 
 
 
@@ -846,7 +941,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="52">should return a set for the middle row</span>
+          <li class="spec"><span id="60">should return a set for the middle row</span>
 
 
 
@@ -854,7 +949,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="53">should return a set for the bottom row</span>
+          <li class="spec"><span id="61">should return a set for the bottom row</span>
 
 
 
@@ -862,7 +957,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="54">should return a set for the left column</span>
+          <li class="spec"><span id="62">should return a set for the left column</span>
 
 
 
@@ -870,7 +965,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="55">should return a set for the center column</span>
+          <li class="spec"><span id="63">should return a set for the center column</span>
 
 
 
@@ -878,7 +973,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="56">should return a set for the right column</span>
+          <li class="spec"><span id="64">should return a set for the right column</span>
 
 
 
@@ -886,7 +981,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="57">should return a set for the top left to bottom right diagonal</span>
+          <li class="spec"><span id="65">should return a set for the top left to bottom right diagonal</span>
 
 
 
@@ -894,7 +989,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="58">should return a set for the bottom left to top right diagonal</span>
+          <li class="spec"><span id="66">should return a set for the bottom left to top right diagonal</span>
 
 
 
@@ -914,7 +1009,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="62">should let us know it is in fact over</span>
+          <li class="spec"><span id="70">should let us know it is in fact over</span>
 
 
 
@@ -929,7 +1024,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="70">should let us know the player won</span>
+          <li class="spec"><span id="78">should let us know the player won</span>
 
 
 
@@ -944,7 +1039,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="65">should let us know the player won</span>
+          <li class="spec"><span id="73">should let us know the player won</span>
 
 
 
@@ -959,7 +1054,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="67">should let us know the player won</span>
+          <li class="spec"><span id="75">should let us know the player won</span>
 
 
 
@@ -974,7 +1069,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="66">should let us know the player won</span>
+          <li class="spec"><span id="74">should let us know the player won</span>
 
 
 
@@ -989,7 +1084,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="64">should let us know the player won</span>
+          <li class="spec"><span id="72">should let us know the player won</span>
 
 
 
@@ -1004,7 +1099,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="68">should let us know the player won</span>
+          <li class="spec"><span id="76">should let us know the player won</span>
 
 
 
@@ -1019,7 +1114,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="63">should let us know the player won</span>
+          <li class="spec"><span id="71">should let us know the player won</span>
 
 
 
@@ -1034,7 +1129,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="69">should let us know the player won</span>
+          <li class="spec"><span id="77">should let us know the player won</span>
 
 
 
@@ -1049,7 +1144,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="61">should let us know it is not over</span>
+          <li class="spec"><span id="69">should let us know it is not over</span>
 
 
 
@@ -1069,7 +1164,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="59">should let us know that it is valid</span>
+          <li class="spec"><span id="67">should let us know that it is valid</span>
 
 
 
@@ -1084,7 +1179,42 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="60">should let us know that it is not valid</span>
+          <li class="spec"><span id="68">should let us know that it is not valid</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Domain, Validators, MoveValidator specifications
+</h2>
+<h3 class="count">
+  2 contexts, 2 specifications
+</h3><h3 class="context">
+  When validating a move that is not valid
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="80">should return validation messages</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When validating a move that is valid
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="79">should not return validation messages</span>
 
 
 

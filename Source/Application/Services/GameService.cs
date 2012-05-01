@@ -54,9 +54,9 @@ namespace TTT.Application.Services
 			var game = _gameRepository.Get(request.GameId);
 			var boardPosition = BoardPosition.CreateFrom(request.SelectedColumn, request.SelectedRow);
 	
-			var moveWarningsForPlayersChoice = _moveValidator.ValidateMove(game, Enums.PlayerType.Human, boardPosition);
-			if(moveWarningsForPlayersChoice.Any())
-				return getModelForInvalidPlayerChoice(game, moveWarningsForPlayersChoice);
+			var moveWarningsFromPlayersChoice = _moveValidator.ValidateMove(game, Enums.PlayerType.Human, boardPosition);
+			if(moveWarningsFromPlayersChoice.Any())
+				return getModelForInvalidPlayerChoice(game, moveWarningsFromPlayersChoice);
 
 			assignPlayersChoiceToTheGame(game, boardPosition);
 
@@ -67,12 +67,7 @@ namespace TTT.Application.Services
 			var model = _modelFactory.CreateFrom(game);
 			return model;
 		}
-
-		private bool determineIfPlayerHasWonGameFromNewestMove(Game game)
-		{
-			return _gameSpecifications.IsGameOver(game);
-		}
-
+		
 		private GameModel getModelForInvalidPlayerChoice(Game game, IList<ValidationError> moveWarnings)
 		{
 			return _modelFactory.CreateFrom(game, moveWarnings);
@@ -85,12 +80,17 @@ namespace TTT.Application.Services
 
 		private void assignComputersChoiceToTheGame(Game game)
 		{
-			var playerWonGameFromNewestMove = determineIfPlayerHasWonGameFromNewestMove(game);
-			if (playerWonGameFromNewestMove) 
+			var playerWonGameFromMostRecentMove = determineIfPlayerHasWonGameFromMostRecentMove(game);
+			if (playerWonGameFromMostRecentMove) 
 				return;
 
 			var computerMove = _gameAlgorithms.DetermineNextMove(game);
 			_gameMoveAssigner.AssignMove(game, computerMove, _gameRepository.Save);
+		}
+		
+		private bool determineIfPlayerHasWonGameFromMostRecentMove(Game game)
+		{
+			return _gameSpecifications.IsGameOver(game);
 		}
 	}
 }

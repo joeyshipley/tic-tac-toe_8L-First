@@ -45,10 +45,12 @@
     <Compile Include="Entities\BoardPositionSet.cs" />
     <Compile Include="Entities\Game.cs" />
     <Compile Include="Entities\GameMove.cs" />
+    <Compile Include="Entities\ValidationError.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Factories\GameFactory.cs" />
     <Compile Include="Factories\IGameFactory.cs" />
     <Compile Include="Helpers\ExtensionMethods.cs" />
+    <Compile Include="Helpers\RepositoryDelegates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

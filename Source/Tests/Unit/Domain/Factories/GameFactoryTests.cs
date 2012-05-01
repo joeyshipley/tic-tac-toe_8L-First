@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Machine.Specifications;
+using TTT.Application.Repositories;
 using TTT.Domain;
 using TTT.Domain.Entities;
 using TTT.Domain.Factories;
@@ -13,10 +14,14 @@ namespace TTT.Tests.Unit.Domain.Factories.GameFactoryTests
 		: BaseIsolationTest<GameFactory>
 	{
 		private static Game _result;
+		private static IGameRepository _repository;
 
-		Establish context;
+		Establish context = () => 
+		{
+			_repository = Mocks.GetMock<IGameRepository>().Object;
+		};
 
-		Because of = () => _result = ClassUnderTest.CreateNew();
+		Because of = () => _result = ClassUnderTest.CreateNew(_repository.Save);
 
 		It should_create_a_game = () =>
 			_result.ShouldNotBeNull();

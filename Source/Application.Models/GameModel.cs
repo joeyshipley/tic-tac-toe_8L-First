@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TTT.Domain.Entities;
 
 namespace TTT.Application.Models
 {

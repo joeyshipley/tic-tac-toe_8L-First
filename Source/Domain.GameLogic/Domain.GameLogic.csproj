@@ -41,7 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Processes\GameAlgorithms.cs" />
+    <Compile Include="Processes\GameMoveAssigner.cs" />
+    <Compile Include="Processes\GameStatusAssigner.cs" />
     <Compile Include="Processes\IGameAlgorithms.cs" />
+    <Compile Include="Processes\IGameMoveAssigner.cs" />
+    <Compile Include="Processes\IGameStatusAssigner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\BoardPositionsProvider.cs" />
     <Compile Include="Providers\IBoardPositionsProvider.cs" />
@@ -51,6 +55,8 @@
     <Compile Include="Providers\WinningSetsProvider.cs" />
     <Compile Include="Specifications\GameSpecifications.cs" />
     <Compile Include="Specifications\IGameSpecifications.cs" />
+    <Compile Include="Validators\IMoveValidator.cs" />
+    <Compile Include="Validators\MoveValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

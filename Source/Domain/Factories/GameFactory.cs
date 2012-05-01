@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using TTT.Domain.Entities;
+using TTT.Domain.Helpers;
 
 namespace TTT.Domain.Factories
 {
 	public class GameFactory : IGameFactory
 	{
-		public Game CreateNew()
+		public Game CreateNew(RepositoryDelegates.SaveGame saveGame)
 		{
 			var game = new Game
 			{
 				Id = Guid.NewGuid(),
 				Moves = new List<GameMove>()
 			};
+			saveGame(game);
 			return game;
 		}
 

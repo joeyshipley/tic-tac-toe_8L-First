@@ -1,4 +1,4 @@
-﻿namespace TTT.Application.Models
+﻿namespace TTT.Domain.Entities
 {
 	public class ValidationError
 	{

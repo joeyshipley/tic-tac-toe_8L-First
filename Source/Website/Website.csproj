@@ -74,7 +74,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlExtensions.cs" />
-    <Compile Include="Infrastructure\IoCConfigurator.cs" />
+    <Compile Include="Infrastructure\IoC\IoCConfiguration.cs" />
+    <Compile Include="Infrastructure\IoC\IoCConfigurator.cs" />
+    <Compile Include="Infrastructure\IoC\StructureMapDependencyResolver.cs" />
     <Compile Include="Infrastructure\Routing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Resources\Scripts\gameEngine.min.js">

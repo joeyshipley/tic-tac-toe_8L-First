@@ -1,6 +1,6 @@
 ﻿using Machine.Specifications;
 using StructureMap;
-using TTT.Website.Infrastructure;
+using TTT.Website.Infrastructure.IoC;
 
 namespace TTT.Tests.Infrastructure
 {

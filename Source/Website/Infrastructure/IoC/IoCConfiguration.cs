@@ -2,7 +2,7 @@
 using System.Linq;
 using StructureMap;
 
-namespace TTT.Application.Infrastructure.IoC
+namespace TTT.Website.Infrastructure.IoC
 {
 	public class IoCConfiguration
 	{

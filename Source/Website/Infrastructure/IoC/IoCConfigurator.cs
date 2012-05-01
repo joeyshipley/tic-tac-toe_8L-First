@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using StructureMap;
-using TTT.Application.Infrastructure.IoC;
 using TTT.Application.Repositories;
 using TTT.Data.Repositories;
 
-namespace TTT.Website.Infrastructure
+namespace TTT.Website.Infrastructure.IoC
 {
 	public class IoCConfigurator
 	{

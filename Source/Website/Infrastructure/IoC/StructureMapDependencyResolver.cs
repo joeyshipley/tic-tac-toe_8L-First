@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using StructureMap;
 
-namespace TTT.Application.Infrastructure.IoC
+namespace TTT.Website.Infrastructure.IoC
 {
 	public class StructureMapDependencyResolver : IDependencyResolver
 	{

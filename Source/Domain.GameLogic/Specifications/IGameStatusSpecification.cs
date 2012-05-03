@@ -2,7 +2,7 @@
 
 namespace TTT.Domain.GameLogic.Specifications
 {
-	public interface IGameSpecifications
+	public interface IGameStatusSpecification
 	{
 		bool IsGameOver(Game game);
 		bool IsPlayerWinner(Game game);

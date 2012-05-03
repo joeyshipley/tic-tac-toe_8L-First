@@ -53,8 +53,8 @@
     <Compile Include="Providers\IWinningSetsProvider.cs" />
     <Compile Include="Providers\RandomNumberProvider.cs" />
     <Compile Include="Providers\WinningSetsProvider.cs" />
-    <Compile Include="Specifications\GameSpecifications.cs" />
-    <Compile Include="Specifications\IGameSpecifications.cs" />
+    <Compile Include="Specifications\GameStatusSpecification.cs" />
+    <Compile Include="Specifications\IGameStatusSpecification.cs" />
     <Compile Include="Specifications\IMoveValidationSpecification.cs" />
     <Compile Include="Specifications\MoveValidationSpecification.cs" />
     <Compile Include="Validators\IMoveValidator.cs" />

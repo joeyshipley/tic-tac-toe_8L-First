@@ -18,7 +18,7 @@ namespace TTT.Application.Services
 		private readonly IGameFactory _gameFactory;
 		private readonly IModelFactory _modelFactory;
 		private readonly IGameRepository _gameRepository;
-		private readonly IGameSpecifications _gameSpecifications;
+		private readonly IGameStatusSpecification _gameStatusSpecification;
 		private readonly IGameAlgorithms _gameAlgorithms;
 		private readonly IMoveValidator _moveValidator;
 		private readonly IGameMoveAssigner _gameMoveAssigner;
@@ -27,7 +27,7 @@ namespace TTT.Application.Services
 		public GameService(IGameFactory gameFactory, 
 			IModelFactory modelFactory, 
 			IGameRepository gameRepository, 
-			IGameSpecifications gameSpecifications,
+			IGameStatusSpecification gameStatusSpecification,
 			IGameAlgorithms gameAlgorithms,
 			IMoveValidator moveValidator,
 			IGameMoveAssigner gameMoveAssigner,
@@ -36,7 +36,7 @@ namespace TTT.Application.Services
 			_gameFactory = gameFactory;
 			_modelFactory = modelFactory;
 			_gameRepository = gameRepository;
-			_gameSpecifications = gameSpecifications;
+			_gameStatusSpecification = gameStatusSpecification;
 			_gameAlgorithms = gameAlgorithms;
 			_moveValidator = moveValidator;
 			_gameMoveAssigner = gameMoveAssigner;
@@ -90,7 +90,7 @@ namespace TTT.Application.Services
 		
 		private bool determineIfPlayerHasWonGameFromMostRecentMove(Game game)
 		{
-			return _gameSpecifications.IsGameOver(game);
+			return _gameStatusSpecification.IsGameOver(game);
 		}
 	}
 }

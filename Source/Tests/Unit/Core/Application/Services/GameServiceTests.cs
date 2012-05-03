@@ -82,7 +82,7 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 			Mocks.GetMock<IGameAlgorithms>()
 				.Setup(ga => ga.DetermineNextMove(_game))
 				.Returns(new GameMoveBuilder().Build(Enums.PlayerType.Computer, _position));
-			Mocks.GetMock<IGameSpecifications>()
+			Mocks.GetMock<IGameStatusSpecification>()
 				.Setup(s => s.IsGameOver(_game))
 				.Returns(false);
 			Mocks.GetMock<IModelFactory>()
@@ -107,7 +107,7 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 				.Verify(ga => ga.DetermineNextMove(Moq.It.IsAny<Game>()));
 	
 		It should_determine_if_the_game_should_continue = () =>
-			Mocks.GetMock<IGameSpecifications>()
+			Mocks.GetMock<IGameStatusSpecification>()
 				.Verify(s => s.IsGameOver(Moq.It.IsAny<Game>()));
 
 		It should_return_the_current_set_of_moves_performed = () =>
@@ -148,7 +148,7 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 			Mocks.GetMock<IGameAlgorithms>()
 				.Setup(ga => ga.DetermineNextMove(_game))
 				.Returns(new GameMoveBuilder().Build(Enums.PlayerType.Computer, BoardPosition.CreateFrom("A", 1)));
-			Mocks.GetMock<IGameSpecifications>()
+			Mocks.GetMock<IGameStatusSpecification>()
 				.Setup(s => s.IsGameOver(_game))
 				.Returns(false);
 			Mocks.GetMock<IModelFactory>()
@@ -202,7 +202,7 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 			Mocks.GetMock<IGameAlgorithms>()
 				.Setup(ga => ga.DetermineNextMove(_game))
 				.Returns(new GameMoveBuilder().Build(Enums.PlayerType.Computer, BoardPosition.CreateFrom("A", 1)));
-			Mocks.GetMock<IGameSpecifications>()
+			Mocks.GetMock<IGameStatusSpecification>()
 				.Setup(s => s.IsGameOver(_game))
 				.Returns(true);
 			Mocks.GetMock<IModelFactory>()
@@ -306,7 +306,7 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 			Mocks.GetMock<IMoveValidationSpecification>()
 				.Setup(s => s.IsMoveValid(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
 				.Returns(true);
-			var gameSpec = Mocks.GetMock<IGameSpecifications>();
+			var gameSpec = Mocks.GetMock<IGameStatusSpecification>();
 			Mocks.GetMock<IGameFactory>()
 				.Setup(f => f.CreateFrom(Enums.PlayerType.Human, Moq.It.IsAny<BoardPosition>()))
 				.Returns(new GameMoveBuilder().Build(Enums.PlayerType.Human, BoardPosition.CreateFrom("A", 1)));

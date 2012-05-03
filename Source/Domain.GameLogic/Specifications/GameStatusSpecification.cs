@@ -4,7 +4,7 @@ using TTT.Domain.Helpers;
 
 namespace TTT.Domain.GameLogic.Specifications
 {
-	public class GameSpecifications : IGameSpecifications
+	public class GameStatusSpecification : IGameStatusSpecification
 	{
 		public bool IsGameOver(Game game)
 		{

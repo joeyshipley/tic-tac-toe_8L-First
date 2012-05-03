@@ -27,7 +27,7 @@ namespace TTT.Tests.Unit.Domain.Processes.GameAlgorithmsTests
 				new GameMoveBuilder().Build(Enums.PlayerType.Computer, BoardPosition.CreateFrom("A", 2))
 			}).Build();
 			_repository = Mocks.GetMock<IGameRepository>().Object;
-			Mocks.GetMock<IGameSpecifications>()
+			Mocks.GetMock<IGameStatusSpecification>()
 				.Setup(s => s.IsGameOver(Moq.It.IsAny<Game>()))
 				.Returns(false);
 		};
@@ -56,7 +56,7 @@ namespace TTT.Tests.Unit.Domain.Processes.GameAlgorithmsTests
 				new GameMoveBuilder().Build(Enums.PlayerType.Human, BoardPosition.CreateFrom("A", 3))
 			}).Build();
 			_repository = Mocks.GetMock<IGameRepository>().Object;
-			Mocks.GetMock<IGameSpecifications>()
+			Mocks.GetMock<IGameStatusSpecification>()
 				.Setup(s => s.IsGameOver(Moq.It.IsAny<Game>()))
 				.Returns(true);
 		};

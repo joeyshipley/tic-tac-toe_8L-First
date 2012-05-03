@@ -7,11 +7,11 @@ namespace TTT.Application.Models.Factories
 {
 	public class ModelFactory : IModelFactory
 	{
-		private readonly IGameSpecifications _gameSpecifications;
+		private readonly IGameStatusSpecification _gameStatusSpecification;
 
-		public ModelFactory(IGameSpecifications gameSpecifications)
+		public ModelFactory(IGameStatusSpecification gameStatusSpecification)
 		{
-			_gameSpecifications = gameSpecifications;
+			_gameStatusSpecification = gameStatusSpecification;
 		}
 
 		public GameModel CreateFrom(Game game)
@@ -30,10 +30,10 @@ namespace TTT.Application.Models.Factories
 				MoveWarnings = moveWarnings
 			};
 
-			var isComputerWinner = game.IsGameOver && _gameSpecifications.IsComputerWinner(game);
+			var isComputerWinner = game.IsGameOver && _gameStatusSpecification.IsComputerWinner(game);
 			model.IsComputerWinner = isComputerWinner;
 
-			var isPlayerWinner = game.IsGameOver && _gameSpecifications.IsPlayerWinner(game);
+			var isPlayerWinner = game.IsGameOver && _gameStatusSpecification.IsPlayerWinner(game);
 			model.IsPlayerWinner = isPlayerWinner;
 
 			var isGameDraw = game.IsGameOver && !isComputerWinner && !isPlayerWinner;

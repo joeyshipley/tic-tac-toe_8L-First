@@ -6,16 +6,16 @@ namespace TTT.Domain.GameLogic.Processes
 {
 	public class GameStatusAssigner : IGameStatusAssigner
 	{
-		private readonly IGameSpecifications _gameSpecifications;
+		private readonly IGameStatusSpecification _gameStatusSpecifications;
 
-		public GameStatusAssigner(IGameSpecifications gameSpecifications)
+		public GameStatusAssigner(IGameStatusSpecification gameStatusSpecifications)
 		{
-			_gameSpecifications = gameSpecifications;
+			_gameStatusSpecifications = gameStatusSpecifications;
 		}
 
 		public void AssignGameStatus(Game game, RepositoryDelegates.SaveGame saveGame)
 		{
-			var isGameOver = _gameSpecifications.IsGameOver(game);
+			var isGameOver = _gameStatusSpecifications.IsGameOver(game);
 			game.IsGameOver = isGameOver;
 			saveGame(game);
 		}

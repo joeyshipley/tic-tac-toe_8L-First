@@ -67,7 +67,7 @@ namespace TTT.Tests.Unit.Core.Application.Factories.ModelFactoryTests
 			_game = new GameBuilder()
 				.WithIsGameOver(true)
 				.Build();
-			var specs = Mocks.GetMock<IGameSpecifications>();
+			var specs = Mocks.GetMock<IGameStatusSpecification>();
 			specs.Setup(s => s.IsComputerWinner(Moq.It.IsAny<Game>()))
 				.Returns(false);
 			specs.Setup(s => s.IsPlayerWinner(Moq.It.IsAny<Game>()))
@@ -98,7 +98,7 @@ namespace TTT.Tests.Unit.Core.Application.Factories.ModelFactoryTests
 			_game = new GameBuilder()
 				.WithIsGameOver(true)
 				.Build();
-			var specs = Mocks.GetMock<IGameSpecifications>();
+			var specs = Mocks.GetMock<IGameStatusSpecification>();
 			specs.Setup(s => s.IsComputerWinner(Moq.It.IsAny<Game>()))
 				.Returns(true);
 			specs.Setup(s => s.IsPlayerWinner(Moq.It.IsAny<Game>()))
@@ -129,7 +129,7 @@ namespace TTT.Tests.Unit.Core.Application.Factories.ModelFactoryTests
 			_game = new GameBuilder()
 				.WithIsGameOver(true)
 				.Build();
-			var specs = Mocks.GetMock<IGameSpecifications>();
+			var specs = Mocks.GetMock<IGameStatusSpecification>();
 			specs.Setup(s => s.IsComputerWinner(Moq.It.IsAny<Game>()))
 				.Returns(false);
 			specs.Setup(s => s.IsPlayerWinner(Moq.It.IsAny<Game>()))

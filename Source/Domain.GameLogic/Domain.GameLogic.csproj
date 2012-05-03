@@ -55,6 +55,8 @@
     <Compile Include="Providers\WinningSetsProvider.cs" />
     <Compile Include="Specifications\GameSpecifications.cs" />
     <Compile Include="Specifications\IGameSpecifications.cs" />
+    <Compile Include="Specifications\IMoveValidationSpecification.cs" />
+    <Compile Include="Specifications\MoveValidationSpecification.cs" />
     <Compile Include="Validators\IMoveValidator.cs" />
     <Compile Include="Validators\MoveValidator.cs" />
   </ItemGroup>

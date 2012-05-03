@@ -6,11 +6,6 @@ namespace TTT.Domain.GameLogic.Specifications
 {
 	public class GameSpecifications : IGameSpecifications
 	{
-		public bool IsMoveLegitimate(Game game, Enums.PlayerType owner, BoardPosition position)
-		{
-			return game.Moves.All(m => !m.Position.Equals(position));
-		}
-
 		public bool IsGameOver(Game game)
 		{
 			// If the game is a draw, the game is over.

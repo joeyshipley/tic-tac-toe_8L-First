@@ -6,17 +6,17 @@ namespace TTT.Domain.GameLogic.Validators
 {
 	public class MoveValidator : IMoveValidator
 	{
-		private readonly IGameSpecifications _gameSpecifications;
+		private readonly IMoveValidationSpecification _moveValidationSpecification;
 
-		public MoveValidator(IGameSpecifications gameSpecifications)
+		public MoveValidator(IMoveValidationSpecification moveValidationSpecification)
 		{
-			_gameSpecifications = gameSpecifications;
+			_moveValidationSpecification = moveValidationSpecification;
 		}
 
 		public IList<ValidationError> ValidateMove(Game game, Enums.PlayerType owner, BoardPosition boardPosition)
 		{
 			var warnings = new List<ValidationError>();
-			var isMoveLegitimate = _gameSpecifications.IsMoveLegitimate(game, owner, boardPosition);
+			var isMoveLegitimate = _moveValidationSpecification.IsMoveValid(game, owner, boardPosition);
 
 			if(!isMoveLegitimate)
 				warnings.Add(new ValidationError { Type = "InvalidMove", Message = "Sorry this move is not legal, try another move to keep playing." });

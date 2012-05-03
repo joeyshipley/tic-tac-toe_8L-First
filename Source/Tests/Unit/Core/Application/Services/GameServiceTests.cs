@@ -72,8 +72,8 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 			Mocks.GetMock<IGameRepository>()
 				.Setup(f => f.Get(Moq.It.IsAny<Guid>()))
 				.Returns(_game);
-			Mocks.GetMock<IGameSpecifications>()
-				.Setup(s => s.IsMoveLegitimate(_game, Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
+			Mocks.GetMock<IMoveValidationSpecification>()
+				.Setup(s => s.IsMoveValid(_game, Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
 				.Returns(true);
 			_position = BoardPosition.CreateFrom(_request.SelectedColumn, _request.SelectedRow);
 			Mocks.GetMock<IGameFactory>()
@@ -138,8 +138,8 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 			Mocks.GetMock<IGameRepository>()
 				.Setup(f => f.Get(Moq.It.IsAny<Guid>()))
 				.Returns(_game);
-			Mocks.GetMock<IGameSpecifications>()
-				.Setup(s => s.IsMoveLegitimate(_game, Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
+			Mocks.GetMock<IMoveValidationSpecification>()
+				.Setup(s => s.IsMoveValid(_game, Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
 				.Returns(true);
 			_position = BoardPosition.CreateFrom(_request.SelectedColumn, _request.SelectedRow);
 			Mocks.GetMock<IGameFactory>()
@@ -192,8 +192,8 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 			Mocks.GetMock<IGameRepository>()
 				.Setup(f => f.Get(Moq.It.IsAny<Guid>()))
 				.Returns(_game);
-			Mocks.GetMock<IGameSpecifications>()
-				.Setup(s => s.IsMoveLegitimate(_game, Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
+			Mocks.GetMock<IMoveValidationSpecification>()
+				.Setup(s => s.IsMoveValid(_game, Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
 				.Returns(true);
 			_position = BoardPosition.CreateFrom(_request.SelectedColumn, _request.SelectedRow);
 			Mocks.GetMock<IGameFactory>()
@@ -253,8 +253,8 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 			Mocks.GetMock<IGameRepository>()
 				.Setup(f => f.Get(Moq.It.IsAny<Guid>()))
 				.Returns(game);
-			Mocks.GetMock<IGameSpecifications>()
-				.Setup(s => s.IsMoveLegitimate(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
+			Mocks.GetMock<IMoveValidationSpecification>()
+				.Setup(s => s.IsMoveValid(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
 				.Returns(false);
 			Mocks.GetMock<IModelFactory>()
 				.Setup(f => f.CreateFrom(Moq.It.IsAny<Game>(), Moq.It.IsAny<IList<ValidationError>>()))
@@ -303,10 +303,10 @@ namespace TTT.Tests.Unit.Core.Application.Services.GameServiceTests
 			Mocks.GetMock<IGameRepository>()
 				.Setup(f => f.Get(Moq.It.IsAny<Guid>()))
 				.Returns(game);
-			var gameSpec = Mocks.GetMock<IGameSpecifications>();
-			gameSpec
-				.Setup(s => s.IsMoveLegitimate(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
+			Mocks.GetMock<IMoveValidationSpecification>()
+				.Setup(s => s.IsMoveValid(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
 				.Returns(true);
+			var gameSpec = Mocks.GetMock<IGameSpecifications>();
 			Mocks.GetMock<IGameFactory>()
 				.Setup(f => f.CreateFrom(Enums.PlayerType.Human, Moq.It.IsAny<BoardPosition>()))
 				.Returns(new GameMoveBuilder().Build(Enums.PlayerType.Human, BoardPosition.CreateFrom("A", 1)));

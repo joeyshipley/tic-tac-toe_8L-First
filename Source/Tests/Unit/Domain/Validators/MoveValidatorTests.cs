@@ -23,8 +23,8 @@ namespace TTT.Tests.Unit.Domain.Validators
 			_game = new GameBuilder().Build();
 			_boardPosition = BoardPosition.CreateFrom("A", 1);
 
-			Mocks.GetMock<IGameSpecifications>()
-				.Setup(p => p.IsMoveLegitimate(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
+			Mocks.GetMock<IMoveValidationSpecification>()
+				.Setup(p => p.IsMoveValid(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
 				.Returns(true);
 		};
 
@@ -50,8 +50,8 @@ namespace TTT.Tests.Unit.Domain.Validators
 			}).Build();
 			_boardPosition = BoardPosition.CreateFrom("A", 1);
 
-			Mocks.GetMock<IGameSpecifications>()
-				.Setup(p => p.IsMoveLegitimate(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
+			Mocks.GetMock<IMoveValidationSpecification>()
+				.Setup(p => p.IsMoveValid(Moq.It.IsAny<Game>(), Moq.It.IsAny<Enums.PlayerType>(), Moq.It.IsAny<BoardPosition>()))
 				.Returns(false);
 		};
 

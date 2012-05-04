@@ -74,6 +74,7 @@
     <Compile Include="Unit\Domain\Processes\GameMoveAssignerTests.cs" />
     <Compile Include="Unit\Domain\Processes\GameAlgorithmsTests.cs" />
     <Compile Include="Unit\Domain\Providers\BoardPositionsProviderTests.cs" />
+    <Compile Include="Unit\Domain\Providers\ComputerFirstTurnMoveProviderTests.cs" />
     <Compile Include="Unit\Domain\Providers\RandomNumberGeneratorTests.cs" />
     <Compile Include="Unit\Domain\Providers\WinningMoveProviderTests.cs" />
     <Compile Include="Unit\Domain\Providers\WinningSetsProviderTests.cs" />

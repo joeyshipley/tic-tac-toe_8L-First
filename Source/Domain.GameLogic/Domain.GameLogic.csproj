@@ -48,7 +48,9 @@
     <Compile Include="Processes\IGameStatusAssigner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\AvailableBoardPositionsProvider.cs" />
+    <Compile Include="Providers\ComputerFirstTurnMoveProvider.cs" />
     <Compile Include="Providers\IAvailableBoardPositionsProvider.cs" />
+    <Compile Include="Providers\IComputerFirstTurnMoveProvider.cs" />
     <Compile Include="Providers\IRandomNumberProvider.cs" />
     <Compile Include="Providers\IWinningMoveProvider.cs" />
     <Compile Include="Providers\IWinningSetsProvider.cs" />

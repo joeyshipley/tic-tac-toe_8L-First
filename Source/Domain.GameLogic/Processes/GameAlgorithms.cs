@@ -10,14 +10,17 @@ namespace TTT.Domain.GameLogic.Processes
 		private readonly IAvailableBoardPositionsProvider _availableBoardPositionsProvider;
 		private readonly IRandomNumberProvider _randomNumberProvider;
 		private readonly IWinningMoveProvider _winningMoveProvider;
+		private readonly IComputerFirstTurnMoveProvider _computerFirstTurnMoveProvider;
 
 		public GameAlgorithms(IAvailableBoardPositionsProvider availableBoardPositionsProvider, 
 			IRandomNumberProvider randomNumberProvider,
-			IWinningMoveProvider winningMoveProvider)
+			IWinningMoveProvider winningMoveProvider,
+			IComputerFirstTurnMoveProvider computerFirstTurnMoveProvider)
 		{
 			_availableBoardPositionsProvider = availableBoardPositionsProvider;
 			_randomNumberProvider = randomNumberProvider;
 			_winningMoveProvider = winningMoveProvider;
+			_computerFirstTurnMoveProvider = computerFirstTurnMoveProvider;
 		}
 
 		public GameMove DetermineNextMove(Game game)
@@ -90,30 +93,19 @@ namespace TTT.Domain.GameLogic.Processes
 
 		private GameMove getCenterPositionIfAvailable(Game game)
 		{
-			// TODO: determine center position from logic, not hard coding.
-			var centerPosition = BoardPosition.CreateFrom("B", 2);
-			var centerIsAlreadySelected = game.Moves.Any(m => m.Position.Equals(centerPosition));
+			var centerMove = _computerFirstTurnMoveProvider.GetCenterSquareMove();
+			var centerMovePosition = centerMove.Position;
+			var centerIsAlreadySelected = game.Moves.Any(m => m.Position.Equals(centerMovePosition));
 			return !centerIsAlreadySelected 
-				? GameMove.CreateFrom(Enums.PlayerType.Computer, centerPosition) 
+				? centerMove 
 				: null;
 		}
 
 		private GameMove firstMoveCornerFallBackWhenCenterHasBeenTaken()
 		{
-			// TODO: build this from logic instead of hardcoded case statement.
-			var randomNumber = _randomNumberProvider.GenerateNumber(1, 4);
-			switch(randomNumber)
-			{
-				case 1:
-					return GameMove.CreateFrom(Enums.PlayerType.Computer, BoardPosition.CreateFrom("A", 1));
-				case 2:
-					return GameMove.CreateFrom(Enums.PlayerType.Computer, BoardPosition.CreateFrom("A", 3));
-				case 3:
-					return GameMove.CreateFrom(Enums.PlayerType.Computer, BoardPosition.CreateFrom("C", 1));
-				case 4:
-				default:
-					return GameMove.CreateFrom(Enums.PlayerType.Computer, BoardPosition.CreateFrom("C", 3));
-			}
+			var cornerMoves = _computerFirstTurnMoveProvider.GetCornerMoves();
+			var randomNumber = _randomNumberProvider.GenerateNumber(0, 3);
+			return cornerMoves.ElementAt(randomNumber);
 		}
 	}
 }

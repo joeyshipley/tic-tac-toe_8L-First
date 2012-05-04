@@ -23,6 +23,9 @@ namespace TTT.Tests.Unit.Domain.Processes.GameAlgorithmsTests
 				new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("A", 1) }
 			})
 			.Build();
+			Mocks.GetMock<IComputerFirstTurnMoveProvider>()
+				.Setup(c => c.GetCenterSquareMove())
+				.Returns(new GameMoveBuilder().Build(Enums.PlayerType.Computer, BoardPosition.CreateFrom("B", 2)));
 		};
 
 		Because of = () => _result = ClassUnderTest.DetermineNextMove(_game);
@@ -45,6 +48,18 @@ namespace TTT.Tests.Unit.Domain.Processes.GameAlgorithmsTests
 				new GameMove { Owner = Enums.PlayerType.Human, Position = BoardPosition.CreateFrom("B", 2) }
 			})
 			.Build();
+			Mocks.GetMock<IComputerFirstTurnMoveProvider>()
+				.Setup(c => c.GetCenterSquareMove())
+				.Returns(new GameMoveBuilder().Build(Enums.PlayerType.Computer, BoardPosition.CreateFrom("B", 2)));
+			Mocks.GetMock<IComputerFirstTurnMoveProvider>()
+				.Setup(c => c.GetCornerMoves())
+				.Returns(new List<GameMove>
+				{
+					new GameMoveBuilder().Build(Enums.PlayerType.Computer, BoardPosition.CreateFrom("A", 1)),
+					new GameMoveBuilder().Build(Enums.PlayerType.Computer, BoardPosition.CreateFrom("A", 3)),
+					new GameMoveBuilder().Build(Enums.PlayerType.Computer, BoardPosition.CreateFrom("C", 1)),
+					new GameMoveBuilder().Build(Enums.PlayerType.Computer, BoardPosition.CreateFrom("C", 3)),
+				});
 		};
 
 		Because of = () => _result = ClassUnderTest.DetermineNextMove(_game);

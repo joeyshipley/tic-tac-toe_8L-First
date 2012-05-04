@@ -57,7 +57,9 @@
     <Compile Include="Providers\RandomNumberProvider.cs" />
     <Compile Include="Providers\WinningMoveProvider.cs" />
     <Compile Include="Providers\WinningSetsProvider.cs" />
+    <Compile Include="Specifications\ComputerFirstTurnSpecification.cs" />
     <Compile Include="Specifications\GameStatusSpecification.cs" />
+    <Compile Include="Specifications\IComputerFirstTurnSpecification.cs" />
     <Compile Include="Specifications\IGameStatusSpecification.cs" />
     <Compile Include="Specifications\IMoveValidationSpecification.cs" />
     <Compile Include="Specifications\MoveValidationSpecification.cs" />

@@ -4,6 +4,7 @@ using TTT.Domain;
 using TTT.Domain.Entities;
 using TTT.Domain.GameLogic.Processes;
 using TTT.Domain.GameLogic.Providers;
+using TTT.Domain.GameLogic.Specifications;
 using TTT.Tests.Helpers.Builders;
 using TTT.Tests.Infrastructure;
 
@@ -26,6 +27,9 @@ namespace TTT.Tests.Unit.Domain.Processes.GameAlgorithmsTests
 			Mocks.GetMock<IComputerFirstTurnMoveProvider>()
 				.Setup(c => c.GetCenterSquareMove())
 				.Returns(new GameMoveBuilder().Build(Enums.PlayerType.Computer, BoardPosition.CreateFrom("B", 2)));
+			Mocks.GetMock<IComputerFirstTurnSpecification>()
+				.Setup(s => s.IsFirstTurnForComputer(Moq.It.IsAny<Game>()))
+				.Returns(true);
 		};
 
 		Because of = () => _result = ClassUnderTest.DetermineNextMove(_game);
@@ -60,6 +64,9 @@ namespace TTT.Tests.Unit.Domain.Processes.GameAlgorithmsTests
 					new GameMoveBuilder().Build(Enums.PlayerType.Computer, BoardPosition.CreateFrom("C", 1)),
 					new GameMoveBuilder().Build(Enums.PlayerType.Computer, BoardPosition.CreateFrom("C", 3)),
 				});
+			Mocks.GetMock<IComputerFirstTurnSpecification>()
+				.Setup(s => s.IsFirstTurnForComputer(Moq.It.IsAny<Game>()))
+				.Returns(true);
 		};
 
 		Because of = () => _result = ClassUnderTest.DetermineNextMove(_game);

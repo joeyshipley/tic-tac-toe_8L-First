@@ -124,9 +124,9 @@ div.supplement {
     TTT.Tests
 </h1>
 <h2 class="count">
-  18 concerns,
-  49 contexts,
-  80 specifications
+  21 concerns,
+  53 contexts,
+  87 specifications
 </h2>
   
   <hr/>
@@ -809,18 +809,18 @@ div.supplement {
 
           </li>
         </ul><h2 class="concern">
-  Domain, Providers, GetPotentialWinningMovesFor specifications
+  Domain, Providers, ComputerFirstTurnMoveProvider, GetCenterSquareMove specifications
 </h2>
 <h3 class="count">
-  4 contexts, 4 specifications
+  1 context, 1 specification
 </h3><h3 class="context">
-  When asking for the possible winning moves and there are none
+  When asking for the center square move
 </h3>
 <h4 class="count">
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="54">should return an empty list of positions</span>
+          <li class="spec"><span id="54">should return the center square move</span>
 
 
 
@@ -828,14 +828,19 @@ div.supplement {
  
 
           </li>
-        </ul><h3 class="context">
-  When asking for the possible winning moves and there are none because they have been blocked by the other player
+        </ul><h2 class="concern">
+  Domain, Providers, ComputerFirstTurnMoveProvider, GetCornerMoves specifications
+</h2>
+<h3 class="count">
+  1 context, 4 specifications
+</h3><h3 class="context">
+  When asking for the corner squares moves
 </h3>
 <h4 class="count">
-  1 specification
+  4 specifications
 </h4>
         <ul>
-          <li class="spec"><span id="55">should return an empty list of positions</span>
+          <li class="spec"><span id="55">should return the top left corner</span>
 
 
 
@@ -843,14 +848,7 @@ div.supplement {
  
 
           </li>
-        </ul><h3 class="context">
-  When asking for the possible winning moves and there is more than one
-</h3>
-<h4 class="count">
-  1 specification
-</h4>
-        <ul>
-          <li class="spec"><span id="57">should return the list of positions</span>
+          <li class="spec"><span id="56">should return the top right corner</span>
 
 
 
@@ -858,14 +856,15 @@ div.supplement {
  
 
           </li>
-        </ul><h3 class="context">
-  When asking for the possible winning moves and there is one
-</h3>
-<h4 class="count">
-  1 specification
-</h4>
-        <ul>
-          <li class="spec"><span id="56">should return the list of positions</span>
+          <li class="spec"><span id="57">should return the bottom left corner</span>
+
+
+
+
+ 
+
+          </li>
+          <li class="spec"><span id="58">should return the bottom right corner</span>
 
 
 
@@ -885,7 +884,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="58">should return all non selected board positions</span>
+          <li class="spec"><span id="59">should return all non selected board positions</span>
 
 
 
@@ -922,6 +921,71 @@ div.supplement {
 
           </li>
         </ul><h2 class="concern">
+  Domain, Providers, WinningMoveProvider, GetPotentialWinningMovesFor specifications
+</h2>
+<h3 class="count">
+  4 contexts, 4 specifications
+</h3><h3 class="context">
+  When asking for the possible winning moves and there are none
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="60">should return an empty list of positions</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When asking for the possible winning moves and there are none because they have been blocked by the other player
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="61">should return an empty list of positions</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When asking for the possible winning moves and there is more than one
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="63">should return the list of positions</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When asking for the possible winning moves and there is one
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="62">should return the list of positions</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
   Domain, Providers, WinningSetsProvider specifications
 </h2>
 <h3 class="count">
@@ -933,7 +997,7 @@ div.supplement {
   8 specifications
 </h4>
         <ul>
-          <li class="spec"><span id="59">should return a set for the top row</span>
+          <li class="spec"><span id="64">should return a set for the top row</span>
 
 
 
@@ -941,7 +1005,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="60">should return a set for the middle row</span>
+          <li class="spec"><span id="65">should return a set for the middle row</span>
 
 
 
@@ -949,7 +1013,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="61">should return a set for the bottom row</span>
+          <li class="spec"><span id="66">should return a set for the bottom row</span>
 
 
 
@@ -957,7 +1021,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="62">should return a set for the left column</span>
+          <li class="spec"><span id="67">should return a set for the left column</span>
 
 
 
@@ -965,7 +1029,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="63">should return a set for the center column</span>
+          <li class="spec"><span id="68">should return a set for the center column</span>
 
 
 
@@ -973,7 +1037,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="64">should return a set for the right column</span>
+          <li class="spec"><span id="69">should return a set for the right column</span>
 
 
 
@@ -981,7 +1045,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="65">should return a set for the top left to bottom right diagonal</span>
+          <li class="spec"><span id="70">should return a set for the top left to bottom right diagonal</span>
 
 
 
@@ -989,162 +1053,7 @@ div.supplement {
  
 
           </li>
-          <li class="spec"><span id="66">should return a set for the bottom left to top right diagonal</span>
-
-
-
-
- 
-
-          </li>
-        </ul><h2 class="concern">
-  Domain, Specifications, GameAlgorithms specifications
-</h2>
-<h3 class="count">
-  10 contexts, 10 specifications
-</h3><h3 class="context">
-  When determining a game that has all of its positions selected
-</h3>
-<h4 class="count">
-  1 specification
-</h4>
-        <ul>
-          <li class="spec"><span id="70">should let us know it is in fact over</span>
-
-
-
-
- 
-
-          </li>
-        </ul><h3 class="context">
-  When determining a winner for a game that has a set of three on bottom left diagonal row
-</h3>
-<h4 class="count">
-  1 specification
-</h4>
-        <ul>
-          <li class="spec"><span id="78">should let us know the player won</span>
-
-
-
-
- 
-
-          </li>
-        </ul><h3 class="context">
-  When determining a winner for a game that has a set of three on the bottom row
-</h3>
-<h4 class="count">
-  1 specification
-</h4>
-        <ul>
-          <li class="spec"><span id="73">should let us know the player won</span>
-
-
-
-
- 
-
-          </li>
-        </ul><h3 class="context">
-  When determining a winner for a game that has a set of three on the center row
-</h3>
-<h4 class="count">
-  1 specification
-</h4>
-        <ul>
-          <li class="spec"><span id="75">should let us know the player won</span>
-
-
-
-
- 
-
-          </li>
-        </ul><h3 class="context">
-  When determining a winner for a game that has a set of three on the left row
-</h3>
-<h4 class="count">
-  1 specification
-</h4>
-        <ul>
-          <li class="spec"><span id="74">should let us know the player won</span>
-
-
-
-
- 
-
-          </li>
-        </ul><h3 class="context">
-  When determining a winner for a game that has a set of three on the middle row
-</h3>
-<h4 class="count">
-  1 specification
-</h4>
-        <ul>
-          <li class="spec"><span id="72">should let us know the player won</span>
-
-
-
-
- 
-
-          </li>
-        </ul><h3 class="context">
-  When determining a winner for a game that has a set of three on the right row
-</h3>
-<h4 class="count">
-  1 specification
-</h4>
-        <ul>
-          <li class="spec"><span id="76">should let us know the player won</span>
-
-
-
-
- 
-
-          </li>
-        </ul><h3 class="context">
-  When determining a winner for a game that has a set of three on the top row
-</h3>
-<h4 class="count">
-  1 specification
-</h4>
-        <ul>
-          <li class="spec"><span id="71">should let us know the player won</span>
-
-
-
-
- 
-
-          </li>
-        </ul><h3 class="context">
-  When determining a winner for a game that has a set of three on top left diagonal row
-</h3>
-<h4 class="count">
-  1 specification
-</h4>
-        <ul>
-          <li class="spec"><span id="77">should let us know the player won</span>
-
-
-
-
- 
-
-          </li>
-        </ul><h3 class="context">
-  When determining if a game with no sets completed or still has moves available is over
-</h3>
-<h4 class="count">
-  1 specification
-</h4>
-        <ul>
-          <li class="spec"><span id="69">should let us know it is not over</span>
+          <li class="spec"><span id="71">should return a set for the bottom left to top right diagonal</span>
 
 
 
@@ -1153,18 +1062,18 @@ div.supplement {
 
           </li>
         </ul><h2 class="concern">
-  Domain, Specifications, GameSpecifications specifications
+  Domain, Specifications, ComputerFirstTurnSpecification, IsFirstTurnForComputer specifications
 </h2>
 <h3 class="count">
   2 contexts, 2 specifications
 </h3><h3 class="context">
-  When determining if a valid move is legitimate or not
+  When asking if its the computers first turn and it is
 </h3>
 <h4 class="count">
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="67">should let us know that it is valid</span>
+          <li class="spec"><span id="72">should let us know that it is the computers first turn</span>
 
 
 
@@ -1179,7 +1088,197 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="68">should let us know that it is not valid</span>
+          <li class="spec"><span id="73">should let us know that it is not the computers first turn</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Domain, Specifications, GameStatusSpecification specifications
+</h2>
+<h3 class="count">
+  10 contexts, 10 specifications
+</h3><h3 class="context">
+  When determining a game that has all of its positions selected
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="75">should let us know it is in fact over</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on bottom left diagonal row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="83">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on the bottom row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="78">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on the center row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="80">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on the left row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="79">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on the middle row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="77">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on the right row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="81">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on the top row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="76">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining a winner for a game that has a set of three on top left diagonal row
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="82">should let us know the player won</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining if a game with no sets completed or still has moves available is over
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="74">should let us know it is not over</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Domain, Specifications, MoveValidationSpecification specifications
+</h2>
+<h3 class="count">
+  2 contexts, 2 specifications
+</h3><h3 class="context">
+  When determining if a valid move is legitimate or not
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="84">should let us know that it is valid</span>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When determining if an invalid move is legitimate or not
+</h3>
+<h4 class="count">
+  1 specification
+</h4>
+        <ul>
+          <li class="spec"><span id="85">should let us know that it is not valid</span>
 
 
 
@@ -1199,7 +1298,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="80">should return validation messages</span>
+          <li class="spec"><span id="87">should return validation messages</span>
 
 
 
@@ -1214,7 +1313,7 @@ div.supplement {
   1 specification
 </h4>
         <ul>
-          <li class="spec"><span id="79">should not return validation messages</span>
+          <li class="spec"><span id="86">should not return validation messages</span>
 
 
 

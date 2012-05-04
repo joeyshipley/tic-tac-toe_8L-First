@@ -67,7 +67,7 @@ namespace TTT.Domain.GameLogic.Processes
 		{
 			return scrubbedPositions.Any() 
 				? scrubbedPositions
-				: availablePositions; // if there are no safe moves, suck it up what is available.
+				: availablePositions; // if there are no safe moves, suck it up, send back what is available.
 		}
 
 		private List<GameMove> returnGameMovesWithPossibleComputerMove(IList<GameMove> currentMoves, BoardPosition potentialBoardPosition)

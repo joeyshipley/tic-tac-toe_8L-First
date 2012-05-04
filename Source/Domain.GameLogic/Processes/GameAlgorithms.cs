@@ -60,7 +60,14 @@ namespace TTT.Domain.GameLogic.Processes
 					applyMoveIfItDoesNotCreateMultipleWinningMovesForThePlayer(responsePositions, playerWinningMoves, position);
 				}
 			}
-			return responsePositions;
+			return returnGameMovesFromDoubleWinningRemovalProcess(availablePositions, responsePositions);
+		}
+
+		private IList<BoardPosition> returnGameMovesFromDoubleWinningRemovalProcess(IList<BoardPosition> availablePositions, IList<BoardPosition> scrubbedPositions)
+		{
+			return scrubbedPositions.Any() 
+				? scrubbedPositions
+				: availablePositions; // if there are no safe moves, suck it up what is available.
 		}
 
 		private List<GameMove> returnGameMovesWithPossibleComputerMove(IList<GameMove> currentMoves, BoardPosition potentialBoardPosition)

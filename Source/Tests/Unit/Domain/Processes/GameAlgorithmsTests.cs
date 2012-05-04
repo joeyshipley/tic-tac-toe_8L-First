@@ -69,11 +69,11 @@ namespace TTT.Tests.Unit.Domain.Processes.GameAlgorithmsTests
 		Establish context = () => 
 		{
 			// no available computer moves
-			Mocks.GetMock<IBoardPositionsProvider>()
+			Mocks.GetMock<IWinningMoveProvider>()
 				.Setup(p => p.GetPotentialWinningMovesFor(Moq.It.IsAny<IList<GameMove>>(), Enums.PlayerType.Computer))
 				.Returns(new List<BoardPosition>());
 			// available human moves
-			Mocks.GetMock<IBoardPositionsProvider>()
+			Mocks.GetMock<IWinningMoveProvider>()
 				.Setup(p => p.GetPotentialWinningMovesFor(Moq.It.IsAny<IList<GameMove>>(), Enums.PlayerType.Human))
 				.Returns(new List<BoardPosition>
 				{
@@ -104,7 +104,7 @@ namespace TTT.Tests.Unit.Domain.Processes.GameAlgorithmsTests
 
 		Establish context = () => 
 		{
-			Mocks.GetMock<IBoardPositionsProvider>()
+			Mocks.GetMock<IWinningMoveProvider>()
 				.Setup(p => p.GetPotentialWinningMovesFor(Moq.It.IsAny<IList<GameMove>>(), Enums.PlayerType.Computer))
 				.Returns(new List<BoardPosition>
 				{
@@ -138,14 +138,14 @@ namespace TTT.Tests.Unit.Domain.Processes.GameAlgorithmsTests
 		Establish context = () => 
 		{
 			// available winning computer moves
-			Mocks.GetMock<IBoardPositionsProvider>()
+			Mocks.GetMock<IWinningMoveProvider>()
 				.Setup(p => p.GetPotentialWinningMovesFor(Moq.It.IsAny<IList<GameMove>>(), Enums.PlayerType.Computer))
 				.Returns(new List<BoardPosition>
 				{
 					BoardPosition.CreateFrom("B", 1)
 				});
 			// available winning human moves
-			Mocks.GetMock<IBoardPositionsProvider>()
+			Mocks.GetMock<IWinningMoveProvider>()
 				.Setup(p => p.GetPotentialWinningMovesFor(Moq.It.IsAny<IList<GameMove>>(), Enums.PlayerType.Human))
 				.Returns(new List<BoardPosition>
 				{

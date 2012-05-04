@@ -7,13 +7,17 @@ namespace TTT.Domain.GameLogic.Processes
 {
 	public class GameAlgorithms : IGameAlgorithms
 	{
-		private readonly IBoardPositionsProvider _boardPositionsProvider;
+		private readonly IAvailableBoardPositionsProvider _availableBoardPositionsProvider;
 		private readonly IRandomNumberProvider _randomNumberProvider;
+		private readonly IWinningMoveProvider _winningMoveProvider;
 
-		public GameAlgorithms(IBoardPositionsProvider boardPositionsProvider, IRandomNumberProvider randomNumberProvider)
+		public GameAlgorithms(IAvailableBoardPositionsProvider availableBoardPositionsProvider, 
+			IRandomNumberProvider randomNumberProvider,
+			IWinningMoveProvider winningMoveProvider)
 		{
-			_boardPositionsProvider = boardPositionsProvider;
+			_availableBoardPositionsProvider = availableBoardPositionsProvider;
 			_randomNumberProvider = randomNumberProvider;
+			_winningMoveProvider = winningMoveProvider;
 		}
 
 		public GameMove DetermineNextMove(Game game)
@@ -23,11 +27,11 @@ namespace TTT.Domain.GameLogic.Processes
 
 			var currentMoves = game.Moves;
 	
-			var computerWinPositions = _boardPositionsProvider.GetPotentialWinningMovesFor(currentMoves, Enums.PlayerType.Computer);
+			var computerWinPositions = _winningMoveProvider.GetPotentialWinningMovesFor(currentMoves, Enums.PlayerType.Computer);
 			if(computerWinPositions.Any())
 				return GameMove.CreateFrom(Enums.PlayerType.Computer, computerWinPositions.FirstOrDefault());
 
-			var humanThreatPositions = _boardPositionsProvider.GetPotentialWinningMovesFor(currentMoves, Enums.PlayerType.Human);
+			var humanThreatPositions = _winningMoveProvider.GetPotentialWinningMovesFor(currentMoves, Enums.PlayerType.Human);
 			if(humanThreatPositions.Any())
 				return GameMove.CreateFrom(Enums.PlayerType.Computer, humanThreatPositions.FirstOrDefault());
 
@@ -37,7 +41,7 @@ namespace TTT.Domain.GameLogic.Processes
 			// how many possible win moves would that create for the players. Then select a move from
 			// the lowest win possibilities.
 
-			var availablePositions = _boardPositionsProvider.GetRemainingAvailableBoardPositions(game);
+			var availablePositions = _availableBoardPositionsProvider.GetRemainingAvailableBoardPositions(game);
 			availablePositions = removePositionsThatWouldForceThePlayerToBlockAndCreateDoubleWinningMoves(currentMoves, availablePositions);
 			return getRandomMoveFromAvailable(availablePositions);
 		}
@@ -52,7 +56,7 @@ namespace TTT.Domain.GameLogic.Processes
 				{
 					GameMove.CreateFrom(Enums.PlayerType.Computer, position)
 				};
-				var computerWinningMoves = _boardPositionsProvider.GetPotentialWinningMovesFor(newMovesAfterComputerHasChoosen, Enums.PlayerType.Computer);
+				var computerWinningMoves = _winningMoveProvider.GetPotentialWinningMovesFor(newMovesAfterComputerHasChoosen, Enums.PlayerType.Computer);
 				foreach(var winningPositions in computerWinningMoves)
 				{
 					// apply the players blocking move and check to see if that move creates two winning positions
@@ -60,7 +64,7 @@ namespace TTT.Domain.GameLogic.Processes
 					{
 						GameMove.CreateFrom(Enums.PlayerType.Human, winningPositions)
 					};
-					var playerWinningMoves = _boardPositionsProvider.GetPotentialWinningMovesFor(newMovesAfterPlayerHasChoosen, Enums.PlayerType.Human);
+					var playerWinningMoves = _winningMoveProvider.GetPotentialWinningMovesFor(newMovesAfterPlayerHasChoosen, Enums.PlayerType.Human);
 					if(playerWinningMoves.Count() < 2)
 						// if the potential move does not cause the player to block and create two
 						// winning positions, add it to the acceptable move list.

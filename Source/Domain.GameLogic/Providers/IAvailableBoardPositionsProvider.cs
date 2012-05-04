@@ -3,9 +3,8 @@ using TTT.Domain.Entities;
 
 namespace TTT.Domain.GameLogic.Providers
 {
-	public interface IBoardPositionsProvider
+	public interface IAvailableBoardPositionsProvider
 	{
 		IList<BoardPosition> GetRemainingAvailableBoardPositions(Game game);
-		IList<BoardPosition> GetPotentialWinningMovesFor(IList<GameMove> currentMoves, Enums.PlayerType owner);
 	}
 }
